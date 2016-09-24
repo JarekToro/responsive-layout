@@ -25,53 +25,70 @@ public class MyUI extends UI {
     protected void init(VaadinRequest vaadinRequest) {
 
 
+//        new  VerticalLayout().setSpacing();
+
         RLContainer container = new RLContainer();
 
-        RLRow topRow = new RLRow();
+        RLRow navRow = new RLRow();
 
-        RLCol col1 = new RLCol();
-        col1.addRule(RLCol.DisplaySize.SM, 6);
-        col1.addRule(RLCol.DisplaySize.XS, 12);
+        RLCol logoCol = new RLCol(12, 3, 2);
+        logoCol.setComponent(getButtonofSize("LOGO", "100%", "100%"));
+        navRow.addColumn(logoCol);
 
-        col1.setComponent(new Panel("hey"));
+        RLCol homeCol = new RLCol(12, 3);
+        homeCol.setOffset(RLCol.DisplaySize.MD, 1);
+        homeCol.setComponent(getButtonofSize("Home", "100%", "100%"));
+        navRow.addColumn(homeCol);
 
-        topRow.addColumn(col1);
+        RLCol aboutCol = new RLCol(12, 3);
+        aboutCol.setComponent(getButtonofSize("About Us", "100%", "100%"));
+        navRow.addColumn(aboutCol);
 
+        RLCol contactCol = new RLCol(12, 3);
+        contactCol.setComponent(getButtonofSize("Contact", "100%", "100%"));
+        navRow.addColumn(contactCol);
 
-        RLCol col2 = new RLCol();
-        col2.addRule(RLCol.DisplaySize.SM, 6);
-        col2.addRule(RLCol.DisplaySize.XS, 6);
-
-        col2.setComponent(new Panel("Whats up"));
-
-        topRow.addColumn(col2);
-
-        container.addRow(topRow);
-
-
-        RLRow bottomRow = new RLRow();
-
-        RLCol col3 = new RLCol();
-        col3.addRule(RLCol.DisplaySize.SM, 3);
-        col3.addRule(RLCol.DisplaySize.XS, 6);
-
-        col3.setComponent(new Panel("hey"));
-
-        bottomRow.addColumn(col3);
+        navRow.setHorizontalSpacing(0);
+        container.addRow(navRow);
 
 
-        RLCol col4 = new RLCol();
-        col4.addRule(RLCol.DisplaySize.SM, 9);
-        col4.addRule(RLCol.DisplaySize.XS, 6);
 
-        col4.setComponent(new Panel("Whats up"));
+        RLRow titleRow = new RLRow();
 
-        bottomRow.addColumn(col4);
+        RLCol titleCol = new RLCol(12);
+        titleCol.setComponent(getButtonofSize("Our Team", "100%", "100%"));
+        titleRow.addColumn(titleCol);
 
-        container.addRow(bottomRow);
 
+        container.addRow(titleRow);
+
+
+
+
+        RLRow teamRow = new RLRow();
+
+        for (int x = 0; x < 10; x++) {
+            TeamMemberView teamMemberView = new TeamMemberView();
+            teamRow.addColumn(teamMemberView.getInColumn(12, 6, 4, 3));
+        }
+
+        container.addRow(teamRow);
+        //teamRow.setMargin(50);
+
+        teamRow.setHorizontalSpacing(15);
+        teamRow.setVerticalSpacing(15);
 
         setContent(container);
+    }
+
+
+    public Button getButtonofSize(String title, String h, String w) {
+        Button button = new Button(title);
+        button.setHeight(h);
+        button.setWidth(w);
+
+        return button;
+
     }
 
     @WebServlet(urlPatterns = "/*", name = "MyUIServlet", asyncSupported = true)
