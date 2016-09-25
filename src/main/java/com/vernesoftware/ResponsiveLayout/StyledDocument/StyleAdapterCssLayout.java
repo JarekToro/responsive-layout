@@ -1,4 +1,4 @@
-package com.vernesoftware.ResponsiveLayout;
+package com.vernesoftware.ResponsiveLayout.StyledDocument;
 
 import com.vaadin.ui.Component;
 import com.vaadin.ui.CssLayout;

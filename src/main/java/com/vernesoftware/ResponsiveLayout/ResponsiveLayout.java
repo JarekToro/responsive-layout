@@ -1,5 +1,7 @@
 package com.vernesoftware.ResponsiveLayout;
 
+import com.vernesoftware.ResponsiveLayout.StyledDocument.StyleAdapterCssLayout;
+
 /**
  * Created by JarekToro on 9/23/16.
  */
