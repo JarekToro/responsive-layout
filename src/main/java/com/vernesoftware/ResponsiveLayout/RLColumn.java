@@ -9,7 +9,7 @@ import java.util.Set;
 /**
  * Created by JarekToro on 9/23/16.
  */
-public class RLCol extends CustomComponent {
+public class RLColumn extends CustomComponent {
 
 
     private Set<Rule> rules;
@@ -30,39 +30,39 @@ public class RLCol extends CustomComponent {
         rules = new HashSet<>(4);
     }
 
-    public RLCol() {
+    public RLColumn() {
         convenienceInIt();
     }
 
-    public RLCol(Rule rule) {
+    public RLColumn(Rule rule) {
         convenienceInIt();
         addRule(rule);
     }
 
-    public RLCol(DisplaySize displaySize, int width) {
+    public RLColumn(DisplaySize displaySize, int width) {
         convenienceInIt();
         addRule(displaySize, width);
     }
 
-    public RLCol(int xs) {
+    public RLColumn(int xs) {
         convenienceInIt();
         setAllSizes(xs, xs, xs, xs);
     }
 
 
-    public RLCol(int xs, int sm) {
+    public RLColumn(int xs, int sm) {
         convenienceInIt();
         setAllSizes(xs, sm, sm, sm);
 
     }
 
-    public RLCol(int xs, int sm, int md) {
+    public RLColumn(int xs, int sm, int md) {
         convenienceInIt();
         setAllSizes(xs, sm, md, md);
 
     }
 
-    public RLCol(int xs, int sm, int md, int lg) {
+    public RLColumn(int xs, int sm, int md, int lg) {
         convenienceInIt();
         setAllSizes(xs, sm, md, lg);
     }
