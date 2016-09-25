@@ -7,8 +7,8 @@ import com.vaadin.annotations.VaadinServletConfiguration;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.server.VaadinServlet;
 import com.vaadin.ui.*;
-import com.vernesoftware.ResponsiveLayout.RLCol;
-import com.vernesoftware.ResponsiveLayout.RLContainer;
+import com.vernesoftware.ResponsiveLayout.RLColumn;
+import com.vernesoftware.ResponsiveLayout.ResponsiveLayout;
 import com.vernesoftware.ResponsiveLayout.RLRow;
 
 /**
@@ -27,24 +27,24 @@ public class MyUI extends UI {
 
 //        new  VerticalLayout().setSpacing();
 
-        RLContainer container = new RLContainer();
+        ResponsiveLayout container = new ResponsiveLayout();
 
         RLRow navRow = new RLRow();
 
-        RLCol logoCol = new RLCol(12, 3, 2);
+        RLColumn logoCol = new RLColumn(12, 3, 2);
         logoCol.setComponent(getButtonofSize("LOGO", "100%", "100%"));
         navRow.addColumn(logoCol);
 
-        RLCol homeCol = new RLCol(12, 3);
-        homeCol.setOffset(RLCol.DisplaySize.MD, 1);
+        RLColumn homeCol = new RLColumn(12, 3);
+        homeCol.setOffset(RLColumn.DisplaySize.MD, 1);
         homeCol.setComponent(getButtonofSize("Home", "100%", "100%"));
         navRow.addColumn(homeCol);
 
-        RLCol aboutCol = new RLCol(12, 3);
+        RLColumn aboutCol = new RLColumn(12, 3);
         aboutCol.setComponent(getButtonofSize("About Us", "100%", "100%"));
         navRow.addColumn(aboutCol);
 
-        RLCol contactCol = new RLCol(12, 3);
+        RLColumn contactCol = new RLColumn(12, 3);
         contactCol.setComponent(getButtonofSize("Contact", "100%", "100%"));
         navRow.addColumn(contactCol);
 
@@ -55,10 +55,11 @@ public class MyUI extends UI {
 
         RLRow titleRow = new RLRow();
 
-        RLCol titleCol = new RLCol(12);
+        RLColumn titleCol = new RLColumn(12);
         titleCol.setComponent(getButtonofSize("Our Team", "100%", "100%"));
         titleRow.addColumn(titleCol);
 
+        titleRow.setMargin(RLRow.MarginDirection.top,50);
 
         container.addRow(titleRow);
 

@@ -2,11 +2,8 @@ package com.vernesoftware;
 
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Label;
-import com.vernesoftware.ResponsiveLayout.RLCol;
-import com.vernesoftware.ResponsiveLayout.RLContainer;
+import com.vernesoftware.ResponsiveLayout.RLColumn;
 import com.vernesoftware.ResponsiveLayout.RLRow;
-
-import java.util.Random;
 
 /**
  * Created by JarekToro on 9/23/16.
@@ -15,11 +12,11 @@ public class TeamMemberView extends RLRow {
 
     public TeamMemberView() {
 
-        RLCol imageCol = new RLCol(4, 4, 4, 4);
+        RLColumn imageCol = new RLColumn(4, 4, 4, 4);
         imageCol.setComponent(getButtonofSize("image", "100px", "100%"));
-        RLCol titleCol = new RLCol(8, 4, 4, 4);
+        RLColumn titleCol = new RLColumn(8, 4, 4, 4);
         titleCol.setComponent(new Label("Jarek Toro"));
-        RLCol buttonCol = new RLCol(12, 4, 4, 4);
+        RLColumn buttonCol = new RLColumn(12, 4, 4, 4);
         buttonCol.setComponent(getButtonofSize("View", "100%", "100%"));
         addColumn(imageCol);
         addColumn(titleCol);
@@ -55,9 +52,9 @@ public class TeamMemberView extends RLRow {
     }
 
 
-    public RLCol getInColumn(int xs, int sm, int md, int lg) {
+    public RLColumn getInColumn(int xs, int sm, int md, int lg) {
 
-        RLCol col = new RLCol(xs, sm, md, lg);
+        RLColumn col = new RLColumn(xs, sm, md, lg);
         col.setComponent(this);
 
         return col;

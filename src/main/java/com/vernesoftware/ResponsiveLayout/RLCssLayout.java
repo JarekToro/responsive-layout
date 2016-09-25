@@ -11,8 +11,6 @@ import java.util.*;
  */
 public class RLCssLayout extends CssLayout {
 
-    private int componantSpacing = 0;
-
 
     public HashMap<Integer, CssModal> cssModalHashMap;
 
@@ -22,6 +20,14 @@ public class RLCssLayout extends CssLayout {
         cssModalHashMap = new HashMap<>();
     }
 
+    @Override
+    public void addComponent(Component c) {
+
+        super.addComponent(c);
+
+        setCssModalForComponant(new CssModal(), getComponentIndex(c));
+
+    }
 
     public void setCssModalForComponant(CssModal cssModal, int index) {
         if (cssModalHashMap.containsKey(index)) {
@@ -31,10 +37,18 @@ public class RLCssLayout extends CssLayout {
         cssModalHashMap.put(index, cssModal);
     }
 
+    public CssModal getCssModalForComponant(Component c) {
+
+
+        return cssModalHashMap.get(getComponentIndex(c));
+
+    }
+
+
     @Override
     protected String getCss(Component c) {
 
-        CssModal cssModal = cssModalHashMap.get(getComponentIndex(c));
+        CssModal cssModal = getCssModalForComponant(c);
 
         if (cssModal != null) {
             StringBuilder sb = new StringBuilder();

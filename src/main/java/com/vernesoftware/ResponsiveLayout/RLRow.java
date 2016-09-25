@@ -1,9 +1,5 @@
 package com.vernesoftware.ResponsiveLayout;
 
-import com.sun.rowset.internal.Row;
-import com.vaadin.ui.CssLayout;
-import com.vaadin.ui.CustomComponent;
-import com.vaadin.ui.CustomLayout;
 import com.vernesoftware.ResponsiveLayout.cssModal.CssModal;
 
 /**
@@ -17,9 +13,15 @@ public class RLRow extends RLCssLayout {
         setWidthUndefined();
     }
 
-    private int margin = 0;
+    private int margin_top = 0;
+    private int margin_bottom = 0;
+    private int margin_left = 0;
+    private int margin_right = 0;
+
     private int horizontalSpacing = 0;
     private int verticalSpacing = 0;
+
+    private CssModal myCssModal;
 
     public int getVerticalSpacing() {
         return verticalSpacing;
@@ -30,25 +32,101 @@ public class RLRow extends RLCssLayout {
     }
 
 
-    public CssModal myCssModal;
-
-
-    public void addColumn(RLCol col) {
+    public void addColumn(RLColumn col) {
 
         addComponent(col);
     }
 
 
-    public void setMargin(int pixals) {
-        margin = pixals;
-        if (myCssModal != null) {
-            myCssModal.addCssProperty("margin", pixals + "px");
+    public interface MarginDirection {
+
+        String all = "all";
+        String top = "top";
+        String bottom = "bottom";
+        String right = "right";
+        String left = "left";
+
+    }
+
+    public void setMargin(String marginDirection, int pixals) {
+
+
+        if (myCssModal == null) {
+            switch (marginDirection) {
+                case MarginDirection.all:
+                    margin_top = pixals;
+                    margin_bottom = pixals;
+                    margin_left = pixals;
+                    margin_right = pixals;
+                    break;
+
+                case MarginDirection.top:
+                    margin_top = pixals;
+
+                    break;
+                case MarginDirection.bottom:
+                    margin_bottom = pixals;
+                    break;
+
+                case MarginDirection.left:
+                    margin_left = pixals;
+
+                    break;
+                case MarginDirection.right:
+                    margin_right = pixals;
+
+                    break;
+
+                default:
+                    break;
+            }
+            return;
         }
+
+        switch (marginDirection) {
+            case MarginDirection.all:
+                myCssModal.addCssProperty("margin", pixals + "px");
+                margin_top = pixals;
+                margin_bottom = pixals;
+                margin_left = pixals;
+                margin_right = pixals;
+                break;
+
+            case MarginDirection.top:
+                myCssModal.addCssProperty("margin-" + marginDirection, pixals + "px");
+                margin_top = pixals;
+
+                break;
+            case MarginDirection.bottom:
+                myCssModal.addCssProperty("margin-" + marginDirection, pixals + "px");
+                margin_bottom = pixals;
+                break;
+
+            case MarginDirection.left:
+                myCssModal.addCssProperty("margin-" + marginDirection, pixals + "px");
+                margin_left = pixals;
+
+                break;
+            case MarginDirection.right:
+                myCssModal.addCssProperty("margin-" + marginDirection, pixals + "px");
+                margin_right = pixals;
+
+                break;
+
+            default:
+                break;
+        }
+
+
     }
 
     public void setCssModal(CssModal cssModal) {
         this.myCssModal = cssModal;
-        setMargin(margin);
+        setMargin(MarginDirection.top, margin_top);
+        setMargin(MarginDirection.bottom, margin_bottom);
+        setMargin(MarginDirection.right, margin_right);
+        setMargin(MarginDirection.left, margin_left);
+
         setVerticalSpacing(verticalSpacing);
         setHorizontalSpacing(horizontalSpacing);
     }
@@ -60,16 +138,11 @@ public class RLRow extends RLCssLayout {
         components.forEach(component -> {
 
 
-            CssModal cssModal = cssModalHashMap.get(getComponentIndex(component));
-
-
-            if (cssModal == null) {
-                cssModal = new CssModal();
-            }
+            CssModal cssModal = getCssModalForComponant(component);
 
             cssModal.addCssProperty("padding-top", (pixals / 2) + "px");
             cssModal.addCssProperty("padding-bottom", (pixals / 2) + "px");
-            setCssModalForComponant(cssModal, components.indexOf(component));
+
             return;
 
         });
@@ -81,21 +154,16 @@ public class RLRow extends RLCssLayout {
 
         horizontalSpacing = pixals;
 
-        setMargin(margin - (pixals));
+        setMargin(MarginDirection.left, margin_left - (horizontalSpacing));
+        setMargin(MarginDirection.right, margin_right - (horizontalSpacing));
 
         components.forEach(component -> {
 
+            CssModal cssModal = getCssModalForComponant(component);
 
-            CssModal cssModal = cssModalHashMap.get(getComponentIndex(component));
+            cssModal.addCssProperty("padding-right", (horizontalSpacing / 2) + "px");
+            cssModal.addCssProperty("padding-left", (horizontalSpacing / 2) + "px");
 
-
-            if (cssModal == null) {
-                cssModal = new CssModal();
-            }
-
-            cssModal.addCssProperty("padding-right", (pixals / 2) + "px");
-            cssModal.addCssProperty("padding-left", (pixals / 2) + "px");
-            setCssModalForComponant(cssModal, components.indexOf(component));
             return;
 
         });
