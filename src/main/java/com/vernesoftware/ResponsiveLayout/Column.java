@@ -2,8 +2,8 @@ package com.vernesoftware.ResponsiveLayout;
 
 import com.vaadin.ui.Component;
 import com.vaadin.ui.CustomComponent;
-import com.vernesoftware.ResponsiveLayout.cssModal.StyleDocument;
-import com.vernesoftware.ResponsiveLayout.cssModal.StyleDocumentAdapter;
+import com.vernesoftware.ResponsiveLayout.StyledDocument.StyleDocument;
+import com.vernesoftware.ResponsiveLayout.StyledDocument.StyleDocumentAdapter;
 
 import java.util.HashSet;
 import java.util.Set;

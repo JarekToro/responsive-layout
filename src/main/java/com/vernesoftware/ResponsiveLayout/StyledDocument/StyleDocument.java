@@ -1,6 +1,4 @@
-package com.vernesoftware.ResponsiveLayout.cssModal;
-
-import com.vaadin.ui.CssLayout;
+package com.vernesoftware.ResponsiveLayout.StyledDocument;
 
 import java.util.ArrayList;
 import java.util.List;

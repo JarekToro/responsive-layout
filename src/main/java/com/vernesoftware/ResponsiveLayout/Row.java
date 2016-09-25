@@ -1,7 +1,7 @@
 package com.vernesoftware.ResponsiveLayout;
 
-import com.vernesoftware.ResponsiveLayout.cssModal.StyleDocument;
-import com.vernesoftware.ResponsiveLayout.cssModal.StyleDocumentAdapter;
+import com.vernesoftware.ResponsiveLayout.StyledDocument.StyleDocument;
+import com.vernesoftware.ResponsiveLayout.StyledDocument.StyleDocumentAdapter;
 
 /**
  * Created by JarekToro on 9/23/16.
