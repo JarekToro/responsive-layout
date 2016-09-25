@@ -14,6 +14,7 @@ public class ResponsiveLayout extends RLCssLayout {
     public ResponsiveLayout() {
         super();
         setHeightUndefined();
+        setSizeFull();
     }
 
 

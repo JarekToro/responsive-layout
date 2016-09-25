@@ -4,6 +4,7 @@ import javax.servlet.annotation.WebServlet;
 
 import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.VaadinServletConfiguration;
+import com.vaadin.annotations.Viewport;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.server.VaadinServlet;
 import com.vaadin.ui.*;
@@ -19,13 +20,13 @@ import com.vernesoftware.ResponsiveLayout.RLRow;
  * overridden to add component to the user interface and initialize non-component functionality.
  */
 @Theme("mytheme")
+@Viewport("width=device-width, initial-scale=1") // this is necessary
 public class MyUI extends UI {
 
     @Override
     protected void init(VaadinRequest vaadinRequest) {
+        setSizeFull();
 
-
-//        new  VerticalLayout().setSpacing();
 
         ResponsiveLayout container = new ResponsiveLayout();
 
@@ -52,18 +53,15 @@ public class MyUI extends UI {
         container.addRow(navRow);
 
 
-
         RLRow titleRow = new RLRow();
 
         RLColumn titleCol = new RLColumn(12);
         titleCol.setComponent(getButtonofSize("Our Team", "100%", "100%"));
         titleRow.addColumn(titleCol);
 
-        titleRow.setMargin(RLRow.MarginDirection.top,50);
+        titleRow.setMargin(RLRow.MarginDirection.top, 50);
 
         container.addRow(titleRow);
-
-
 
 
         RLRow teamRow = new RLRow();
