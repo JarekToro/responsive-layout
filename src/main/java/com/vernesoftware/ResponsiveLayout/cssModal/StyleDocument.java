@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * Created by JarekToro on 9/23/16.
  */
-public class CssModal {
+public class StyleDocument {
 
 
     public class CssProperty {
@@ -26,7 +26,7 @@ public class CssModal {
 
     public List<CssProperty> cssProperties;
 
-    public CssModal() {
+    public StyleDocument() {
         cssProperties = new ArrayList<>();
     }
 

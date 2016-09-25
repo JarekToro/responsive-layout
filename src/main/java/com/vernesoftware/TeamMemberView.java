@@ -2,21 +2,21 @@ package com.vernesoftware;
 
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Label;
-import com.vernesoftware.ResponsiveLayout.RLColumn;
-import com.vernesoftware.ResponsiveLayout.RLRow;
+import com.vernesoftware.ResponsiveLayout.Column;
+import com.vernesoftware.ResponsiveLayout.Row;
 
 /**
  * Created by JarekToro on 9/23/16.
  */
-public class TeamMemberView extends RLRow {
+public class TeamMemberView extends Row {
 
     public TeamMemberView() {
 
-        RLColumn imageCol = new RLColumn(4, 4, 4, 4);
+        Column imageCol = new Column(4, 4, 4, 4);
         imageCol.setComponent(getButtonofSize("image", "100px", "100%"));
-        RLColumn titleCol = new RLColumn(8, 4, 4, 4);
+        Column titleCol = new Column(8, 4, 4, 4);
         titleCol.setComponent(new Label("Jarek Toro"));
-        RLColumn buttonCol = new RLColumn(12, 4, 4, 4);
+        Column buttonCol = new Column(12, 4, 4, 4);
         buttonCol.setComponent(getButtonofSize("View", "100%", "100%"));
         addColumn(imageCol);
         addColumn(titleCol);
@@ -52,9 +52,9 @@ public class TeamMemberView extends RLRow {
     }
 
 
-    public RLColumn getInColumn(int xs, int sm, int md, int lg) {
+    public Column getInColumn(int xs, int sm, int md, int lg) {
 
-        RLColumn col = new RLColumn(xs, sm, md, lg);
+        Column col = new Column(xs, sm, md, lg);
         col.setComponent(this);
 
         return col;

@@ -8,9 +8,9 @@ import com.vaadin.annotations.Viewport;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.server.VaadinServlet;
 import com.vaadin.ui.*;
-import com.vernesoftware.ResponsiveLayout.RLColumn;
+import com.vernesoftware.ResponsiveLayout.Column;
 import com.vernesoftware.ResponsiveLayout.ResponsiveLayout;
-import com.vernesoftware.ResponsiveLayout.RLRow;
+import com.vernesoftware.ResponsiveLayout.Row;
 
 /**
  * This UI is the application entry point. A UI may either represent a browser window
@@ -30,22 +30,22 @@ public class MyUI extends UI {
 
         ResponsiveLayout container = new ResponsiveLayout();
 
-        RLRow navRow = new RLRow();
+        Row navRow = new Row();
 
-        RLColumn logoCol = new RLColumn(12, 3, 2);
+        Column logoCol = new Column(12, 3, 2);
         logoCol.setComponent(getButtonofSize("LOGO", "100%", "100%"));
         navRow.addColumn(logoCol);
 
-        RLColumn homeCol = new RLColumn(12, 3);
-        homeCol.setOffset(RLColumn.DisplaySize.MD, 1);
+        Column homeCol = new Column(12, 3);
+        homeCol.setOffset(Column.DisplaySize.MD, 1);
         homeCol.setComponent(getButtonofSize("Home", "100%", "100%"));
         navRow.addColumn(homeCol);
 
-        RLColumn aboutCol = new RLColumn(12, 3);
+        Column aboutCol = new Column(12, 3);
         aboutCol.setComponent(getButtonofSize("About Us", "100%", "100%"));
         navRow.addColumn(aboutCol);
 
-        RLColumn contactCol = new RLColumn(12, 3);
+        Column contactCol = new Column(12, 3);
         contactCol.setComponent(getButtonofSize("Contact", "100%", "100%"));
         navRow.addColumn(contactCol);
 
@@ -53,18 +53,18 @@ public class MyUI extends UI {
         container.addRow(navRow);
 
 
-        RLRow titleRow = new RLRow();
+        Row titleRow = new Row();
 
-        RLColumn titleCol = new RLColumn(12);
+        Column titleCol = new Column(12);
         titleCol.setComponent(getButtonofSize("Our Team", "100%", "100%"));
         titleRow.addColumn(titleCol);
 
-        titleRow.setMargin(RLRow.MarginDirection.top, 50);
+        titleRow.setMargin(Row.MarginDirection.top, 50);
 
         container.addRow(titleRow);
 
 
-        RLRow teamRow = new RLRow();
+        Row teamRow = new Row();
 
         for (int x = 0; x < 10; x++) {
             TeamMemberView teamMemberView = new TeamMemberView();

@@ -2,6 +2,8 @@ package com.vernesoftware.ResponsiveLayout;
 
 import com.vaadin.ui.Component;
 import com.vaadin.ui.CustomComponent;
+import com.vernesoftware.ResponsiveLayout.cssModal.StyleDocument;
+import com.vernesoftware.ResponsiveLayout.cssModal.StyleDocumentAdapter;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -9,10 +11,21 @@ import java.util.Set;
 /**
  * Created by JarekToro on 9/23/16.
  */
-public class RLColumn extends CustomComponent {
+public class Column extends CustomComponent implements StyleDocumentAdapter {
 
 
     private Set<Rule> rules;
+
+
+    public StyleDocument styleDocument;
+
+    public StyleDocument getStyleDocument() {
+        return styleDocument;
+    }
+
+    public void setStyleDocument(StyleDocument styleDocument) {
+        this.styleDocument = styleDocument;
+    }
 
 
     public class Rule {
@@ -28,41 +41,42 @@ public class RLColumn extends CustomComponent {
     private void convenienceInIt() {
         setPrimaryStyleName("col");
         rules = new HashSet<>(4);
+        this.styleDocument = new StyleDocument();
     }
 
-    public RLColumn() {
+    public Column() {
         convenienceInIt();
     }
 
-    public RLColumn(Rule rule) {
+    public Column(Rule rule) {
         convenienceInIt();
         addRule(rule);
     }
 
-    public RLColumn(DisplaySize displaySize, int width) {
+    public Column(DisplaySize displaySize, int width) {
         convenienceInIt();
         addRule(displaySize, width);
     }
 
-    public RLColumn(int xs) {
+    public Column(int xs) {
         convenienceInIt();
         setAllSizes(xs, xs, xs, xs);
     }
 
 
-    public RLColumn(int xs, int sm) {
+    public Column(int xs, int sm) {
         convenienceInIt();
         setAllSizes(xs, sm, sm, sm);
 
     }
 
-    public RLColumn(int xs, int sm, int md) {
+    public Column(int xs, int sm, int md) {
         convenienceInIt();
         setAllSizes(xs, sm, md, md);
 
     }
 
-    public RLColumn(int xs, int sm, int md, int lg) {
+    public Column(int xs, int sm, int md, int lg) {
         convenienceInIt();
         setAllSizes(xs, sm, md, lg);
     }
