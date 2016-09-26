@@ -1,4 +1,4 @@
-package com.vernesoftware.ResponsiveLayout.StyledDocument;
+package com.vernesoftware.StyledDocument;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -10,9 +10,11 @@ import com.vaadin.server.VaadinRequest;
 import com.vaadin.server.VaadinServlet;
 import com.vaadin.ui.*;
 import com.vaadin.ui.themes.ValoTheme;
-import com.vernesoftware.ResponsiveLayout.Column;
-import com.vernesoftware.ResponsiveLayout.ResponsiveLayout;
-import com.vernesoftware.ResponsiveLayout.Row;
+import com.vernesoftware.Column;
+import com.vernesoftware.ResponsiveLayout;
+import com.vernesoftware.Row;
+import com.vernesoftware.TeamMemberView;
+
 
 /**
  * This UI is the application entry point. A UI may either represent a browser window

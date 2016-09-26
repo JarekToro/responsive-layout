@@ -1,9 +1,10 @@
-package com.vernesoftware.ResponsiveLayout;
+package com.vernesoftware;
 
 import com.vaadin.ui.Alignment;
-import com.vernesoftware.ResponsiveLayout.StyledDocument.StyleAdapterCssLayout;
-import com.vernesoftware.ResponsiveLayout.StyledDocument.StyleDocument;
-import com.vernesoftware.ResponsiveLayout.StyledDocument.StyleDocumentAdapter;
+import com.vernesoftware.StyledDocument.StyleAdapterCssLayout;
+import com.vernesoftware.StyledDocument.StyleDocument;
+import com.vernesoftware.StyledDocument.StyleDocumentAdapter;
+
 
 /**
  * Created by JarekToro on 9/23/16.

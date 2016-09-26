@@ -1,4 +1,4 @@
-package com.vernesoftware.ResponsiveLayout.StyledDocument;
+package com.vernesoftware.StyledDocument;
 
 /**
  * Created by JarekToro on 9/25/16.

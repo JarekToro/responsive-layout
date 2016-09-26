@@ -1,10 +1,13 @@
-package com.vernesoftware.ResponsiveLayout;
+package com.vernesoftware;
 
-import com.vernesoftware.ResponsiveLayout.StyledDocument.StyleAdapterCssLayout;
+import com.vaadin.annotations.StyleSheet;
+import com.vernesoftware.StyledDocument.StyleAdapterCssLayout;
 
 /**
  * Created by JarekToro on 9/23/16.
  */
+
+@StyleSheet("styles.css")
 public class ResponsiveLayout extends StyleAdapterCssLayout {
 
 

@@ -66,6 +66,7 @@
             <groupId>com.vaadin</groupId>
             <artifactId>vaadin-themes</artifactId>
         </dependency>
+
     </dependencies>
 
     <build>

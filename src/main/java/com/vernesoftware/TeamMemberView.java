@@ -3,9 +3,6 @@ package com.vernesoftware;
 import com.vaadin.server.Resource;
 import com.vaadin.server.ThemeResource;
 import com.vaadin.ui.*;
-import com.vernesoftware.ResponsiveLayout.Column;
-import com.vernesoftware.ResponsiveLayout.ResponsiveLayout;
-import com.vernesoftware.ResponsiveLayout.Row;
 
 import java.util.Random;
 
