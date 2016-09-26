@@ -11,7 +11,7 @@ public class ResponsiveLayout extends StyleAdapterCssLayout {
     public ResponsiveLayout() {
         super();
         setHeightUndefined();
-        setSizeFull();
+        setWidth("100%");
     }
 
 

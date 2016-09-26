@@ -1,9 +1,13 @@
 package com.vernesoftware;
 
-import com.vaadin.ui.Button;
-import com.vaadin.ui.Label;
+import com.vaadin.server.Resource;
+import com.vaadin.server.ThemeResource;
+import com.vaadin.ui.*;
 import com.vernesoftware.ResponsiveLayout.Column;
+import com.vernesoftware.ResponsiveLayout.ResponsiveLayout;
 import com.vernesoftware.ResponsiveLayout.Row;
+
+import java.util.Random;
 
 /**
  * Created by JarekToro on 9/23/16.
@@ -12,17 +16,54 @@ public class TeamMemberView extends Row {
 
     public TeamMemberView() {
 
+
+        Panel panel = new Panel();
+        Column rootCol = new Column(12);
+        panel.setWidth("100%");
+        rootCol.setComponent(panel);
+        addColumn(rootCol);
+
+
+        ResponsiveLayout responsiveLayout = new ResponsiveLayout();
+
+
+        Row row = new Row();
+        row.setMargin(MarginDirection.all, 15);
+
         Column imageCol = new Column(4, 4, 4, 4);
-        imageCol.setComponent(getButtonofSize("image", "100px", "100%"));
+        imageCol.setComponent(getRandomTeamMember());
         Column titleCol = new Column(8, 4, 4, 4);
         titleCol.setComponent(new Label("Jarek Toro"));
-        Column buttonCol = new Column(12, 4, 4, 4);
-        buttonCol.setComponent(getButtonofSize("View", "100%", "100%"));
-        addColumn(imageCol);
-        addColumn(titleCol);
-        addColumn(buttonCol);
+
+
+        row.addColumn(imageCol);
+        row.addColumn(titleCol);
+        row.setHorizontalSpacing(15);
+        row.setDefaultComponentAlignment(Alignment.MIDDLE_LEFT);
+
+        responsiveLayout.addRow(row);
+        panel.setContent(responsiveLayout);
+
         setHorizontalSpacing(15);
         setVerticalSpacing(15);
+
+    }
+
+
+    private Image getRandomTeamMember() {
+
+        Random rand = new Random();
+        int number = rand.nextInt(9 - 1 + 1) + 1;
+
+
+        Resource res = new ThemeResource("img/" + number + ".jpg");
+
+// Display the image without caption
+        Image image = new Image(null, res);
+        image.setStyleName("img-rounded");
+        image.setSizeFull();
+
+        return image;
 
 
     }
@@ -33,18 +74,6 @@ public class TeamMemberView extends Row {
         button.setWidth(w);
 
         button.addStyleName("primary");
-
-//        int num = new Random().nextInt(3);
-//
-//        if (num == 0) {
-//            button.addStyleName("primary");
-//
-//        } else if (num == 1) {
-//            button.addStyleName("friendly");
-//        } else {
-//            button.addStyleName("danger");
-//
-//        }
 
 
         return button;

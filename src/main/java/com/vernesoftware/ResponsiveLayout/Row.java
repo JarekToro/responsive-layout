@@ -1,5 +1,6 @@
 package com.vernesoftware.ResponsiveLayout;
 
+import com.vaadin.ui.Alignment;
 import com.vernesoftware.ResponsiveLayout.StyledDocument.StyleAdapterCssLayout;
 import com.vernesoftware.ResponsiveLayout.StyledDocument.StyleDocument;
 import com.vernesoftware.ResponsiveLayout.StyledDocument.StyleDocumentAdapter;
@@ -144,6 +145,52 @@ public class Row extends StyleAdapterCssLayout implements StyleDocumentAdapter {
             return;
 
         });
+
+    }
+
+    public void setDefaultComponentAlignment(Alignment defaultAlignment) {
+
+
+        removeStyleName("top-xs middle-xs bottom-xs start-xs center-xs end-xs");
+
+        if (defaultAlignment.equals(Alignment.BOTTOM_LEFT)) {
+
+            addStyleName("bottom-xs start-xs");
+
+        } else if (defaultAlignment.equals(Alignment.BOTTOM_CENTER)) {
+
+            addStyleName("bottom-xs center-xs");
+
+        } else if (defaultAlignment.equals(Alignment.BOTTOM_RIGHT)) {
+
+            addStyleName("bottom-xs end-xs");
+
+        } else if (defaultAlignment.equals(Alignment.TOP_LEFT)) {
+
+            addStyleName("top-xs start-xs");
+
+        } else if (defaultAlignment.equals(Alignment.TOP_CENTER)) {
+
+            addStyleName("top-xs center-xs");
+
+        } else if (defaultAlignment.equals(Alignment.TOP_RIGHT)) {
+
+            addStyleName("top-xs end-xs");
+
+        } else if (defaultAlignment.equals(Alignment.MIDDLE_LEFT)) {
+
+            addStyleName("middle-xs start-xs");
+
+        } else if (defaultAlignment.equals(Alignment.MIDDLE_CENTER)) {
+
+            addStyleName("middle-xs center-xs");
+
+        } else if (defaultAlignment.equals(Alignment.MIDDLE_RIGHT)) {
+
+            addStyleName("middle-xs end-xs");
+
+        }
+
 
     }
 

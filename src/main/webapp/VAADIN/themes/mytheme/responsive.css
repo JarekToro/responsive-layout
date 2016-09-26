@@ -1,5 +1,12 @@
 /* Uncomment and set these variables to customize the grid. */
 
+/*CUSTOM*/
+
+.img-rounded {
+    border-radius: 50%;
+}
+
+/*CUSTOM END*/
 .container-fluid {
     margin-right: auto;
     margin-left: auto;
@@ -57,6 +64,12 @@
     flex: 0 0 auto;
     /*padding-right: 1rem;*/
     /*padding-left: 1rem;*/
+}
+
+.col-content-center {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
 }
 
 .col-xs {

@@ -5,9 +5,11 @@ import javax.servlet.annotation.WebServlet;
 import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.VaadinServletConfiguration;
 import com.vaadin.annotations.Viewport;
+import com.vaadin.server.FontAwesome;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.server.VaadinServlet;
 import com.vaadin.ui.*;
+import com.vaadin.ui.themes.ValoTheme;
 import com.vernesoftware.ResponsiveLayout.Column;
 import com.vernesoftware.ResponsiveLayout.ResponsiveLayout;
 import com.vernesoftware.ResponsiveLayout.Row;
@@ -31,6 +33,7 @@ public class MyUI extends UI {
         ResponsiveLayout container = new ResponsiveLayout();
 
         Row navRow = new Row();
+        navRow.setMargin(Row.MarginDirection.top,15);
 
         Column logoCol = new Column(12, 3, 2);
         logoCol.setComponent(getButtonofSize("LOGO", "100%", "100%"));
@@ -49,15 +52,23 @@ public class MyUI extends UI {
         contactCol.setComponent(getButtonofSize("Contact", "100%", "100%"));
         navRow.addColumn(contactCol);
 
-        navRow.setHorizontalSpacing(0);
+        navRow.setHorizontalSpacing(15);
+
+
         container.addRow(navRow);
 
 
         Row titleRow = new Row();
 
-        Column titleCol = new Column(12);
-        titleCol.setComponent(getButtonofSize("Our Team", "100%", "100%"));
+        Column titleCol = new Column(3);
+
+        titleCol.addStyleName("content-center");
+        Label title = new Label("Our Team");
+title.setWidthUndefined();
+
+        titleCol.setComponent(title);
         titleRow.addColumn(titleCol);
+        titleRow.setDefaultComponentAlignment(Alignment.MIDDLE_CENTER);
 
         titleRow.setMargin(Row.MarginDirection.top, 50);
 
@@ -76,13 +87,15 @@ public class MyUI extends UI {
 
         teamRow.setHorizontalSpacing(15);
         teamRow.setVerticalSpacing(15);
-
+        teamRow.setMargin(Row.MarginDirection.all, 50);
         setContent(container);
     }
 
 
     public Button getButtonofSize(String title, String h, String w) {
         Button button = new Button(title);
+        button.setStyleName(ValoTheme.BUTTON_ICON_ALIGN_TOP);
+        button.setIcon(FontAwesome.APPLE);
         button.setHeight(h);
         button.setWidth(w);
 
