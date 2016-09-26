@@ -30,7 +30,7 @@ public class TeamMemberView extends Row {
         Column imageCol = new Column(4, 4, 4, 4);
         imageCol.setComponent(getRandomTeamMember());
         Column titleCol = new Column(8, 4, 4, 4);
-        titleCol.setComponent(new Label("Jarek Toro"));
+        titleCol.setComponent(new Label(getRandomTeamMemberName()));
 
 
         row.addColumn(imageCol);
@@ -62,6 +62,20 @@ public class TeamMemberView extends Row {
 
         return image;
 
+
+    }
+
+    private String getRandomTeamMemberName() {
+
+        String[] names = {"Bob", "Jill", "Tom", "Brandon","Jarek","David","John","Pat"};
+        String[] lnames = {"Johnson", "Summersil", "Toro", "Spence","Carleton","Walton","Hofmann","Doe"};
+
+        int index = new Random().nextInt(names.length);
+        String name = names[index];
+
+        int index1 = new Random().nextInt(names.length);
+        String lname = lnames[index1];
+        return name+" "+lname;
 
     }
 

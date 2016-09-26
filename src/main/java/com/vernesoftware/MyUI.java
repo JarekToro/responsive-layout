@@ -6,14 +6,12 @@ import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.VaadinServletConfiguration;
 import com.vaadin.annotations.Viewport;
 import com.vaadin.server.FontAwesome;
+import com.vaadin.server.FontIcon;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.server.VaadinServlet;
 import com.vaadin.ui.*;
 import com.vaadin.ui.themes.ValoTheme;
-import com.vernesoftware.Column;
-import com.vernesoftware.ResponsiveLayout;
-import com.vernesoftware.Row;
-import com.vernesoftware.TeamMemberView;
+
 
 
 /**
@@ -38,20 +36,20 @@ public class MyUI extends UI {
         navRow.setMargin(Row.MarginDirection.top,15);
 
         Column logoCol = new Column(12, 3, 2);
-        logoCol.setComponent(getButtonofSize("LOGO", "100%", "100%"));
+        logoCol.setComponent(getButtonofSize("LOGO", "100%", "100%",FontAwesome.APPLE));
         navRow.addColumn(logoCol);
 
         Column homeCol = new Column(12, 3);
         homeCol.setOffset(Column.DisplaySize.MD, 1);
-        homeCol.setComponent(getButtonofSize("Home", "100%", "100%"));
+        homeCol.setComponent(getButtonofSize("Testers", "100%", "100%",FontAwesome.USERS));
         navRow.addColumn(homeCol);
 
         Column aboutCol = new Column(12, 3);
-        aboutCol.setComponent(getButtonofSize("About Us", "100%", "100%"));
+        aboutCol.setComponent(getButtonofSize("Analyze", "100%", "100%",FontAwesome.AREA_CHART));
         navRow.addColumn(aboutCol);
 
         Column contactCol = new Column(12, 3);
-        contactCol.setComponent(getButtonofSize("Contact", "100%", "100%"));
+        contactCol.setComponent(getButtonofSize("Report", "100%", "100%",FontAwesome.INBOX));
         navRow.addColumn(contactCol);
 
         navRow.setHorizontalSpacing(15);
@@ -65,7 +63,8 @@ public class MyUI extends UI {
         Column titleCol = new Column(3);
 
         titleCol.addStyleName("content-center");
-        Label title = new Label("Our Team");
+        Label title = new Label("Test Subjects");
+        title.setStyleName(ValoTheme.LABEL_HUGE);
 title.setWidthUndefined();
 
         titleCol.setComponent(title);
@@ -94,10 +93,10 @@ title.setWidthUndefined();
     }
 
 
-    public Button getButtonofSize(String title, String h, String w) {
+    public Button getButtonofSize(String title, String h, String w, FontIcon icon) {
         Button button = new Button(title);
         button.setStyleName(ValoTheme.BUTTON_ICON_ALIGN_TOP);
-        button.setIcon(FontAwesome.APPLE);
+        button.setIcon(icon);
         button.setHeight(h);
         button.setWidth(w);
 
