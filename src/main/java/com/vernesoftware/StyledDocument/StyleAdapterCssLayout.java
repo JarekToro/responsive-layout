@@ -49,7 +49,7 @@ public class StyleAdapterCssLayout extends CssLayout {
 
         }
 
-        return "";
+        return super.getCss(c);
 
 
     }

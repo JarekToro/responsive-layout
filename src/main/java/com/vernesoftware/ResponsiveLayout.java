@@ -15,6 +15,7 @@ public class ResponsiveLayout extends StyleAdapterCssLayout {
         super();
         setHeightUndefined();
         setWidth("100%");
+        setStyleName("scrollable-anyway");
     }
 
 

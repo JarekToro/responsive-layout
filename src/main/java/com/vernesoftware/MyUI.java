@@ -5,13 +5,11 @@ import javax.servlet.annotation.WebServlet;
 import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.VaadinServletConfiguration;
 import com.vaadin.annotations.Viewport;
-import com.vaadin.server.FontAwesome;
-import com.vaadin.server.FontIcon;
-import com.vaadin.server.VaadinRequest;
-import com.vaadin.server.VaadinServlet;
+import com.vaadin.server.*;
 import com.vaadin.ui.*;
 import com.vaadin.ui.themes.ValoTheme;
 
+import java.util.Random;
 
 
 /**
@@ -31,31 +29,82 @@ public class MyUI extends UI {
 
 
         ResponsiveLayout container = new ResponsiveLayout();
+        container.setHeight("100%");
 
-        Row navRow = new Row();
-        navRow.setMargin(Row.MarginDirection.top,15);
+        Row layoutRow = new Row();
 
-        Column logoCol = new Column(12, 3, 2);
-        logoCol.setComponent(getButtonofSize("LOGO", "100%", "100%",FontAwesome.APPLE));
-        navRow.addColumn(logoCol);
-
-        Column homeCol = new Column(12, 3);
-        homeCol.setOffset(Column.DisplaySize.MD, 1);
-        homeCol.setComponent(getButtonofSize("Testers", "100%", "100%",FontAwesome.USERS));
-        navRow.addColumn(homeCol);
-
-        Column aboutCol = new Column(12, 3);
-        aboutCol.setComponent(getButtonofSize("Analyze", "100%", "100%",FontAwesome.AREA_CHART));
-        navRow.addColumn(aboutCol);
-
-        Column contactCol = new Column(12, 3);
-        contactCol.setComponent(getButtonofSize("Report", "100%", "100%",FontAwesome.INBOX));
-        navRow.addColumn(contactCol);
-
-        navRow.setHorizontalSpacing(15);
+        layoutRow.setHeight("100%");
+        Column menuCol = new Column(12, 12, 2, 2);
+        menuCol.addStyleName("bg-dark-grey");
 
 
-        container.addRow(navRow);
+        Column mainCol = new Column(12, 12, 10, 10);
+
+        layoutRow.addColumn(menuCol);
+        layoutRow.addColumn(mainCol);
+
+        SideMenu sideMenu = new SideMenu();
+
+
+        Random rand = new Random();
+        int number = rand.nextInt(10 - 1 + 1) + 1;
+
+
+        Resource res = new ThemeResource("img/images-" + number + ".jpeg");
+
+// Display the image without caption
+        Image image = new Image(null, res);
+        image.setStyleName("img-rounded");
+        image.setHeight("100px");
+        image.setWidth("100px");
+
+
+        Column profileCol = new Column(12);
+        profileCol.setComponent(image);
+        profileCol.addStyleName("content-center");
+
+        sideMenu.addColumn(profileCol);
+
+
+        Column logoCol = new Column(12,3,12);
+
+
+        Button mainlogobutton = getButtonofSize("LOGO", "100%", "100%", FontAwesome.APPLE);
+        logoCol.setComponent(mainlogobutton);
+        sideMenu.addColumn(logoCol);
+
+        Column homeCol = new Column(12,3,12);
+        //homeCol.setOffset(Column.DisplaySize.MD, 1);
+        homeCol.setComponent(getButtonofSize("Testers", "100%", "100%", FontAwesome.USERS));
+        homeCol.setVisibility(Column.DisplaySize.XS, false);
+        sideMenu.addColumn(homeCol);
+
+        Column aboutCol = new Column(12,3,12);
+        aboutCol.setComponent(getButtonofSize("Analyze", "100%", "100%", FontAwesome.AREA_CHART));
+        aboutCol.setVisibility(Column.DisplaySize.XS, false);
+        sideMenu.addColumn(aboutCol);
+
+        Column contactCol = new Column(12,3,12);
+        contactCol.setComponent(getButtonofSize("Report", "100%", "100%", FontAwesome.INBOX));
+        contactCol.setVisibility(Column.DisplaySize.XS, false);
+        sideMenu.addColumn(contactCol);
+
+        mainlogobutton.addClickListener(clickEvent -> {
+
+            homeCol.setVisibility(Column.DisplaySize.XS, !homeCol.isVisibleForDisplaySize(Column.DisplaySize.XS));
+            aboutCol.setVisibility(Column.DisplaySize.XS, !aboutCol.isVisibleForDisplaySize(Column.DisplaySize.XS));
+            contactCol.setVisibility(Column.DisplaySize.XS, !contactCol.isVisibleForDisplaySize(Column.DisplaySize.XS));
+
+
+        });
+
+
+        menuCol.setComponent(sideMenu);
+
+
+        ResponsiveLayout mainRLayout = new ResponsiveLayout();
+
+        mainCol.setComponent(mainRLayout);
 
 
         Row titleRow = new Row();
@@ -65,7 +114,7 @@ public class MyUI extends UI {
         titleCol.addStyleName("content-center");
         Label title = new Label("Test Subjects");
         title.setStyleName(ValoTheme.LABEL_HUGE);
-title.setWidthUndefined();
+        title.setWidthUndefined();
 
         titleCol.setComponent(title);
         titleRow.addColumn(titleCol);
@@ -73,7 +122,7 @@ title.setWidthUndefined();
 
         titleRow.setMargin(Row.MarginDirection.top, 50);
 
-        container.addRow(titleRow);
+        mainRLayout.addRow(titleRow);
 
 
         Row teamRow = new Row();
@@ -83,12 +132,14 @@ title.setWidthUndefined();
             teamRow.addColumn(teamMemberView.getInColumn(12, 6, 4, 3));
         }
 
-        container.addRow(teamRow);
+        mainRLayout.addRow(teamRow);
         //teamRow.setMargin(50);
 
         teamRow.setHorizontalSpacing(15);
         teamRow.setVerticalSpacing(15);
         teamRow.setMargin(Row.MarginDirection.all, 50);
+        container.addRow(layoutRow);
+
         setContent(container);
     }
 
@@ -96,6 +147,8 @@ title.setWidthUndefined();
     public Button getButtonofSize(String title, String h, String w, FontIcon icon) {
         Button button = new Button(title);
         button.setStyleName(ValoTheme.BUTTON_ICON_ALIGN_TOP);
+        button.setStyleName(ValoTheme.BUTTON_QUIET);
+
         button.setIcon(icon);
         button.setHeight(h);
         button.setWidth(w);

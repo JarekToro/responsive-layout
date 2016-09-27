@@ -29,17 +29,14 @@ public class Row extends StyleAdapterCssLayout implements StyleDocumentAdapter {
         this.styleDocument = new StyleDocument();
 
         setMargin(MarginDirection.all, margin_top);
-//        setMargin(MarginDirection.bottom, margin_bottom);
-//        setMargin(MarginDirection.right, margin_right);
-//        setMargin(MarginDirection.left, margin_left);
-//        setVerticalSpacing(verticalSpacing);
-//        setHorizontalSpacing(horizontalSpacing);
+
     }
 
     private int margin_top = 0;
     private int margin_bottom = 0;
     private int margin_left = 0;
     private int margin_right = 0;
+
 
     private int horizontalSpacing = 0;
     private int verticalSpacing = 0;
@@ -55,8 +52,14 @@ public class Row extends StyleAdapterCssLayout implements StyleDocumentAdapter {
 
 
     public void addColumn(Column col) {
-
         addComponent(col);
+
+        setMargin(MarginDirection.left, margin_left);
+        setMargin(MarginDirection.right, margin_right);
+        setMargin(MarginDirection.top, margin_top);
+        setMargin(MarginDirection.bottom, margin_bottom);
+        setVerticalSpacing(verticalSpacing);
+        setHorizontalSpacing(horizontalSpacing);
     }
 
 
@@ -75,29 +78,29 @@ public class Row extends StyleAdapterCssLayout implements StyleDocumentAdapter {
         switch (marginDirection) {
             case MarginDirection.all:
                 this.getStyleDocument().addCssProperty("margin", pixals + "px");
-                margin_top = (pixals - (verticalSpacing));
-                margin_bottom = (pixals - (verticalSpacing));
-                margin_left = (pixals - (horizontalSpacing));
-                margin_right = (pixals - (horizontalSpacing));
+                margin_top = (pixals - (verticalSpacing/2));
+                margin_bottom = (pixals - (verticalSpacing/2));
+                margin_left = (pixals - (horizontalSpacing/2));
+                margin_right = (pixals - (horizontalSpacing/2));
                 break;
 
             case MarginDirection.top:
-                this.getStyleDocument().addCssProperty("margin-" + marginDirection, (pixals - (verticalSpacing)) + "px");
+                this.getStyleDocument().addCssProperty("margin-" + marginDirection, (pixals - (verticalSpacing/2)) + "px");
                 margin_top = pixals;
 
                 break;
             case MarginDirection.bottom:
-                this.getStyleDocument().addCssProperty("margin-" + marginDirection, (pixals - (verticalSpacing)) + "px");
+                this.getStyleDocument().addCssProperty("margin-" + marginDirection, (pixals - (verticalSpacing/2)) + "px");
                 margin_bottom = pixals;
                 break;
 
             case MarginDirection.left:
-                this.getStyleDocument().addCssProperty("margin-" + marginDirection, (pixals - (horizontalSpacing)) + "px");
+                this.getStyleDocument().addCssProperty("margin-" + marginDirection, (pixals - (horizontalSpacing/2)) + "px");
                 margin_left = pixals;
 
                 break;
             case MarginDirection.right:
-                this.getStyleDocument().addCssProperty("margin-" + marginDirection, (pixals - (horizontalSpacing)) + "px");
+                this.getStyleDocument().addCssProperty("margin-" + marginDirection, (pixals - (horizontalSpacing/2)) + "px");
                 margin_right = pixals;
 
                 break;
@@ -108,6 +111,46 @@ public class Row extends StyleAdapterCssLayout implements StyleDocumentAdapter {
 
 
     }
+//
+//    public void setPadding(String marginDirection, int pixals) {
+//
+//        switch (marginDirection) {
+//            case MarginDirection.all:
+//                this.getStyleDocument().addCssProperty("padding", pixals + "px");
+//                padding_top = (pixals - (verticalSpacing));
+//                padding_bottom = (pixals - (verticalSpacing));
+//                padding_left = (pixals - (horizontalSpacing));
+//                padding_right = (pixals - (horizontalSpacing));
+//                break;
+//
+//            case MarginDirection.top:
+//                this.getStyleDocument().addCssProperty("padding-" + marginDirection, (pixals - (verticalSpacing)) + "px");
+//                padding_top = pixals;
+//
+//                break;
+//            case MarginDirection.bottom:
+//                this.getStyleDocument().addCssProperty("padding-" + marginDirection, (pixals - (verticalSpacing)) + "px");
+//                padding_bottom = pixals;
+//                break;
+//
+//            case MarginDirection.left:
+//                this.getStyleDocument().addCssProperty("padding-" + marginDirection, (pixals - (horizontalSpacing)) + "px");
+//                padding_left = pixals;
+//
+//                break;
+//            case MarginDirection.right:
+//                this.getStyleDocument().addCssProperty("padding-" + marginDirection, (pixals - (horizontalSpacing)) + "px");
+//                padding_right = pixals;
+//
+//                break;
+//
+//            default:
+//                break;
+//        }
+//
+//
+//    }
+
 
 
     public void setVerticalSpacing(int pixals) {
@@ -119,8 +162,8 @@ public class Row extends StyleAdapterCssLayout implements StyleDocumentAdapter {
             setMargin(MarginDirection.bottom, margin_bottom);
             StyleDocumentAdapter cssModalComponant = getStyledDocumentAdapter(component);
 
-            cssModalComponant.getStyleDocument().addCssProperty("padding-top", (pixals / 2) + "px");
-            cssModalComponant.getStyleDocument().addCssProperty("padding-bottom", (pixals / 2) + "px");
+            cssModalComponant.getStyleDocument().addCssProperty("padding-top", (verticalSpacing / 2) + "px");
+            cssModalComponant.getStyleDocument().addCssProperty("padding-bottom", (verticalSpacing / 2) + "px");
 
             return;
 

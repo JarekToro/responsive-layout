@@ -50,10 +50,10 @@ public class TeamMemberView extends Row {
     private Image getRandomTeamMember() {
 
         Random rand = new Random();
-        int number = rand.nextInt(9 - 1 + 1) + 1;
+        int number = rand.nextInt(10 - 1 + 1) + 1;
 
 
-        Resource res = new ThemeResource("img/" + number + ".jpg");
+        Resource res = new ThemeResource("img/images-" + number + ".jpeg");
 
 // Display the image without caption
         Image image = new Image(null, res);
