@@ -17,6 +17,10 @@ public class SideMenu extends ResponsiveLayout {
     public SideMenu() {
 
 
+        // was able to create a side menu with the given parts
+        // not part of responsiveLayout lib
+
+
         row = new Row();
 
         row.setMargin(Row.MarginDirection.all, 25);

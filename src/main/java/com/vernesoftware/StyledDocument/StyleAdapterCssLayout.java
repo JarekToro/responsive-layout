@@ -34,6 +34,10 @@ public class StyleAdapterCssLayout extends CssLayout {
     }
 
 
+
+
+    // Main action here gets the StyleDocument from an object if its a StyleDocument Adapter
+    // Then converts it to a string that contains the css that is defined by the styledocument
     @Override
     protected String getCss(Component c) {
 

@@ -12,6 +12,8 @@ public class StyleDocument {
     public class CssProperty {
 
 
+        // hold the Css property name and the value in strings
+
         public String name;
         public String value;
 
@@ -25,10 +27,15 @@ public class StyleDocument {
     public List<CssProperty> cssProperties;
 
     public StyleDocument() {
+
+        // Holds the Css that the StyleAdapterCssLayout adapts to its children - see StyleAdapterCssLayout
+
         cssProperties = new ArrayList<>();
     }
 
     public void removeCssProperty(String name) {
+
+        //removes css property from propertoes
 
         cssProperties.forEach(cssProperty -> {
 
@@ -42,6 +49,11 @@ public class StyleDocument {
     }
 
     public void addCssProperty(String name, String value) {
+
+
+        //removes css property if its being overwritten
+        //then adds the new property
+
 
         List<CssProperty> toDeleteList = new ArrayList<>();
 

@@ -29,97 +29,105 @@ public class MyUI extends UI {
 
 
         ResponsiveLayout container = new ResponsiveLayout();
-        container.setHeight("100%");
+
+        VerticalLayout verticalLayout = new VerticalLayout();
+
+
+        //needed methods in Responsive Layout
+        //verticalLayout.getComponentAlignment()
+        //verticalLayout.setExpandRatio();
+        //verticalLayout.setSpacing();
+        //verticalLayout.addComponent(); should we add this? then in implementation just wrap it in a Column?
+
+
+        //verticalLayout.setComponentAlignment(); - dont think possible only can set it for all in a row not for each individually
+
+
+
+        container.setSizeFull(true);
+
 
         Row layoutRow = new Row();
-
         layoutRow.setHeight("100%");
+
+
         Column menuCol = new Column(12, 12, 2, 2);
         menuCol.addStyleName("bg-dark-grey");
 
-
         Column mainCol = new Column(12, 12, 10, 10);
+
 
         layoutRow.addColumn(menuCol);
         layoutRow.addColumn(mainCol);
 
+
         SideMenu sideMenu = new SideMenu();
 
 
+        // get random Image
         Random rand = new Random();
         int number = rand.nextInt(10 - 1 + 1) + 1;
-
-
         Resource res = new ThemeResource("img/images-" + number + ".jpeg");
-
-// Display the image without caption
         Image image = new Image(null, res);
         image.setStyleName("img-rounded");
         image.setHeight("100px");
         image.setWidth("100px");
+        //end get random image
 
 
         Column profileCol = new Column(12);
         profileCol.setComponent(image);
         profileCol.addStyleName("content-center");
 
-        sideMenu.addColumn(profileCol);
 
-
-        Column logoCol = new Column(12,3,12);
-
-
+        Column logoCol = new Column(12, 3, 12);
         Button mainlogobutton = getButtonofSize("LOGO", "100%", "100%", FontAwesome.APPLE);
         logoCol.setComponent(mainlogobutton);
-        sideMenu.addColumn(logoCol);
 
-        Column homeCol = new Column(12,3,12);
-        //homeCol.setOffset(Column.DisplaySize.MD, 1);
+        Column homeCol = new Column(12, 3, 12);
         homeCol.setComponent(getButtonofSize("Testers", "100%", "100%", FontAwesome.USERS));
         homeCol.setVisibility(Column.DisplaySize.XS, false);
-        sideMenu.addColumn(homeCol);
 
-        Column aboutCol = new Column(12,3,12);
+        Column aboutCol = new Column(12, 3, 12);
         aboutCol.setComponent(getButtonofSize("Analyze", "100%", "100%", FontAwesome.AREA_CHART));
         aboutCol.setVisibility(Column.DisplaySize.XS, false);
-        sideMenu.addColumn(aboutCol);
 
-        Column contactCol = new Column(12,3,12);
+        Column contactCol = new Column(12, 3, 12);
         contactCol.setComponent(getButtonofSize("Report", "100%", "100%", FontAwesome.INBOX));
         contactCol.setVisibility(Column.DisplaySize.XS, false);
-        sideMenu.addColumn(contactCol);
 
         mainlogobutton.addClickListener(clickEvent -> {
-
             homeCol.setVisibility(Column.DisplaySize.XS, !homeCol.isVisibleForDisplaySize(Column.DisplaySize.XS));
             aboutCol.setVisibility(Column.DisplaySize.XS, !aboutCol.isVisibleForDisplaySize(Column.DisplaySize.XS));
             contactCol.setVisibility(Column.DisplaySize.XS, !contactCol.isVisibleForDisplaySize(Column.DisplaySize.XS));
-
-
         });
 
+
+        sideMenu.addColumn(profileCol);
+        sideMenu.addColumn(logoCol);
+        sideMenu.addColumn(homeCol);
+        sideMenu.addColumn(aboutCol);
+        sideMenu.addColumn(contactCol);
 
         menuCol.setComponent(sideMenu);
 
 
         ResponsiveLayout mainRLayout = new ResponsiveLayout();
-
         mainCol.setComponent(mainRLayout);
 
 
         Row titleRow = new Row();
-
         Column titleCol = new Column(3);
-
+        titleRow.setDefaultComponentAlignment(Alignment.MIDDLE_CENTER);
         titleCol.addStyleName("content-center");
+
+
         Label title = new Label("Test Subjects");
         title.setStyleName(ValoTheme.LABEL_HUGE);
         title.setWidthUndefined();
 
         titleCol.setComponent(title);
         titleRow.addColumn(titleCol);
-        titleRow.setDefaultComponentAlignment(Alignment.MIDDLE_CENTER);
-
         titleRow.setMargin(Row.MarginDirection.top, 50);
 
         mainRLayout.addRow(titleRow);
@@ -133,11 +141,12 @@ public class MyUI extends UI {
         }
 
         mainRLayout.addRow(teamRow);
-        //teamRow.setMargin(50);
 
         teamRow.setHorizontalSpacing(15);
         teamRow.setVerticalSpacing(15);
         teamRow.setMargin(Row.MarginDirection.all, 50);
+
+
         container.addRow(layoutRow);
 
         setContent(container);

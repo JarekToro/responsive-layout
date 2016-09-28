@@ -11,6 +11,12 @@ import com.vernesoftware.StyledDocument.StyleDocumentAdapter;
  */
 public class Row extends StyleAdapterCssLayout implements StyleDocumentAdapter {
 
+    private int margin_top = 0;
+    private int margin_bottom = 0;
+    private int margin_left = 0;
+    private int margin_right = 0;
+    private int horizontalSpacing = 0;
+    private int verticalSpacing = 0;
 
     public StyleDocument styleDocument;
 
@@ -24,22 +30,18 @@ public class Row extends StyleAdapterCssLayout implements StyleDocumentAdapter {
 
 
     public Row() {
+
+
         setPrimaryStyleName("row");
         setWidthUndefined();
         this.styleDocument = new StyleDocument();
 
+        //set default 0px margin
         setMargin(MarginDirection.all, margin_top);
 
     }
 
-    private int margin_top = 0;
-    private int margin_bottom = 0;
-    private int margin_left = 0;
-    private int margin_right = 0;
 
-
-    private int horizontalSpacing = 0;
-    private int verticalSpacing = 0;
 
 
     public int getVerticalSpacing() {
@@ -52,6 +54,9 @@ public class Row extends StyleAdapterCssLayout implements StyleDocumentAdapter {
 
 
     public void addColumn(Column col) {
+
+        //add Column to Component List then recalulates the margin and spacing to match
+
         addComponent(col);
 
         setMargin(MarginDirection.left, margin_left);
@@ -74,6 +79,8 @@ public class Row extends StyleAdapterCssLayout implements StyleDocumentAdapter {
     }
 
     public void setMargin(String marginDirection, int pixals) {
+
+        // Adds the margin property to the StyleDocument of the Row -See StyleDocument Class
 
         switch (marginDirection) {
             case MarginDirection.all:
@@ -111,49 +118,10 @@ public class Row extends StyleAdapterCssLayout implements StyleDocumentAdapter {
 
 
     }
-//
-//    public void setPadding(String marginDirection, int pixals) {
-//
-//        switch (marginDirection) {
-//            case MarginDirection.all:
-//                this.getStyleDocument().addCssProperty("padding", pixals + "px");
-//                padding_top = (pixals - (verticalSpacing));
-//                padding_bottom = (pixals - (verticalSpacing));
-//                padding_left = (pixals - (horizontalSpacing));
-//                padding_right = (pixals - (horizontalSpacing));
-//                break;
-//
-//            case MarginDirection.top:
-//                this.getStyleDocument().addCssProperty("padding-" + marginDirection, (pixals - (verticalSpacing)) + "px");
-//                padding_top = pixals;
-//
-//                break;
-//            case MarginDirection.bottom:
-//                this.getStyleDocument().addCssProperty("padding-" + marginDirection, (pixals - (verticalSpacing)) + "px");
-//                padding_bottom = pixals;
-//                break;
-//
-//            case MarginDirection.left:
-//                this.getStyleDocument().addCssProperty("padding-" + marginDirection, (pixals - (horizontalSpacing)) + "px");
-//                padding_left = pixals;
-//
-//                break;
-//            case MarginDirection.right:
-//                this.getStyleDocument().addCssProperty("padding-" + marginDirection, (pixals - (horizontalSpacing)) + "px");
-//                padding_right = pixals;
-//
-//                break;
-//
-//            default:
-//                break;
-//        }
-//
-//
-//    }
-
-
 
     public void setVerticalSpacing(int pixals) {
+
+        // sets padding on each of the children to add spacing between them
 
         verticalSpacing = pixals;
         components.forEach(component -> {
@@ -172,6 +140,8 @@ public class Row extends StyleAdapterCssLayout implements StyleDocumentAdapter {
     }
 
     public void setHorizontalSpacing(int pixals) {
+
+        // sets padding on each of the children to add spacing between them
 
 
         horizontalSpacing = pixals;
@@ -194,6 +164,8 @@ public class Row extends StyleAdapterCssLayout implements StyleDocumentAdapter {
 
     public void setDefaultComponentAlignment(Alignment defaultAlignment) {
 
+
+        //Makes use of the Alignment Property Vaadin already made and converts it to the Css Style Name
 
         removeStyleName("top-xs middle-xs bottom-xs start-xs center-xs end-xs");
 

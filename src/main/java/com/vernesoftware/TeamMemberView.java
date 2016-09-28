@@ -13,6 +13,8 @@ public class TeamMemberView extends Row {
 
     public TeamMemberView() {
 
+        // was able to create a example with the given parts
+        // not part of responsiveLayout lib
 
         Panel panel = new Panel();
         Column rootCol = new Column(12);
