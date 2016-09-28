@@ -1,69 +1,28 @@
 Documentation
 ===================
 
-> Vaadin is great! Responsive webpages are great! ... 
-> 
-> ![alt text](http://emojipedia-us.s3.amazonaws.com/cache/e4/9e/e49e33767a64cf63310af3764fc60126.png "hey")
-> 
->  *Wait a minute!! lets put them together!*
-
-
-
-
-
-
-
-Todo
+Basic Structure
 ----------
-| Task             | Description           | Status         |
-| :--------------- | :-------------------- | :---:          |
-| Remove **all** need for Vertical and Horizontal Layout! | mind = blown |   **Layouts, Watch out!**    |
+
+![Image of diagram](https://raw.githubusercontent.com/Jayrok94/ResponsiveLayout/master/layoutdiagram.png)
 
 
- 
-<br>
-
-### features
+### Key things to note
 ------------------
 
- * Easily move from Vertical or Horizontal Layouts (uses same api)
- * Removes Vertical Horizontal Soup from your code
- * **Performance Boost** very lightweight layout
- * Looks great everywhere
+ * ResponsiveLayout and Row are subclassed from StyleDocumentAdapterCssLayout which gives them access to getCss() method which they use to dynamicly set the raw css of there objects;
+ * Style Document Adapter is an interface which asks for getStyleDocument and setStyleDocument to be implemented
+ * Column is subclassed from CustomComponant
+ * A StyleDocument is a holder of css properties ' that is all '
+
+> let me know what you think
+
+> Upon further review i have been thinking: To make it more vaadin like we can actually remove all of the style document and style document adapter stuff. There sole purpose is to allow for a dynamic change of css variables so instead of setMargin(50px) you just do setMargin(true) and be happy with whats predefined.
+
+> Since this is the case we can shelf the styleDocument for another project
 
 
 
-And here's some code! :+1:
-
-```java
- protected void init(VaadinRequest vaadinRequest) {
-
-        ResponsiveLayout responsiveLayout = new ResponsiveLayout();
-
-        Row row = new RLRow();
-
-        Column homeCol = new RLColumn(12, 3);
-        homeCol.setOffset(RLColumn.DisplaySize.MD, 1);
-        homeCol.setComponent(/* button, label, etc*/);
-
-        Column aboutCol = new RLColumn(12, 3);
-        aboutCol.setComponent(/* button, label, etc*/);
-
-        Column contactCol = new RLColumn(12, 3);
-        contactCol.setComponent(/* button, label, etc*/);
-
-        row.setHorizontalSpacing(15);
-
-        row.addColumn(homeCol);
-        row.addColumn(aboutCol);
-        row.addColumn(contactCol);
 
 
-        responsiveLayout.addRow(row);
-
-
-        setContent(responsiveLayout);
-    }
-
-```
 
