@@ -27,8 +27,8 @@ public class TeamMemberView extends Row {
 
 
         Row row = new Row();
-        row.setMargin(MarginDirection.all, 15);
-
+        row.setMargin(true);
+        row.addStyleName("margin-small");
         Column imageCol = new Column(4, 4, 4, 4);
         imageCol.setComponent(getRandomTeamMember());
         Column titleCol = new Column(8, 4, 4, 4);
@@ -37,14 +37,14 @@ public class TeamMemberView extends Row {
 
         row.addColumn(imageCol);
         row.addColumn(titleCol);
-        row.setHorizontalSpacing(15);
+        row.setHorizontalSpacing(true);
         row.setDefaultComponentAlignment(Alignment.MIDDLE_LEFT);
 
         responsiveLayout.addRow(row);
         panel.setContent(responsiveLayout);
 
-        setHorizontalSpacing(15);
-        setVerticalSpacing(15);
+        setHorizontalSpacing(true);
+        setVerticalSpacing(true);
 
     }
 

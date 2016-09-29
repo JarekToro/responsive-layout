@@ -36,12 +36,8 @@ public class MyUI extends UI {
         //needed methods in Responsive Layout
         //verticalLayout.getComponentAlignment()
         //verticalLayout.setExpandRatio();
-        //verticalLayout.setSpacing();
         //verticalLayout.addComponent(); should we add this? then in implementation just wrap it in a Column?
-
-
         //verticalLayout.setComponentAlignment(); - dont think possible only can set it for all in a row not for each individually
-
 
 
         container.setSizeFull(true);
@@ -128,7 +124,7 @@ public class MyUI extends UI {
 
         titleCol.setComponent(title);
         titleRow.addColumn(titleCol);
-        titleRow.setMargin(Row.MarginDirection.top, 50);
+        titleRow.setMargin(true);
 
         mainRLayout.addRow(titleRow);
 
@@ -142,9 +138,9 @@ public class MyUI extends UI {
 
         mainRLayout.addRow(teamRow);
 
-        teamRow.setHorizontalSpacing(15);
-        teamRow.setVerticalSpacing(15);
-        teamRow.setMargin(Row.MarginDirection.all, 50);
+        teamRow.setHorizontalSpacing(true);
+        teamRow.setVerticalSpacing(true);
+        teamRow.setMargin(true);
 
 
         container.addRow(layoutRow);

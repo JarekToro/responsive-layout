@@ -1,14 +1,14 @@
 package com.vernesoftware;
 
 import com.vaadin.annotations.StyleSheet;
-import com.vernesoftware.StyledDocument.StyleAdapterCssLayout;
+import com.vaadin.ui.CssLayout;
 
 /**
  * Created by JarekToro on 9/23/16.
  */
 
 @StyleSheet("styles.css")
-public class ResponsiveLayout extends StyleAdapterCssLayout {
+public class ResponsiveLayout extends CssLayout {
 
 
     // just about the same as a StyleAdpterCssLayout

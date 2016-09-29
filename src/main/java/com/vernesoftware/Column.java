@@ -1,20 +1,15 @@
 package com.vernesoftware;
 
-import com.vaadin.server.Page;
 import com.vaadin.ui.Component;
 import com.vaadin.ui.CustomComponent;
-import com.vernesoftware.StyledDocument.StyleAdapterCssLayout;
-import com.vernesoftware.StyledDocument.StyleDocument;
-import com.vernesoftware.StyledDocument.StyleDocumentAdapter;
 
-import java.security.SecureRandom;
 import java.util.HashSet;
 import java.util.Set;
 
 /**
  * Created by JarekToro on 9/23/16.
  */
-public class Column extends CustomComponent implements StyleDocumentAdapter {
+public class Column extends CustomComponent  {
 
 
     // Lot going on here, ill do my best to explain.
@@ -44,15 +39,8 @@ public class Column extends CustomComponent implements StyleDocumentAdapter {
         XS, SM, MD, LG
     }
 
-    public StyleDocument styleDocument;
 
-    public StyleDocument getStyleDocument() {
-        return styleDocument;
-    }
 
-    public void setStyleDocument(StyleDocument styleDocument) {
-        this.styleDocument = styleDocument;
-    }
 
 
 
@@ -68,7 +56,6 @@ public class Column extends CustomComponent implements StyleDocumentAdapter {
         setPrimaryStyleName("col");
         rules = new HashSet<>(4);
         visibilityRules = new HashSet<>(4);
-        this.styleDocument = new StyleDocument();
     }
 
 
@@ -318,17 +305,6 @@ public class Column extends CustomComponent implements StyleDocumentAdapter {
 
 
 
-
-    public StyleDocumentAdapter getStyledDocumentAdapter(Component c) {
-
-        if (c instanceof StyleDocumentAdapter) {
-
-            return (StyleDocumentAdapter) c;
-
-        }
-
-        return null;
-    }
 
 
 

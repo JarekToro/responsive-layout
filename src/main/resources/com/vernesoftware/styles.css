@@ -1,6 +1,12 @@
 /* Uncomment and set these variables to customize the grid. */
 
 /*CUSTOM*/
+.col-content-center {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+}
+
 .img-rounded {
     border-radius: 50%;
 }
@@ -8,12 +14,48 @@
 .bg-dark-grey {
     background-color: #F0F0F0;
 }
-.scrollable-anyway{
-    overflow: visible !important;
-}
 
 /*CUSTOM END*/
 
+/*NOT REPONSIVE RELATED*/
+
+.scrollable-anyway {
+    overflow: visible !important;
+}
+
+.row-margin {
+    margin: 2rem !important;
+}
+
+.row-margin.row-margin-large {
+    margin: 5rem !important;
+}
+
+.row-margin.row-margin-small {
+    margin: 0rem !important;
+}
+
+.row.v-col-spacing {
+    margin-top: -1rem;
+    margin-bottom: -1rem;
+}
+
+.row.h-col-spacing {
+    margin-right: -1rem;
+    margin-left: -1rem;
+}
+
+.row.h-col-spacing .col {
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.row.v-col-spacing .col {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+/*NOT REPONSIVE RELATED ENDED*/
 .visible-xs,
 .visible-sm,
 .visible-md,
@@ -208,27 +250,31 @@
     }
 }
 
+/*FLEX*/
+
+/* Uncomment and set these variables to customize the grid. */
+
 .container-fluid {
     margin-right: auto;
     margin-left: auto;
-    /*padding-right: 2rem;*/
-    /*padding-left: 2rem;*/
+    padding-right: 2rem;
+    padding-left: 2rem;
 }
 
 .row {
-    box-sizing: border-box !important;
-    display: -ms-flexbox !important;
-    display: -webkit-box !important;
-    display: flex !important;
-    -ms-flex: 0 1 auto !important;
-    -webkit-box-flex: 0 !important;
-    flex: 0 1 auto !important;
-    -ms-flex-direction: row !important;
-    -webkit-box-orient: horizontal !important;
-    -webkit-box-direction: normal !important;
-    flex-direction: row !important;
-    -ms-flex-wrap: wrap !important;
-    flex-wrap: wrap !important;
+    box-sizing: border-box;
+    display: -ms-flexbox;
+    display: -webkit-box;
+    display: flex;
+    -ms-flex: 0 1 auto;
+    -webkit-box-flex: 0;
+    flex: 0 1 auto;
+    -ms-flex-direction: row;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    flex-direction: row;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
 
 }
 
@@ -263,14 +309,7 @@
     -ms-flex: 0 0 auto;
     -webkit-box-flex: 0;
     flex: 0 0 auto;
-    /*padding-right: 1rem;*/
-    /*padding-left: 1rem;*/
-}
 
-.col-content-center {
-    display: flex !important;
-    justify-content: center;
-    align-items: center;
 }
 
 .col-xs {
@@ -699,7 +738,7 @@
         -webkit-box-flex: 0;
         flex: 0 0 auto;
         /*padding-right: 1rem;*/
-        /*padding-left: 1rem; */
+        /*padding-left: 1rem;*/
     }
 
     .col-md {
