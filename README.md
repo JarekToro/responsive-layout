@@ -34,7 +34,7 @@ Todo
 
 Looks totally rad!
 
-[Image of radness](https://raw.githubusercontent.com/Jayrok94/ResponsiveLayout/master/demo.gif)
+![Image of radness](https://raw.githubusercontent.com/Jayrok94/ResponsiveLayout/master/demo.gif)
 
 
 Here is the code! Even builds the menu in like 15 lines :+1:
