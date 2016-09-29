@@ -32,12 +32,12 @@ Todo
  * Looks great everywhere
 
 
-Looks totally rad!
+Wanna do this? Yeah you do!
 
 ![Image of radness](https://raw.githubusercontent.com/Jayrok94/ResponsiveLayout/master/demo.gif)
 
 
-Here is the code! Even builds the menu in like 15 lines :+1:
+Here is the code! Even builds full functioning menu in like 20 lines :+1:
 
 ```java
  protected void init(VaadinRequest vaadinRequest) {
@@ -112,19 +112,19 @@ Here is the code! Even builds the menu in like 15 lines :+1:
                 mainSectionLayout.addRow(titleRow);
 
 
-                Row teamRow = new Row();
+                Row testSubjectsRow = new Row();
 
                 for (int x = 0; x < 10; x++) {
-                    TeamMemberView teamMemberView = new TeamMemberView();
-                    teamRow.addColumn(teamMemberView.getInColumn(12, 6, 4, 3));
+                    TestSubjectView teamSubjectView = new TestSubjectView();
+                    testSubjectsRow.addColumn(teamSubjectView);
                 }
 
 
-                teamRow.setHorizontalSpacing(true);
-                teamRow.setVerticalSpacing(true);
-                teamRow.setMargin(true);
+                testSubjectsRow.setHorizontalSpacing(true);
+                testSubjectsRow.setVerticalSpacing(true);
+                testSubjectsRow.setMargin(true);
 
-                mainSectionLayout.addRow(teamRow);
+                mainSectionLayout.addRow(testSubjectsRow);
 
 
                 setContent(responsiveLayout);
