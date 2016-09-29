@@ -23,8 +23,8 @@ public class SideMenu extends ResponsiveLayout {
 
         row = new Row();
 
-        row.setMargin(Row.MarginDirection.all, 25);
-        row.setVerticalSpacing(25);
+        row.setMargin(true);
+        row.setVerticalSpacing(true);
         row.setDefaultComponentAlignment(Alignment.MIDDLE_CENTER);
         addRow(row);
 
