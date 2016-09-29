@@ -9,10 +9,10 @@ import com.vaadin.ui.themes.ValoTheme;
 /**
  * Created by JarekToro on 9/27/16.
  */
-public class SideMenu extends ResponsiveLayout {
+public class SideMenu extends Row {
 
 
-    private Row row;
+    //  private Row row;
 
     public SideMenu() {
 
@@ -21,18 +21,12 @@ public class SideMenu extends ResponsiveLayout {
         // not part of responsiveLayout lib
 
 
-        row = new Row();
-
-        row.setMargin(true);
-        row.setVerticalSpacing(true);
-        row.setDefaultComponentAlignment(Alignment.MIDDLE_CENTER);
-        addRow(row);
+        setMargin(true);
+        setVerticalSpacing(true);
+        setDefaultComponentAlignment(Alignment.MIDDLE_LEFT);
 
 
     }
 
-    public void addColumn(Column column) {
-        row.addColumn(column);
 
-    }
 }

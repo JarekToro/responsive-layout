@@ -2,6 +2,7 @@ package com.vernesoftware;
 
 import com.vaadin.ui.Alignment;
 import com.vaadin.ui.CssLayout;
+import com.vaadin.ui.VerticalLayout;
 
 
 /**
@@ -10,19 +11,22 @@ import com.vaadin.ui.CssLayout;
 public class Row extends CssLayout {
 
 
-
-
-
     public Row() {
 
 
         setPrimaryStyleName("row");
         setWidthUndefined();
 
+
+        VerticalLayout verticalLayout = new VerticalLayout();
     }
 
 
-
+    public void setExpandRatio(Column column, Column.DisplaySize displaySize, int width) {
+        if (components.contains(column)) {
+            column.addRule(displaySize, width);
+        }
+    }
 
 
     public void addColumn(Column col) {
@@ -34,16 +38,14 @@ public class Row extends CssLayout {
     }
 
 
-
     public void setMargin(boolean margin) {
 
 
-        if (margin){
+        if (margin) {
             addStyleName("margin");
-        }else{
+        } else {
             removeStyleName("margin");
         }
-
 
 
     }
@@ -51,9 +53,9 @@ public class Row extends CssLayout {
     public void setVerticalSpacing(boolean verticalSpacing) {
 
 
-        if (verticalSpacing){
+        if (verticalSpacing) {
             addStyleName("v-col-spacing");
-        }else{
+        } else {
             removeStyleName("v-col-spacing");
         }
 
@@ -62,9 +64,9 @@ public class Row extends CssLayout {
     public void setHorizontalSpacing(boolean horizontalSpacing) {
 
 
-        if (horizontalSpacing){
+        if (horizontalSpacing) {
             addStyleName("h-col-spacing");
-        }else{
+        } else {
             removeStyleName("h-col-spacing");
         }
 

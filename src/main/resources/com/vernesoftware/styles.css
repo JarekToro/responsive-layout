@@ -35,24 +35,22 @@
     margin: 0rem !important;
 }
 
-.row.v-col-spacing {
+.row.v-col-spacing{
     margin-top: -1rem;
     margin-bottom: -1rem;
 }
-
-.row.h-col-spacing {
+.row.h-col-spacing{
     margin-right: -1rem;
     margin-left: -1rem;
 }
-
 .row.h-col-spacing .col {
-    padding-left: 1rem;
-    padding-right: 1rem;
+padding-left: 1rem;
+padding-right: 1rem;
 }
 
 .row.v-col-spacing .col {
-    padding-top: 1rem;
-    padding-bottom: 1rem;
+padding-top: 1rem;
+padding-bottom: 1rem;
 }
 
 /*NOT REPONSIVE RELATED ENDED*/
@@ -249,6 +247,8 @@
         display: none !important;
     }
 }
+
+
 
 /*FLEX*/
 

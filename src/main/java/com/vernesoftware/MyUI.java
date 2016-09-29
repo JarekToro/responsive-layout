@@ -28,23 +28,20 @@ public class MyUI extends UI {
         setSizeFull();
 
 
-        ResponsiveLayout container = new ResponsiveLayout();
-
-        VerticalLayout verticalLayout = new VerticalLayout();
+        ResponsiveLayout responsiveLayout = new ResponsiveLayout();
 
 
         //needed methods in Responsive Layout
         //verticalLayout.getComponentAlignment()
-        //verticalLayout.setExpandRatio();
         //verticalLayout.addComponent(); should we add this? then in implementation just wrap it in a Column?
         //verticalLayout.setComponentAlignment(); - dont think possible only can set it for all in a row not for each individually
 
 
-        container.setSizeFull(true);
+        responsiveLayout.setSizeFull(true);
 
 
-        Row layoutRow = new Row();
-        layoutRow.setHeight("100%");
+        Row rootRow = new Row();
+        rootRow.setHeight("100%");
 
 
         Column menuCol = new Column(12, 12, 2, 2);
@@ -53,8 +50,8 @@ public class MyUI extends UI {
         Column mainCol = new Column(12, 12, 10, 10);
 
 
-        layoutRow.addColumn(menuCol);
-        layoutRow.addColumn(mainCol);
+        rootRow.addColumn(menuCol);
+        rootRow.addColumn(mainCol);
 
 
         SideMenu sideMenu = new SideMenu();
@@ -108,8 +105,10 @@ public class MyUI extends UI {
         menuCol.setComponent(sideMenu);
 
 
-        ResponsiveLayout mainRLayout = new ResponsiveLayout();
-        mainCol.setComponent(mainRLayout);
+        ResponsiveLayout mainSectionLayout = new ResponsiveLayout();
+
+
+        mainCol.setComponent(mainSectionLayout);
 
 
         Row titleRow = new Row();
@@ -126,7 +125,7 @@ public class MyUI extends UI {
         titleRow.addColumn(titleCol);
         titleRow.setMargin(true);
 
-        mainRLayout.addRow(titleRow);
+        mainSectionLayout.addRow(titleRow);
 
 
         Row teamRow = new Row();
@@ -136,16 +135,16 @@ public class MyUI extends UI {
             teamRow.addColumn(teamMemberView.getInColumn(12, 6, 4, 3));
         }
 
-        mainRLayout.addRow(teamRow);
+        mainSectionLayout.addRow(teamRow);
 
         teamRow.setHorizontalSpacing(true);
         teamRow.setVerticalSpacing(true);
         teamRow.setMargin(true);
 
 
-        container.addRow(layoutRow);
+        responsiveLayout.addRow(rootRow);
 
-        setContent(container);
+        setContent(responsiveLayout);
     }
 
 
