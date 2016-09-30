@@ -228,5 +228,6 @@ ___________________________________________
 
 ```
 
+## Credits
 
-## Tada!
+> Most of the heavy lifting CSS - [Flexbox Grid]("https://github.com/kristoferjoseph/flexboxgrid")
