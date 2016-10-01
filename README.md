@@ -42,7 +42,7 @@ How do I build this? That complex dynamic menu.. I need.. Well its all super sim
 >
 > *P.S Note* without the comments this is all accomplished with only 50 lines of code!
 
-[What is the grid system! Click here for a more in depth look]("https://github.com/Jayrok94/ResponsiveLayout/wiki/The-Grid-System")
+![What is the grid system! Click here for a more in depth look]("https://github.com/Jayrok94/ResponsiveLayout/wiki/The-Grid-System")
 
 ### Lets start with the layout [Here is what where making](https://raw.githubusercontent.com/Jayrok94/ResponsiveLayout/master/readme-resources/stage1.PNG)
 
