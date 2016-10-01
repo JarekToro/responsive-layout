@@ -36,11 +36,13 @@ Wanna do this? Yeah you do!
 
 ![Image of radness](https://raw.githubusercontent.com/Jayrok94/ResponsiveLayout/master/readme-resources/demo.gif)
 
-How do i build this? That complex dynamic menu.. I need.. Well its all super simple. :+1:
+How do I build this? That complex dynamic menu.. I need.. Well its all super simple. :+1:
 
 > *Note:* If you are new to the responsive grid pattern then as you look at the code read the comments
 >
 > *P.S Note* without the comments this is all accomplished with only 50 lines of code!
+
+[What is the grid system! Click here for a more in depth look]("https://github.com/Jayrok94/ResponsiveLayout/wiki/The-Grid-System")
 
 ### Lets start with the layout [Here is what where making](https://raw.githubusercontent.com/Jayrok94/ResponsiveLayout/master/readme-resources/stage1.PNG)
 
@@ -53,7 +55,7 @@ How do i build this? That complex dynamic menu.. I need.. Well its all super sim
             protected void init(VaadinRequest vaadinRequest) {
 
 
-                setSizeFull(); // set the size of you UI to fill the screen
+                setSizeFull(); // set the size of the UI to fill the screen
 
 
 					// Here is where the magic happens
@@ -82,7 +84,7 @@ How do i build this? That complex dynamic menu.. I need.. Well its all super sim
 					// Here we take the side menu and assign the amount of spaces
 					// we want the column to take depending
 					// on the size of the screen we are on.
-					// So for the side menu is takes up 12/12 spaces on a mobile phone and tablet
+					// So for the side menu it takes up 12/12 spaces on a mobile phone and tablet
 					// Then on computer screens and wide screen monitors it only takes up 2/12;
                 Column sideMenuCol = new Column(12, 12, 2, 2);
 
