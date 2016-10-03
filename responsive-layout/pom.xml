@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.vernesoftware</groupId>
@@ -25,10 +26,10 @@
 
     <scm>
         <url>git://github.com/vernesoftware/responsive-layout.git</url>
-        <connection>scm:git:git://github.com/vernesoftware/responsive-layout.git</connection>
+        <connection>scm:git:ssh://github.com/vernesoftware/responsive-layout.git</connection>
         <developerConnection>scm:git:ssh://git@github.com:/vernesoftware/responsive-layout.git</developerConnection>
-      <tag>responsive-layout-0.1</tag>
-  </scm>
+        <tag>responsive-layout-0.1</tag>
+    </scm>
 
     <issueManagement>
         <system>GitHub</system>
@@ -75,7 +76,7 @@
             <url>http://maven.vaadin.com/vaadin-addons</url>
         </repository>
     </repositories>
-    
+
     <build>
 
         <plugins>
@@ -154,7 +155,7 @@
         </plugins>
 
     </build>
-    
+
     <profiles>
 
         <profile>
@@ -231,5 +232,5 @@
             </activation>
         </profile>
     </profiles>
-    
+
 </project>
