@@ -15,7 +15,6 @@ import java.util.Random;
 public class BasicFullPageUI extends AbstractTest {
 
 
-
     @Override
     protected void init(VaadinRequest request) {
         // We need to override this method to set the content to our layout instead of the default vertial layout on used on the constructor of the superclass
@@ -59,7 +58,9 @@ public class BasicFullPageUI extends AbstractTest {
         Resource res = new ClassResource("/img/images-" + number + ".jpeg");
         Image image = new Image(null, res);
 
-        Page.getCurrent().getStyles().add(".img-rounded { border-radius: 50%; }");
+        Page.getCurrent().getStyles().add(".img-rounded { border-radius: 50%; } .bg-dark-grey { background-color: #F0F0F0;}");
+
+
         image.setStyleName("img-rounded");
 
         image.setHeight("100px");
@@ -209,7 +210,7 @@ public class BasicFullPageUI extends AbstractTest {
             row.addStyleName("margin-small");
             Column imageCol = new Column(4, 4, 4, 4);
             imageCol.setComponent(getRandomTeamMember());
-            Column titleCol = new Column(8, 4, 4, 4);
+            Column titleCol = new Column(4, 4, 4, 4);
             titleCol.setComponent(new Label(getRandomTeamMemberName()));
 
 
@@ -247,15 +248,15 @@ public class BasicFullPageUI extends AbstractTest {
 
         private String getRandomTeamMemberName() {
 
-            String[] names = {"Bob", "Jill", "Tom", "Brandon","Jarek","David","John","Pat"};
-            String[] lnames = {"Johnson", "Summersil", "Toro", "Spence","Carleton","Walton","Hofmann","Doe"};
+            String[] names = {"Bob", "Jill", "Tom", "Brandon", "Jarek", "David", "John", "Pat"};
+            String[] lnames = {"Johnson", "Summersil", "Toro", "Spence", "Carleton", "Walton", "Hofmann", "Doe"};
 
             int index = new Random().nextInt(names.length);
             String name = names[index];
 
             int index1 = new Random().nextInt(names.length);
             String lname = lnames[index1];
-            return name+" "+lname;
+            return name + " " + lname;
 
         }
 
