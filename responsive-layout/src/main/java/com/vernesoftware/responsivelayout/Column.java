@@ -1,4 +1,4 @@
-package com.vernesoftware;
+package com.vernesoftware.responsivelayout;
 
 import com.vaadin.ui.Component;
 import com.vaadin.ui.CustomComponent;

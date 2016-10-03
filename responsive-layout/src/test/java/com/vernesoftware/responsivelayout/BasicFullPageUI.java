@@ -1,30 +1,26 @@
-package com.vernesoftware;
-
-import javax.servlet.annotation.WebServlet;
+package com.vernesoftware.responsivelayout;
 
 import com.vaadin.annotations.Theme;
-import com.vaadin.annotations.VaadinServletConfiguration;
 import com.vaadin.annotations.Viewport;
+import com.vaadin.annotations.ViewportGeneratorClass;
 import com.vaadin.server.*;
 import com.vaadin.ui.*;
 import com.vaadin.ui.themes.ValoTheme;
+import org.vaadin.addonhelpers.AbstractTest;
 
 import java.util.Random;
 
+@Theme("valo") // to test compatibility with out of the box valo?
+@Viewport("width=device-width, initial-scale=1") // this is necessary , does it work here ?
+public class BasicFullPageUI extends AbstractTest {
 
-/**
- * This UI is the application entry point. A UI may either represent a browser window
- * (or tab) or some part of a html page where a Vaadin application is embedded.
- * <p>
- * The UI is initialized using {@link #init(VaadinRequest)}. This method is intended to be
- * overridden to add component to the user interface and initialize non-component functionality.
- */
-@Theme("mytheme")
-@Viewport("width=device-width, initial-scale=1") // this is necessary
-public class MyUI extends UI {
+
 
     @Override
-    protected void init(VaadinRequest vaadinRequest) {
+    protected void init(VaadinRequest request) {
+        // We need to override this method to set the content to our layout instead of the default vertial layout on used on the constructor of the superclass
+        super.init(request);
+
         setSizeFull();
 
 
@@ -60,9 +56,12 @@ public class MyUI extends UI {
         // get random Image
         Random rand = new Random();
         int number = rand.nextInt(10 - 1 + 1) + 1;
-        Resource res = new ThemeResource("img/images-" + number + ".jpeg");
+        Resource res = new ClassResource("/img/images-" + number + ".jpeg");
         Image image = new Image(null, res);
+
+        Page.getCurrent().getStyles().add(".img-rounded { border-radius: 50%; }");
         image.setStyleName("img-rounded");
+
         image.setHeight("100px");
         image.setWidth("100px");
         //end get random image
@@ -161,8 +160,126 @@ public class MyUI extends UI {
 
     }
 
-    @WebServlet(urlPatterns = "/*", name = "MyUIServlet", asyncSupported = true)
-    @VaadinServletConfiguration(ui = MyUI.class, productionMode = false)
-    public static class MyUIServlet extends VaadinServlet {
+    @Override
+    public Component getTestComponent() {
+        return new Label(""); // just dummy implementation, not really used
     }
+
+    public static class SideMenu extends Row {
+
+
+        //  private Row row;
+
+        public SideMenu() {
+
+
+            // was able to create a side menu with the given parts
+            // not part of responsiveLayout lib
+
+
+            setMargin(true);
+            setVerticalSpacing(true);
+            setDefaultComponentAlignment(Alignment.MIDDLE_LEFT);
+
+
+        }
+
+
+    }
+
+    public static class TeamMemberView extends Row {
+
+        public TeamMemberView() {
+
+            // was able to create a example with the given parts
+            // not part of responsiveLayout lib
+
+            Panel panel = new Panel();
+            Column rootCol = new Column(12);
+            panel.setWidth("100%");
+            rootCol.setComponent(panel);
+            addColumn(rootCol);
+
+
+            ResponsiveLayout responsiveLayout = new ResponsiveLayout();
+
+
+            Row row = new Row();
+            row.setMargin(true);
+            row.addStyleName("margin-small");
+            Column imageCol = new Column(4, 4, 4, 4);
+            imageCol.setComponent(getRandomTeamMember());
+            Column titleCol = new Column(8, 4, 4, 4);
+            titleCol.setComponent(new Label(getRandomTeamMemberName()));
+
+
+            row.addColumn(imageCol);
+            row.addColumn(titleCol);
+            row.setHorizontalSpacing(true);
+            row.setDefaultComponentAlignment(Alignment.MIDDLE_LEFT);
+
+            responsiveLayout.addRow(row);
+            panel.setContent(responsiveLayout);
+
+            setHorizontalSpacing(true);
+            setVerticalSpacing(true);
+
+        }
+
+
+        private Image getRandomTeamMember() {
+
+            Random rand = new Random();
+            int number = rand.nextInt(10 - 1 + 1) + 1;
+
+
+            Resource res = new ClassResource("/img/images-" + number + ".jpeg");
+
+            // Display the image without caption
+            Image image = new Image(null, res);
+            image.setStyleName("img-rounded");
+            image.setSizeFull();
+
+            return image;
+
+
+        }
+
+        private String getRandomTeamMemberName() {
+
+            String[] names = {"Bob", "Jill", "Tom", "Brandon","Jarek","David","John","Pat"};
+            String[] lnames = {"Johnson", "Summersil", "Toro", "Spence","Carleton","Walton","Hofmann","Doe"};
+
+            int index = new Random().nextInt(names.length);
+            String name = names[index];
+
+            int index1 = new Random().nextInt(names.length);
+            String lname = lnames[index1];
+            return name+" "+lname;
+
+        }
+
+        public Button getButtonofSize(String title, String h, String w) {
+            Button button = new Button(title);
+            button.setHeight(h);
+            button.setWidth(w);
+
+            button.addStyleName("primary");
+
+
+            return button;
+
+        }
+
+
+        public Column getInColumn(int xs, int sm, int md, int lg) {
+
+            Column col = new Column(xs, sm, md, lg);
+            col.setComponent(this);
+
+            return col;
+
+        }
+    }
+
 }
