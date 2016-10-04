@@ -1,17 +1,9 @@
-/* Uncomment and set these variables to customize the grid. */
 
-/*CUSTOM*/
 .col-content-center {
     display: flex !important;
     justify-content: center;
     align-items: center;
 }
-
-
-
-/*CUSTOM END*/
-
-/*NOT REPONSIVE RELATED*/
 
 .scrollable-anyway {
     overflow: visible !important;

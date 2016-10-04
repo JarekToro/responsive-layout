@@ -114,7 +114,7 @@ public class BasicFullPageUI extends AbstractTest {
         Row titleRow = new Row();
         Column titleCol = new Column(3);
         titleRow.setDefaultComponentAlignment(Alignment.MIDDLE_CENTER);
-        titleCol.addStyleName("content-center");
+        titleCol.centerContent(true);
 
 
         Label title = new Label("Test Subjects");

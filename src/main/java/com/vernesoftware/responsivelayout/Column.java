@@ -9,7 +9,7 @@ import java.util.Set;
 /**
  * Created by JarekToro on 9/23/16.
  */
-public class Column extends CustomComponent  {
+public class Column extends CustomComponent {
 
 
     // Lot going on here, ill do my best to explain.
@@ -25,9 +25,8 @@ public class Column extends CustomComponent  {
         public DisplaySize displaySize;
         public int width;
         public boolean isOffset = false;
-
-
     }
+
 
     public class Visibility {
         public DisplaySize displaySize;
@@ -38,12 +37,6 @@ public class Column extends CustomComponent  {
     public enum DisplaySize {
         XS, SM, MD, LG
     }
-
-
-
-
-
-
 
 
     private void convenienceInIt() {
@@ -57,7 +50,6 @@ public class Column extends CustomComponent  {
         rules = new HashSet<>(4);
         visibilityRules = new HashSet<>(4);
     }
-
 
 
     // bunch of convenience constructors
@@ -141,7 +133,6 @@ public class Column extends CustomComponent  {
     }
 
 
-
     // converts the rule object to a string for css
     private String ruleToStyleName(Rule rule) {
 
@@ -177,9 +168,6 @@ public class Column extends CustomComponent  {
     }
 
 
-
-
-
     // returns if element will be visible on a given display size;
 
     public boolean isVisibleForDisplaySize(DisplaySize displaySize) {
@@ -199,7 +187,6 @@ public class Column extends CustomComponent  {
         Visibility rule = new Visibility();
         rule.isVisible = isVisible;
         rule.displaySize = displaySize;
-
 
 
         // removes old rule if the new rule would be overwriting it
@@ -253,7 +240,6 @@ public class Column extends CustomComponent  {
     }
 
 
-
     private Visibility getVisibilityRuleForDisplaySize(DisplaySize displaySize) {
 
         final Visibility[] foundRule = {null};
@@ -304,55 +290,18 @@ public class Column extends CustomComponent  {
     }
 
 
-
-
-
-
-    // really dirty way of adding
-    public void setComponent(Component component) {
-
-        setCompositionRoot(component);
-
-
-
-        // here is a way to let any object get custom css dynamiclly from java
-        // its a bad idea because it adds a bunch of style tags to the DOM
-        // was just messing around with this
-        // not needed but want it around for awhile uness i think of something
-
-
-//       StyleDocumentAdapter styleDocumentAdapter = getStyledDocumentAdapter(component);
-//        if (styleDocumentAdapter != null) {
-//            StringBuilder sb = new StringBuilder();
-//            styleDocumentAdapter.getStyleDocument().cssProperties.forEach(cssProperty -> {
-//                sb.append(cssProperty.name + ":" + cssProperty.value + ";");
-//            });
-//            sb.toString();
-//
-//            String styleName = randomString(10);
-//
-//
-//            component.setStyleName(styleName);
-//            Page.Styles styles = Page.getCurrent().getStyles();
-//
-//        }
-
-
-
-
+    public void centerContent(boolean shouldCenter) {
+        if (shouldCenter) {
+            setStyleName("content-center");
+        } else {
+            removeStyleName("content-center");
+        }
     }
 
 
+    public void setComponent(Component component) {
+        setCompositionRoot(component);
+    }
 
-
-//    static final String AB = "abcdefghijklmnopqrstuvwxyz";
-//    static SecureRandom rnd = new SecureRandom();
-//
-//    public String randomString(int len) {
-//        StringBuilder sb = new StringBuilder(len);
-//        for (int i = 0; i < len; i++)
-//            sb.append(AB.charAt(rnd.nextInt(AB.length())));
-//        return sb.toString();
-//    }
 
 }
