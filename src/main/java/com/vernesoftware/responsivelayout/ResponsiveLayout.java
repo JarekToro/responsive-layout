@@ -35,12 +35,12 @@ public class ResponsiveLayout extends CssLayout {
     }
 
     /**
-     * Adds the {@code Row} provided as a component.
+     * Adds the {@code ResponsiveRow} provided as a component.
      *
-     * @param row A {@code Row}
+     * @param responsiveRow A {@code ResponsiveRow}
      */
-    public void addRow(Row row) {
-        addComponent(row);
+    public void addRow(ResponsiveRow responsiveRow) {
+        addComponent(responsiveRow);
     }
 
 

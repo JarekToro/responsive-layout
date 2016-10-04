@@ -2,7 +2,6 @@ package com.vernesoftware.responsivelayout;
 
 import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.Viewport;
-import com.vaadin.annotations.ViewportGeneratorClass;
 import com.vaadin.server.*;
 import com.vaadin.ui.*;
 import com.vaadin.ui.themes.ValoTheme;
@@ -35,8 +34,8 @@ public class BasicFullPageUI extends AbstractTest {
         responsiveLayout.setSizeFull(true);
 
 
-        Row rootRow = new Row();
-        rootRow.setHeight("100%");
+        ResponsiveRow rootResponsiveRow = new ResponsiveRow();
+        rootResponsiveRow.setHeight("100%");
 
 
         Column menuCol = new Column(12, 12, 2, 2);
@@ -45,8 +44,8 @@ public class BasicFullPageUI extends AbstractTest {
         Column mainCol = new Column(12, 12, 10, 10);
 
 
-        rootRow.addColumn(menuCol);
-        rootRow.addColumn(mainCol);
+        rootResponsiveRow.addColumn(menuCol);
+        rootResponsiveRow.addColumn(mainCol);
 
 
         SideMenu sideMenu = new SideMenu();
@@ -111,9 +110,9 @@ public class BasicFullPageUI extends AbstractTest {
         mainCol.setComponent(mainSectionLayout);
 
 
-        Row titleRow = new Row();
+        ResponsiveRow titleResponsiveRow = new ResponsiveRow();
         Column titleCol = new Column(3);
-        titleRow.setDefaultComponentAlignment(Alignment.MIDDLE_CENTER);
+        titleResponsiveRow.setDefaultComponentAlignment(Alignment.MIDDLE_CENTER);
         titleCol.centerContent(true);
 
 
@@ -122,27 +121,27 @@ public class BasicFullPageUI extends AbstractTest {
         title.setWidthUndefined();
 
         titleCol.setComponent(title);
-        titleRow.addColumn(titleCol);
-        titleRow.setMargin(true);
+        titleResponsiveRow.addColumn(titleCol);
+        titleResponsiveRow.setMargin(true);
 
-        mainSectionLayout.addRow(titleRow);
+        mainSectionLayout.addRow(titleResponsiveRow);
 
 
-        Row teamRow = new Row();
+        ResponsiveRow teamResponsiveRow = new ResponsiveRow();
 
         for (int x = 0; x < 10; x++) {
             TeamMemberView teamMemberView = new TeamMemberView();
-            teamRow.addColumn(teamMemberView.getInColumn(12, 6, 4, 3));
+            teamResponsiveRow.addColumn(teamMemberView.getInColumn(12, 6, 4, 3));
         }
 
-        mainSectionLayout.addRow(teamRow);
+        mainSectionLayout.addRow(teamResponsiveRow);
 
-        teamRow.setHorizontalSpacing(true);
-        teamRow.setVerticalSpacing(true);
-        teamRow.setMargin(true);
+        teamResponsiveRow.setHorizontalSpacing(true);
+        teamResponsiveRow.setVerticalSpacing(true);
+        teamResponsiveRow.setMargin(true);
 
 
-        responsiveLayout.addRow(rootRow);
+        responsiveLayout.addRow(rootResponsiveRow);
 
         setContent(responsiveLayout);
     }
@@ -166,10 +165,10 @@ public class BasicFullPageUI extends AbstractTest {
         return new Label(""); // just dummy implementation, not really used
     }
 
-    public static class SideMenu extends Row {
+    public static class SideMenu extends ResponsiveRow {
 
 
-        //  private Row row;
+        //  private ResponsiveRow row;
 
         public SideMenu() {
 
@@ -188,7 +187,7 @@ public class BasicFullPageUI extends AbstractTest {
 
     }
 
-    public static class TeamMemberView extends Row {
+    public static class TeamMemberView extends ResponsiveRow {
 
         public TeamMemberView() {
 
@@ -205,21 +204,21 @@ public class BasicFullPageUI extends AbstractTest {
             ResponsiveLayout responsiveLayout = new ResponsiveLayout();
 
 
-            Row row = new Row();
-            row.setMargin(true);
-            row.addStyleName("margin-small");
+            ResponsiveRow responsiveRow = new ResponsiveRow();
+            responsiveRow.setMargin(true);
+            responsiveRow.addStyleName("margin-small");
             Column imageCol = new Column(4, 4, 4, 4);
             imageCol.setComponent(getRandomTeamMember());
             Column titleCol = new Column(4, 4, 4, 4);
             titleCol.setComponent(new Label(getRandomTeamMemberName()));
 
 
-            row.addColumn(imageCol);
-            row.addColumn(titleCol);
-            row.setHorizontalSpacing(true);
-            row.setDefaultComponentAlignment(Alignment.MIDDLE_LEFT);
+            responsiveRow.addColumn(imageCol);
+            responsiveRow.addColumn(titleCol);
+            responsiveRow.setHorizontalSpacing(true);
+            responsiveRow.setDefaultComponentAlignment(Alignment.MIDDLE_LEFT);
 
-            responsiveLayout.addRow(row);
+            responsiveLayout.addRow(responsiveRow);
             panel.setContent(responsiveLayout);
 
             setHorizontalSpacing(true);

@@ -8,10 +8,10 @@ import com.vaadin.ui.VerticalLayout;
 /**
  * Created by JarekToro on 9/23/16.
  */
-public class Row extends CssLayout {
+public class ResponsiveRow extends CssLayout {
 
 
-    public Row() {
+    public ResponsiveRow() {
 
 
 
