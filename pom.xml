@@ -3,7 +3,7 @@
 
     <groupId>com.vernesoftware</groupId>
     <artifactId>responsive-layout</artifactId>
-    <version>0.5-SNAPSHOT</version>
+    <version>0.5</version>
     <packaging>bundle</packaging>
 
     <organization>
@@ -27,7 +27,7 @@
         <url>git://github.com/vernesoftware/responsive-layout.git</url>
         <connection>scm:git:git://github.com/vernesoftware/responsive-layout.git</connection>
         <developerConnection>scm:git:ssh://git@github.com:/vernesoftware/responsive-layout.git</developerConnection>
-        <tag>responsive-layout-v0.4</tag>
+        <tag>responsive-layout-0.5</tag>
     </scm>
 
     <issueManagement>
