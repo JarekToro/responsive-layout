@@ -25,11 +25,6 @@ public class BasicFullPageUI extends AbstractTest {
         ResponsiveLayout responsiveLayout = new ResponsiveLayout();
 
 
-        //needed methods in Responsive Layout
-        //verticalLayout.getComponentAlignment()
-        //verticalLayout.addComponent(); should we add this? then in implementation just wrap it in a Column?
-        //verticalLayout.setComponentAlignment(); - dont think possible only can set it for all in a row not for each individually
-
 
         responsiveLayout.setSizeFull(true);
 
@@ -38,10 +33,10 @@ public class BasicFullPageUI extends AbstractTest {
         rootResponsiveRow.setHeight("100%");
 
 
-        Column menuCol = new Column(12, 12, 2, 2);
+        ResponsiveColumn menuCol = new ResponsiveColumn(12, 12, 2, 2);
         menuCol.addStyleName("bg-dark-grey");
 
-        Column mainCol = new Column(12, 12, 10, 10);
+        ResponsiveColumn mainCol = new ResponsiveColumn(12, 12, 10, 10);
 
 
         rootResponsiveRow.addColumn(menuCol);
@@ -67,31 +62,31 @@ public class BasicFullPageUI extends AbstractTest {
         //end get random image
 
 
-        Column profileCol = new Column(12);
+        ResponsiveColumn profileCol = new ResponsiveColumn(12);
         profileCol.setComponent(image);
         profileCol.addStyleName("content-center");
 
 
-        Column logoCol = new Column(12, 3, 12);
+        ResponsiveColumn logoCol = new ResponsiveColumn(12, 3, 12);
         Button mainlogobutton = getButtonofSize("LOGO", "100%", "100%", FontAwesome.APPLE);
         logoCol.setComponent(mainlogobutton);
 
-        Column homeCol = new Column(12, 3, 12);
+        ResponsiveColumn homeCol = new ResponsiveColumn(12, 3, 12);
         homeCol.setComponent(getButtonofSize("Testers", "100%", "100%", FontAwesome.USERS));
-        homeCol.setVisibility(Column.DisplaySize.XS, false);
+        homeCol.setVisibility(ResponsiveColumn.DisplaySize.XS, false);
 
-        Column aboutCol = new Column(12, 3, 12);
+        ResponsiveColumn aboutCol = new ResponsiveColumn(12, 3, 12);
         aboutCol.setComponent(getButtonofSize("Analyze", "100%", "100%", FontAwesome.AREA_CHART));
-        aboutCol.setVisibility(Column.DisplaySize.XS, false);
+        aboutCol.setVisibility(ResponsiveColumn.DisplaySize.XS, false);
 
-        Column contactCol = new Column(12, 3, 12);
+        ResponsiveColumn contactCol = new ResponsiveColumn(12, 3, 12);
         contactCol.setComponent(getButtonofSize("Report", "100%", "100%", FontAwesome.INBOX));
-        contactCol.setVisibility(Column.DisplaySize.XS, false);
+        contactCol.setVisibility(ResponsiveColumn.DisplaySize.XS, false);
 
         mainlogobutton.addClickListener(clickEvent -> {
-            homeCol.setVisibility(Column.DisplaySize.XS, !homeCol.isVisibleForDisplaySize(Column.DisplaySize.XS));
-            aboutCol.setVisibility(Column.DisplaySize.XS, !aboutCol.isVisibleForDisplaySize(Column.DisplaySize.XS));
-            contactCol.setVisibility(Column.DisplaySize.XS, !contactCol.isVisibleForDisplaySize(Column.DisplaySize.XS));
+            homeCol.setVisibility(ResponsiveColumn.DisplaySize.XS, !homeCol.isVisibleForDisplaySize(ResponsiveColumn.DisplaySize.XS));
+            aboutCol.setVisibility(ResponsiveColumn.DisplaySize.XS, !aboutCol.isVisibleForDisplaySize(ResponsiveColumn.DisplaySize.XS));
+            contactCol.setVisibility(ResponsiveColumn.DisplaySize.XS, !contactCol.isVisibleForDisplaySize(ResponsiveColumn.DisplaySize.XS));
         });
 
 
@@ -111,7 +106,7 @@ public class BasicFullPageUI extends AbstractTest {
 
 
         ResponsiveRow titleResponsiveRow = new ResponsiveRow();
-        Column titleCol = new Column(3);
+        ResponsiveColumn titleCol = new ResponsiveColumn(3);
         titleResponsiveRow.setDefaultComponentAlignment(Alignment.MIDDLE_CENTER);
         titleCol.centerContent(true);
 
@@ -195,7 +190,7 @@ public class BasicFullPageUI extends AbstractTest {
             // not part of responsiveLayout lib
 
             Panel panel = new Panel();
-            Column rootCol = new Column(12);
+            ResponsiveColumn rootCol = new ResponsiveColumn(12);
             panel.setWidth("100%");
             rootCol.setComponent(panel);
             addColumn(rootCol);
@@ -207,9 +202,9 @@ public class BasicFullPageUI extends AbstractTest {
             ResponsiveRow responsiveRow = new ResponsiveRow();
             responsiveRow.setMargin(true);
             responsiveRow.addStyleName("margin-small");
-            Column imageCol = new Column(4, 4, 4, 4);
+            ResponsiveColumn imageCol = new ResponsiveColumn(4, 4, 4, 4);
             imageCol.setComponent(getRandomTeamMember());
-            Column titleCol = new Column(4, 4, 4, 4);
+            ResponsiveColumn titleCol = new ResponsiveColumn(4, 4, 4, 4);
             titleCol.setComponent(new Label(getRandomTeamMemberName()));
 
 
@@ -272,9 +267,9 @@ public class BasicFullPageUI extends AbstractTest {
         }
 
 
-        public Column getInColumn(int xs, int sm, int md, int lg) {
+        public ResponsiveColumn getInColumn(int xs, int sm, int md, int lg) {
 
-            Column col = new Column(xs, sm, md, lg);
+            ResponsiveColumn col = new ResponsiveColumn(xs, sm, md, lg);
             col.setComponent(this);
 
             return col;

@@ -9,7 +9,7 @@ import java.util.Set;
 /**
  * Created by JarekToro on 9/23/16.
  */
-public class Column extends CustomComponent {
+public class ResponsiveColumn extends CustomComponent {
 
 
     // Lot going on here, ill do my best to explain.
@@ -55,40 +55,40 @@ public class Column extends CustomComponent {
     // bunch of convenience constructors
 
 
-    public Column() {
+    public ResponsiveColumn() {
         convenienceInIt();
     }
 
-    public Column(Rule rule) {
+    public ResponsiveColumn(Rule rule) {
         convenienceInIt();
         addRule(rule);
     }
 
 
-    public Column(DisplaySize displaySize, int width) {
+    public ResponsiveColumn(DisplaySize displaySize, int width) {
         convenienceInIt();
         addRule(displaySize, width);
     }
 
-    public Column(int xs) {
+    public ResponsiveColumn(int xs) {
         convenienceInIt();
         setAllSizes(xs, xs, xs, xs);
     }
 
 
-    public Column(int xs, int sm) {
+    public ResponsiveColumn(int xs, int sm) {
         convenienceInIt();
         setAllSizes(xs, sm, sm, sm);
 
     }
 
-    public Column(int xs, int sm, int md) {
+    public ResponsiveColumn(int xs, int sm, int md) {
         convenienceInIt();
         setAllSizes(xs, sm, md, md);
 
     }
 
-    public Column(int xs, int sm, int md, int lg) {
+    public ResponsiveColumn(int xs, int sm, int md, int lg) {
         convenienceInIt();
         setAllSizes(xs, sm, md, lg);
     }

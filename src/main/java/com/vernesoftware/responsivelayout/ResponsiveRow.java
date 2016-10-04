@@ -14,7 +14,6 @@ public class ResponsiveRow extends CssLayout {
     public ResponsiveRow() {
 
 
-
         setPrimaryStyleName("row");
         setWidthUndefined();
 
@@ -23,16 +22,16 @@ public class ResponsiveRow extends CssLayout {
     }
 
 
-    public void setExpandRatio(Column column, Column.DisplaySize displaySize, int width) {
-        if (components.contains(column)) {
-            column.addRule(displaySize, width);
+    public void setExpandRatio(ResponsiveColumn responsiveColumn, ResponsiveColumn.DisplaySize displaySize, int width) {
+        if (components.contains(responsiveColumn)) {
+            responsiveColumn.addRule(displaySize, width);
         }
     }
 
 
-    public void addColumn(Column col) {
+    public void addColumn(ResponsiveColumn col) {
 
-        //add Column to Component List then recalulates the margin and spacing to match
+        //add ResponsiveColumn to Component List then recalulates the margin and spacing to match
 
         addComponent(col);
 
