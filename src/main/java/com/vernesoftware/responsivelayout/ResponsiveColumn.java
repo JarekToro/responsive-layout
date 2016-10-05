@@ -292,7 +292,7 @@ public class ResponsiveColumn extends CustomComponent {
 
     public void centerContent(boolean shouldCenter) {
         if (shouldCenter) {
-            setStyleName("content-center");
+            addStyleName("content-center");
         } else {
             removeStyleName("content-center");
         }
