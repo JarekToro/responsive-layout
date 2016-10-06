@@ -1,6 +1,7 @@
 package com.vernesoftware.responsivelayout;
 
 import com.vaadin.annotations.StyleSheet;
+import com.vaadin.ui.AbstractLayout;
 import com.vaadin.ui.CssLayout;
 
 /**
@@ -18,7 +19,6 @@ public class ResponsiveLayout extends CssLayout {
         setHeightUndefined();
         setWidth("100%");
     }
-
 
 
     //when size is set to full. It sets the css property 'overflow' to 'hidden'
@@ -43,5 +43,13 @@ public class ResponsiveLayout extends CssLayout {
         addComponent(responsiveRow);
     }
 
+    public ResponsiveRow addRow() {
+
+        ResponsiveRow row = new ResponsiveRow();
+
+        addComponent(row);
+
+        return row;
+    }
 
 }

@@ -1,5 +1,7 @@
 package com.vernesoftware.responsivelayout;
 
+import com.sun.rowset.internal.Row;
+import com.vaadin.ui.AbstractLayout;
 import com.vaadin.ui.Alignment;
 import com.vaadin.ui.CssLayout;
 import com.vaadin.ui.VerticalLayout;
@@ -48,6 +50,11 @@ public class ResponsiveRow extends CssLayout {
         }
 
 
+    }
+
+    public void setSpacing(boolean spacing) {
+        setVerticalSpacing(spacing);
+        setHorizontalSpacing(spacing);
     }
 
     public void setVerticalSpacing(boolean verticalSpacing) {
@@ -119,6 +126,41 @@ public class ResponsiveRow extends CssLayout {
         }
 
 
+    }
+
+
+    // Convenience API
+
+    public ResponsiveColumn addColumn() {
+        ResponsiveColumn column = new ResponsiveColumn();
+        addColumn(column);
+        return column;
+    }
+
+    public ResponsiveRow withAlignment(Alignment alignment) {
+        setDefaultComponentAlignment(alignment);
+        return this;
+    }
+
+    public ResponsiveRow withMargin(boolean margin) {
+        setMargin(margin);
+        return this;
+    }
+
+    public ResponsiveRow withSpacing(boolean spacing) {
+        setVerticalSpacing(spacing);
+        setHorizontalSpacing(spacing);
+        return this;
+    }
+
+    public ResponsiveRow withVerticalSpacing(boolean spacing) {
+        setVerticalSpacing(spacing);
+        return this;
+    }
+
+    public ResponsiveRow withHorizontalSpacing(boolean spacing) {
+        setHorizontalSpacing(spacing);
+        return this;
     }
 
 }
