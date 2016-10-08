@@ -180,6 +180,14 @@ public class ResponsiveColumn extends CustomComponent {
         }
     }
 
+    public void setVisibilityRules(boolean xs, boolean sm, boolean md, boolean lg) {
+        setVisibility(DisplaySize.XS, xs);
+        setVisibility(DisplaySize.SM, sm);
+        setVisibility(DisplaySize.MD, md);
+        setVisibility(DisplaySize.LG, lg);
+
+        return;
+    }
 
     // sets visibility for a given display size
     public void setVisibility(DisplaySize displaySize, boolean isVisible) {
@@ -304,4 +312,31 @@ public class ResponsiveColumn extends CustomComponent {
     }
 
 
+    // Convenience API
+
+
+    public ResponsiveColumn withDisplayRules(int xs, int sm, int md, int lg) {
+        setAllSizes(xs, sm, md, lg);
+        return this;
+    }
+
+    public ResponsiveColumn withVisibilityRules(boolean xs, boolean sm, boolean md, boolean lg) {
+        setVisibility(DisplaySize.XS, xs);
+        setVisibility(DisplaySize.SM, sm);
+        setVisibility(DisplaySize.MD, md);
+        setVisibility(DisplaySize.LG, lg);
+
+        return this;
+    }
+
+    public ResponsiveColumn withComponent(Component component) {
+        setComponent(component);
+        return this;
+    }
+
+    public ResponsiveColumn withCenteredComponent(Component component) {
+        centerContent(true);
+        setComponent(component);
+        return this;
+    }
 }

@@ -20,30 +20,29 @@ public class BasicFullPageUI extends AbstractTest {
         super.init(request);
 
         setSizeFull();
+        Page.getCurrent().getStyles().add(".img-rounded { border-radius: 50%; } .bg-dark-grey { background-color: #F0F0F0;}");
 
 
         ResponsiveLayout responsiveLayout = new ResponsiveLayout();
 
 
-
         responsiveLayout.setSizeFull(true);
 
 
-        ResponsiveRow rootResponsiveRow = new ResponsiveRow();
+        ResponsiveRow rootResponsiveRow = responsiveLayout.addRow();
         rootResponsiveRow.setHeight("100%");
 
 
-        ResponsiveColumn menuCol = new ResponsiveColumn(12, 12, 2, 2);
+        ResponsiveColumn menuCol = rootResponsiveRow.addColumn()
+                .withDisplayRules(12, 12, 2, 2);
         menuCol.addStyleName("bg-dark-grey");
 
-        ResponsiveColumn mainCol = new ResponsiveColumn(12, 12, 10, 10);
-
-
-        rootResponsiveRow.addColumn(menuCol);
-        rootResponsiveRow.addColumn(mainCol);
+        ResponsiveColumn mainCol = rootResponsiveRow.addColumn()
+                .withDisplayRules(12, 12, 10, 10);
 
 
         SideMenu sideMenu = new SideMenu();
+        menuCol.setComponent(sideMenu);
 
 
         // get random Image
@@ -51,92 +50,71 @@ public class BasicFullPageUI extends AbstractTest {
         int number = rand.nextInt(10 - 1 + 1) + 1;
         Resource res = new ClassResource("/img/images-" + number + ".jpeg");
         Image image = new Image(null, res);
-
-        Page.getCurrent().getStyles().add(".img-rounded { border-radius: 50%; } .bg-dark-grey { background-color: #F0F0F0;}");
-
-
         image.setStyleName("img-rounded");
-
         image.setHeight("100px");
         image.setWidth("100px");
         //end get random image
 
 
-        ResponsiveColumn profileCol = new ResponsiveColumn(12);
-        profileCol.setComponent(image);
-        profileCol.addStyleName("content-center");
+        ResponsiveColumn profileCol = sideMenu.addColumn()
+                .withDisplayRules(12, 12, 12, 12)
+                .withCenteredComponent(image);
+        
+
+        Button logoButton = getButtonofSize("LOGO", "100%", "100%", FontAwesome.APPLE);
+
+        ResponsiveColumn logoCol = sideMenu.addColumn()
+                .withDisplayRules(12, 3, 12, 12)
+                .withComponent(logoButton);
 
 
-        ResponsiveColumn logoCol = new ResponsiveColumn(12, 3, 12);
-        Button mainlogobutton = getButtonofSize("LOGO", "100%", "100%", FontAwesome.APPLE);
-        logoCol.setComponent(mainlogobutton);
+        ResponsiveColumn homeCol = sideMenu.addColumn()
+                .withDisplayRules(12, 3, 12, 12)
+                .withVisibilityRules(false, true, true, true)
+                .withComponent(getButtonofSize("Testers", "100%", "100%", FontAwesome.USERS));
 
-        ResponsiveColumn homeCol = new ResponsiveColumn(12, 3, 12);
-        homeCol.setComponent(getButtonofSize("Testers", "100%", "100%", FontAwesome.USERS));
-        homeCol.setVisibility(ResponsiveColumn.DisplaySize.XS, false);
+        ResponsiveColumn aboutCol = sideMenu.addColumn()
+                .withDisplayRules(12, 3, 12, 12)
+                .withVisibilityRules(false, true, true, true)
+                .withComponent(getButtonofSize("Analyze", "100%", "100%", FontAwesome.AREA_CHART));
 
-        ResponsiveColumn aboutCol = new ResponsiveColumn(12, 3, 12);
-        aboutCol.setComponent(getButtonofSize("Analyze", "100%", "100%", FontAwesome.AREA_CHART));
-        aboutCol.setVisibility(ResponsiveColumn.DisplaySize.XS, false);
+        ResponsiveColumn contactCol = sideMenu.addColumn()
+                .withDisplayRules(12, 3, 12, 12)
+                .withVisibilityRules(false, true, true, true)
+                .withComponent(getButtonofSize("Report", "100%", "100%", FontAwesome.INBOX));
 
-        ResponsiveColumn contactCol = new ResponsiveColumn(12, 3, 12);
-        contactCol.setComponent(getButtonofSize("Report", "100%", "100%", FontAwesome.INBOX));
-        contactCol.setVisibility(ResponsiveColumn.DisplaySize.XS, false);
-
-        mainlogobutton.addClickListener(clickEvent -> {
+        logoButton.addClickListener(clickEvent -> {
             homeCol.setVisibility(ResponsiveColumn.DisplaySize.XS, !homeCol.isVisibleForDisplaySize(ResponsiveColumn.DisplaySize.XS));
             aboutCol.setVisibility(ResponsiveColumn.DisplaySize.XS, !aboutCol.isVisibleForDisplaySize(ResponsiveColumn.DisplaySize.XS));
             contactCol.setVisibility(ResponsiveColumn.DisplaySize.XS, !contactCol.isVisibleForDisplaySize(ResponsiveColumn.DisplaySize.XS));
         });
 
 
-        sideMenu.addColumn(profileCol);
-        sideMenu.addColumn(logoCol);
-        sideMenu.addColumn(homeCol);
-        sideMenu.addColumn(aboutCol);
-        sideMenu.addColumn(contactCol);
-
-        menuCol.setComponent(sideMenu);
-
-
         ResponsiveLayout mainSectionLayout = new ResponsiveLayout();
-
-
         mainCol.setComponent(mainSectionLayout);
-
-
-        ResponsiveRow titleResponsiveRow = new ResponsiveRow();
-        ResponsiveColumn titleCol = new ResponsiveColumn(3);
-        titleResponsiveRow.setDefaultComponentAlignment(Alignment.MIDDLE_CENTER);
-        titleCol.centerContent(true);
 
 
         Label title = new Label("Test Subjects");
         title.setStyleName(ValoTheme.LABEL_HUGE);
         title.setWidthUndefined();
 
-        titleCol.setComponent(title);
-        titleResponsiveRow.addColumn(titleCol);
-        titleResponsiveRow.setMargin(true);
 
-        mainSectionLayout.addRow(titleResponsiveRow);
+        ResponsiveRow titleResponsiveRow = mainSectionLayout.addRow()
+                .withAlignment(Alignment.MIDDLE_CENTER).withMargin(true);
+        ResponsiveColumn titleCol = titleResponsiveRow.addColumn()
+                .withCenteredComponent(title)
+                .withDisplayRules(3, 3, 3, 3);
 
 
-        ResponsiveRow teamResponsiveRow = new ResponsiveRow();
+        ResponsiveRow teamResponsiveRow = mainSectionLayout.addRow()
+                .withSpacing(true)
+                .withMargin(true);
 
         for (int x = 0; x < 10; x++) {
             TeamMemberView teamMemberView = new TeamMemberView();
-            teamResponsiveRow.addColumn(teamMemberView.getInColumn(12, 6, 4, 3));
+            teamResponsiveRow.addColumn().withDisplayRules(12, 6, 4, 3).withComponent(teamMemberView);
         }
 
-        mainSectionLayout.addRow(teamResponsiveRow);
-
-        teamResponsiveRow.setHorizontalSpacing(true);
-        teamResponsiveRow.setVerticalSpacing(true);
-        teamResponsiveRow.setMargin(true);
-
-
-        responsiveLayout.addRow(rootResponsiveRow);
 
         setContent(responsiveLayout);
     }
