@@ -310,6 +310,9 @@ public class ResponsiveColumn extends CustomComponent {
     public void setComponent(Component component) {
         setCompositionRoot(component);
     }
+    public Component getComponant() {
+        return  getCompositionRoot();
+    }
 
 
     // Convenience API

@@ -13,12 +13,28 @@
     margin: 2rem !important;
 }
 
-.row-margin.row-margin-large {
-    margin: 5rem !important;
+.row-margin.row-margin-small {
+    margin: 1rem !important;
 }
 
-.row-margin.row-margin-small {
-    margin: 0rem !important;
+.row-margin.margin-small.v-col-spacing {
+    margin-top: 0rem !important;
+    margin-bottom: 0rem !important;
+}
+
+.row-margin.margin-small.h-col-spacing {
+    margin-right: 0rem !important;
+    margin-left: 0rem !important;
+}
+
+.row-margin.v-col-spacing {
+    margin-top: 1rem !important;
+    margin-bottom: 1rem !important;
+}
+
+.row-margin.h-col-spacing {
+    margin-right: 1rem !important;
+    margin-left: 1rem !important;
 }
 
 .row.v-col-spacing {
@@ -31,12 +47,12 @@
     margin-left: -1rem;
 }
 
-.row.h-col-spacing .col {
+.row.h-col-spacing > .col {
     padding-left: 1rem;
     padding-right: 1rem;
 }
 
-.row.v-col-spacing .col {
+.row.v-col-spacing > .col {
     padding-top: 1rem;
     padding-bottom: 1rem;
 }

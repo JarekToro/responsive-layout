@@ -27,7 +27,7 @@ public class ResponsiveLayout extends CssLayout {
         super.setSizeFull();
 
         if (scrollable) {
-            setStyleName("scrollable-anyway");
+            addStyleName("scrollable-anyway");
         } else {
             removeStyleName("scrollable-anyway");
         }

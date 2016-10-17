@@ -52,6 +52,18 @@ public class ResponsiveRow extends CssLayout {
 
     }
 
+    public void setMarginSmall(boolean small) {
+
+
+        if (small) {
+            addStyleName("margin-small");
+        } else {
+            removeStyleName("margin-small");
+        }
+
+
+    }
+
     public void setSpacing(boolean spacing) {
         setVerticalSpacing(spacing);
         setHorizontalSpacing(spacing);
@@ -144,6 +156,12 @@ public class ResponsiveRow extends CssLayout {
 
     public ResponsiveRow withMargin(boolean margin) {
         setMargin(margin);
+        return this;
+    }
+
+    public ResponsiveRow withSmallMargin(boolean margin) {
+        setMargin(margin);
+        setMarginSmall(true);
         return this;
     }
 

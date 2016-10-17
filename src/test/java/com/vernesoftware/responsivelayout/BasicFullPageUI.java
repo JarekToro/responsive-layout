@@ -59,7 +59,7 @@ public class BasicFullPageUI extends AbstractTest {
         ResponsiveColumn profileCol = sideMenu.addColumn()
                 .withDisplayRules(12, 12, 12, 12)
                 .withCenteredComponent(image);
-        
+
 
         Button logoButton = getButtonofSize("LOGO", "100%", "100%", FontAwesome.APPLE);
 
@@ -160,18 +160,14 @@ public class BasicFullPageUI extends AbstractTest {
 
     }
 
-    public static class TeamMemberView extends ResponsiveRow {
+    public static class TeamMemberView extends Panel {
 
         public TeamMemberView() {
 
             // was able to create a example with the given parts
             // not part of responsiveLayout lib
 
-            Panel panel = new Panel();
-            ResponsiveColumn rootCol = new ResponsiveColumn(12);
-            panel.setWidth("100%");
-            rootCol.setComponent(panel);
-            addColumn(rootCol);
+            setWidth("100%");
 
 
             ResponsiveLayout responsiveLayout = new ResponsiveLayout();
@@ -179,7 +175,7 @@ public class BasicFullPageUI extends AbstractTest {
 
             ResponsiveRow responsiveRow = new ResponsiveRow();
             responsiveRow.setMargin(true);
-            responsiveRow.addStyleName("margin-small");
+            responsiveRow.setMarginSmall(true);
             ResponsiveColumn imageCol = new ResponsiveColumn(4, 4, 4, 4);
             imageCol.setComponent(getRandomTeamMember());
             ResponsiveColumn titleCol = new ResponsiveColumn(4, 4, 4, 4);
@@ -192,10 +188,8 @@ public class BasicFullPageUI extends AbstractTest {
             responsiveRow.setDefaultComponentAlignment(Alignment.MIDDLE_LEFT);
 
             responsiveLayout.addRow(responsiveRow);
-            panel.setContent(responsiveLayout);
+            setContent(responsiveLayout);
 
-            setHorizontalSpacing(true);
-            setVerticalSpacing(true);
 
         }
 
