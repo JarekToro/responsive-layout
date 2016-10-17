@@ -34,8 +34,8 @@ Todo
 
 Wanna do this? Yeah you do!
 
-![Image of radness](https://raw.githubusercontent.com/Jayrok94/ResponsiveLayout/master/readme-resources/demo.gif)
-
+<img src="https://raw.githubusercontent.com/Jayrok94/ResponsiveLayout/master/readme-resources/demo.gif" width="500px" alt="Image of radness"/>
+<br>
 How do I build this? That complex dynamic menu.. I need.. Well its all super simple. :+1:
 
 
