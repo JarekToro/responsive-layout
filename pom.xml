@@ -1,13 +1,13 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.vernesoftware</groupId>
+    <groupId>com.jarektoro</groupId>
     <artifactId>responsive-layout</artifactId>
     <version>1.1.2-SNAPSHOT</version>
     <packaging>bundle</packaging>
 
     <organization>
-        <name>Verne Software</name>
+        <name>Jarek Toro</name>
     </organization>
 
     <properties>
@@ -24,15 +24,15 @@
     </properties>
 
     <scm>
-        <url>git://github.com/vernesoftware/responsive-layout.git</url>
-        <connection>scm:git:git://github.com/vernesoftware/responsive-layout.git</connection>
-        <developerConnection>scm:git:ssh://git@github.com:/vernesoftware/responsive-layout.git</developerConnection>
+        <url>git://github.com/JarekToro/responsive-layout.git</url>
+        <connection>scm:git:git://github.com/JarekToro/responsive-layout.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com:/JarekToro/responsive-layout.git</developerConnection>
         <tag>responsive-layout-v0.4</tag>
     </scm>
 
     <issueManagement>
         <system>GitHub</system>
-        <url>https://github.com/vernesoftware/responsive-layout/issues</url>
+        <url>https://github.com/JarekToro/responsive-layout/issues</url>
     </issueManagement>
 
     <licenses>
@@ -98,7 +98,7 @@
                 <extensions>true</extensions>
                 <configuration>
                     <instructions>
-                        <Export-Package>com.vernesoftware.responsivelayout.*</Export-Package>
+                        <Export-Package>com.jarektoro.responsivelayout.*</Export-Package>
                     </instructions>
                 </configuration>
                 <executions>

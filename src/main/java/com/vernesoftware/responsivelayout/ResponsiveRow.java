@@ -1,7 +1,6 @@
 package com.vernesoftware.responsivelayout;
 
-import com.sun.rowset.internal.Row;
-import com.vaadin.ui.AbstractLayout;
+
 import com.vaadin.ui.Alignment;
 import com.vaadin.ui.CssLayout;
 import com.vaadin.ui.VerticalLayout;
