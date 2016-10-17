@@ -161,7 +161,7 @@ public class ResponsiveRow extends CssLayout {
 
     public ResponsiveRow withSmallMargin(boolean margin) {
         setMargin(margin);
-        setMarginSmall(true);
+        setMarginSmall(margin);
         return this;
     }
 
