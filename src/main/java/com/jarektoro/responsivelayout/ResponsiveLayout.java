@@ -1,7 +1,6 @@
-package com.vernesoftware.responsivelayout;
+package com.jarektoro.responsivelayout;
 
 import com.vaadin.annotations.StyleSheet;
-import com.vaadin.ui.AbstractLayout;
 import com.vaadin.ui.CssLayout;
 
 /**

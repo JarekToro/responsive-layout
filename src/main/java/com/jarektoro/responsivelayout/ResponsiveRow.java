@@ -1,4 +1,4 @@
-package com.vernesoftware.responsivelayout;
+package com.jarektoro.responsivelayout;
 
 
 import com.vaadin.ui.Alignment;

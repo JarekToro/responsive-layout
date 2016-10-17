@@ -1,4 +1,4 @@
-package com.vernesoftware.responsivelayout.uiserver;
+package com.jarektoro.responsivelayout.uiserver;
 
 import org.vaadin.addonhelpers.TServer;
 

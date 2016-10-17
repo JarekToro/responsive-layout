@@ -1,8 +1,8 @@
-package com.vernesoftware.responsivelayout.it;
+package com.jarektoro.responsivelayout.it;
 
 import java.util.concurrent.TimeUnit;
 
-import com.vernesoftware.responsivelayout.BasicFullPageUI;
+import com.jarektoro.responsivelayout.BasicFullPageUI;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.WebDriverWait;
