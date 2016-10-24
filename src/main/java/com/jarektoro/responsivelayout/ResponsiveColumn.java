@@ -18,7 +18,6 @@ public class ResponsiveColumn extends CustomComponent {
     private Set<Rule> rules;
     private Set<Visibility> visibilityRules;
     private CssLayout root;
-    private boolean shouldMirrorCaption = false;
 
     public class Rule {
         public DisplaySize displaySize;
@@ -312,20 +311,13 @@ public class ResponsiveColumn extends CustomComponent {
 
     public void setComponent(Component component) {
         root.removeAllComponents();
-
-        if (shouldMirrorCaption && component.getCaption() != null) {
-            Label label = new Label(component.getCaption());
-            label.setStyleName("v-caption");
-            root.addComponent(label);
-
-        }
         root.addComponent(component);
 
     }
 
 
     public Component getComponent() {
-        return root.getComponent(root.getComponentCount() - 1);
+        return root.getComponent(0);
     }
 
 
@@ -362,14 +354,5 @@ public class ResponsiveColumn extends CustomComponent {
         return this;
     }
 
-    public ResponsiveColumn withMirroredCaption(boolean shouldMirrorCaption) {
-        this.shouldMirrorCaption = shouldMirrorCaption;
 
-        if (this.getComponent() != null) {
-            Component tmp = this.getComponent();
-            setComponent(tmp);
-        }
-
-        return this;
-    }
 }

@@ -113,7 +113,11 @@ public class BasicFullPageUI extends AbstractTest {
         for (int x = 0; x < 10; x++) {
             TeamMemberView teamMemberView = new TeamMemberView();
             teamMemberView.setCaption("caption");
-            teamResponsiveRow.addColumn().withDisplayRules(12, 6, 4, 3).withComponent(teamMemberView).withMirroredCaption(true);
+
+            TextField tf = new TextField("caption");
+
+
+            teamResponsiveRow.addColumn().withDisplayRules(12, 6, 4, 3).withComponent(tf);
         }
 
 
