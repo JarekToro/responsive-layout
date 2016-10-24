@@ -1,7 +1,9 @@
 package com.jarektoro.responsivelayout;
 
 import com.vaadin.ui.Component;
+import com.vaadin.ui.CssLayout;
 import com.vaadin.ui.CustomComponent;
+import com.vaadin.ui.Label;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -12,14 +14,11 @@ import java.util.Set;
 public class ResponsiveColumn extends CustomComponent {
 
 
-    // Lot going on here, ill do my best to explain.
-
-
-    // Rules to define how its displayed in the row example "col-xs-5" - see flexboxgrid.com
-    // Visibility is a rule that say if the element is hidden or not on a given display size
     //TODO: these should be one class not two
     private Set<Rule> rules;
     private Set<Visibility> visibilityRules;
+    private CssLayout root;
+    private boolean shouldMirrorCaption = false;
 
     public class Rule {
         public DisplaySize displaySize;
@@ -49,6 +48,10 @@ public class ResponsiveColumn extends CustomComponent {
         setPrimaryStyleName("col");
         rules = new HashSet<>(4);
         visibilityRules = new HashSet<>(4);
+        root = new CssLayout();
+        root.setStyleName("col-container");
+        root.setSizeFull();
+        setCompositionRoot(root);
     }
 
 
@@ -308,10 +311,21 @@ public class ResponsiveColumn extends CustomComponent {
 
 
     public void setComponent(Component component) {
-        setCompositionRoot(component);
+        root.removeAllComponents();
+
+        if (shouldMirrorCaption && component.getCaption() != null) {
+            Label label = new Label(component.getCaption());
+            label.setStyleName("v-caption");
+            root.addComponent(label);
+
+        }
+        root.addComponent(component);
+
     }
-    public Component getComponant() {
-        return  getCompositionRoot();
+
+
+    public Component getComponent() {
+        return root.getComponent(root.getComponentCount() - 1);
     }
 
 
@@ -332,6 +346,11 @@ public class ResponsiveColumn extends CustomComponent {
         return this;
     }
 
+    public ResponsiveColumn withOffset(DisplaySize displaySize, int width) {
+        setOffset(displaySize, width);
+        return this;
+    }
+
     public ResponsiveColumn withComponent(Component component) {
         setComponent(component);
         return this;
@@ -340,6 +359,17 @@ public class ResponsiveColumn extends CustomComponent {
     public ResponsiveColumn withCenteredComponent(Component component) {
         centerContent(true);
         setComponent(component);
+        return this;
+    }
+
+    public ResponsiveColumn withMirroredCaption(boolean shouldMirrorCaption) {
+        this.shouldMirrorCaption = shouldMirrorCaption;
+
+        if (this.getComponent() != null) {
+            Component tmp = this.getComponent();
+            setComponent(tmp);
+        }
+
         return this;
     }
 }

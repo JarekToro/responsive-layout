@@ -58,7 +58,7 @@ public class BasicFullPageUI extends AbstractTest {
 
         ResponsiveColumn profileCol = sideMenu.addColumn()
                 .withDisplayRules(12, 12, 12, 12)
-                .withCenteredComponent(image);
+                .withCenteredComponent(image).withVisibilityRules(true,true,true,true);
 
 
         Button logoButton = getButtonofSize("LOGO", "100%", "100%", FontAwesome.APPLE);
@@ -112,7 +112,8 @@ public class BasicFullPageUI extends AbstractTest {
 
         for (int x = 0; x < 10; x++) {
             TeamMemberView teamMemberView = new TeamMemberView();
-            teamResponsiveRow.addColumn().withDisplayRules(12, 6, 4, 3).withComponent(teamMemberView);
+            teamMemberView.setCaption("caption");
+            teamResponsiveRow.addColumn().withDisplayRules(12, 6, 4, 3).withComponent(teamMemberView).withMirroredCaption(true);
         }
 
 

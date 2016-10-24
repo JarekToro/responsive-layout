@@ -14,7 +14,6 @@ public class ResponsiveRow extends CssLayout {
 
     public ResponsiveRow() {
 
-
         setPrimaryStyleName("row");
         setWidthUndefined();
 

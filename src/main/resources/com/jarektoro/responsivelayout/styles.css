@@ -1,5 +1,10 @@
 
-.col-content-center {
+.col-container .v-caption {
+    padding-left:  3px;
+    padding-right: 10px;
+}
+
+.col-content-center > .col-container{
     display: flex !important;
     justify-content: center;
     align-items: center;
@@ -84,7 +89,9 @@
     .visible-xs {
         display: block !important;
     }
-
+    .visible-xs.col.col-content-center {
+        display: flex !important;
+    }
     table.visible-xs {
         display: table !important;
     }
@@ -121,7 +128,9 @@
     .visible-sm {
         display: block !important;
     }
-
+    .visible-sm.col.col-content-center {
+        display: flex !important;
+    }
     table.visible-sm {
         display: table !important;
     }
@@ -158,7 +167,9 @@
     .visible-md {
         display: block !important;
     }
-
+    .visible-md.col.col-content-center {
+        display: flex !important;
+    }
     table.visible-md {
         display: table !important;
     }
@@ -195,7 +206,9 @@
     .visible-lg {
         display: block !important;
     }
-
+    .visible-lg.col.col-content-center {
+        display: flex !important;
+    }
     table.visible-lg {
         display: table !important;
     }
