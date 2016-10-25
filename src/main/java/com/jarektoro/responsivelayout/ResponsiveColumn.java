@@ -3,7 +3,6 @@ package com.jarektoro.responsivelayout;
 import com.vaadin.ui.Component;
 import com.vaadin.ui.CssLayout;
 import com.vaadin.ui.CustomComponent;
-import com.vaadin.ui.Label;
 
 import java.util.HashSet;
 import java.util.Set;
