@@ -35,6 +35,10 @@ public class ResponsiveColumn extends CustomComponent {
         XS, SM, MD, LG
     }
 
+    public enum ColumnComponentAlignment {
+        LEFT, CENTER, RIGHT
+    }
+
 
     private void convenienceInIt() {
 
@@ -44,11 +48,11 @@ public class ResponsiveColumn extends CustomComponent {
 
 
         setPrimaryStyleName("col");
+        setSizeUndefined();
         rules = new HashSet<>(4);
         visibilityRules = new HashSet<>(4);
         root = new CssLayout();
         root.setStyleName("col-container");
-        root.setSizeFull();
         setCompositionRoot(root);
     }
 
@@ -299,13 +303,29 @@ public class ResponsiveColumn extends CustomComponent {
     }
 
 
-    public void centerContent(boolean shouldCenter) {
-        if (shouldCenter) {
-            addStyleName("content-center");
-        } else {
-            removeStyleName("content-center");
+    public void setAlignment(ColumnComponentAlignment componentAlignment) {
+        removeStyleName("content-center");
+        removeStyleName("content-right");
+
+
+        switch (componentAlignment) {
+
+
+            case CENTER:
+                addStyleName("content-center");
+                break;
+            case LEFT:
+                break;
+            case RIGHT:
+                addStyleName("content-right");
+                break;
+            default:
+                break;
         }
     }
+
+
+
 
 
     public void setComponent(Component component) {
@@ -348,7 +368,13 @@ public class ResponsiveColumn extends CustomComponent {
     }
 
     public ResponsiveColumn withCenteredComponent(Component component) {
-        centerContent(true);
+        setAlignment(ColumnComponentAlignment.CENTER);
+        setComponent(component);
+        return this;
+    }
+
+    public ResponsiveColumn withRightAlignedComponent(Component component) {
+        setAlignment(ColumnComponentAlignment.RIGHT);
         setComponent(component);
         return this;
     }

@@ -1,14 +1,27 @@
+.container-fluid,
+.container {
+    margin-right: auto;
+    margin-left: auto;
+    display: block;
+}
 
 .col-container .v-caption {
     padding-left:  3px;
     padding-right: 10px;
     width: 100%;
 }
-
+.col-container  {
+    width: 100%;
+}
 .col-content-center > .col-container{
     display: flex !important;
     justify-content: center;
     align-items: center;
+}
+.col-content-right > .col-container{
+    display: flex !important;
+    justify-content: flex-end;
+    align-items: flex-end;
 }
 
 .scrollable-anyway {
@@ -62,6 +75,50 @@
     padding-top: 1rem;
     padding-bottom: 1rem;
 }
+
+
+.row-margin.margin-small.v-col-spacing.v-col-spacing-small {
+    margin-top: 0rem !important;
+    margin-bottom: 0rem !important;
+}
+
+.row-margin.margin-small.h-col-spacing.h-col-spacing-small {
+    margin-right: 0rem !important;
+    margin-left: 0rem !important;
+}
+
+.row-margin.v-col-spacing.v-col-spacing-small {
+    margin-top: .3rem !important;
+    margin-bottom: .3rem !important;
+}
+
+.row-margin.h-col-spacing.h-col-spacing-small {
+    margin-right: .3rem !important;
+    margin-left: .3rem !important;
+}
+
+.row.v-col-spacing.v-col-spacing-small {
+    margin-top: -.3rem;
+    margin-bottom: -.3rem;
+}
+
+.row.h-col-spacing.h-col-spacing-small {
+    margin-right: -.3rem;
+    margin-left: -.3rem;
+}
+
+.row.h-col-spacing.h-col-spacing-small > .col {
+    padding-left: .3rem;
+    padding-right: .3rem;
+}
+
+.row.v-col-spacing.v-col-spacing-small > .col {
+    padding-top: .3rem;
+    padding-bottom: .3rem;
+}
+
+
+
 
 /*NOT REPONSIVE RELATED ENDED*/
 .visible-xs,
@@ -273,8 +330,6 @@
 .container-fluid {
     margin-right: auto;
     margin-left: auto;
-    padding-right: 2rem;
-    padding-left: 2rem;
 }
 
 .row {

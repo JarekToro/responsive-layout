@@ -10,27 +10,38 @@ import com.vaadin.ui.CssLayout;
 @StyleSheet("styles.css")
 public class ResponsiveLayout extends CssLayout {
 
-
-    // just about the same as a StyleAdpterCssLayout
-    // mainly syntax diffs.
-    public ResponsiveLayout() {
-        super();
-        setHeightUndefined();
-        setWidth("100%");
+    public enum ContainerType {
+        FIXED, FLUID
     }
 
 
-    //when size is set to full. It sets the css property 'overflow' to 'hidden'
-    // this inhibits scrolling to counter act that you can set a boolean var to add scrolling
-    public void setSizeFull(boolean scrollable) {
-        super.setSizeFull();
+    public ResponsiveLayout(ContainerType containerType) {
+        super();
+        setHeightUndefined();
+        setContainerType(containerType);
+    }
 
+    public ResponsiveLayout() {
+        super();
+        setHeightUndefined();
+    }
+
+    public void setContainerType(ContainerType containerType) {
+        if (containerType == ContainerType.FLUID) {
+            setStyleName("container-fluid");
+        } else if (containerType == ContainerType.FIXED) {
+            setStyleName("container");
+
+        }
+    }
+
+
+    public void setScrollable(boolean scrollable) {
         if (scrollable) {
             addStyleName("scrollable-anyway");
         } else {
             removeStyleName("scrollable-anyway");
         }
-
     }
 
     /**

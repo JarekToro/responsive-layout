@@ -20,13 +20,13 @@ public class BasicFullPageUI extends AbstractTest {
         super.init(request);
 
         setSizeFull();
-        Page.getCurrent().getStyles().add(".img-rounded { border-radius: 50%; } .bg-dark-grey { background-color: #F0F0F0;}");
+        Page.getCurrent().getStyles().add(".img-rounded { border-radius: 50%; width:100% } .bg-dark-grey { background-color: #F0F0F0;}");
 
 
-        ResponsiveLayout responsiveLayout = new ResponsiveLayout();
+        ResponsiveLayout responsiveLayout = new ResponsiveLayout(ResponsiveLayout.ContainerType.FLUID);
 
-
-        responsiveLayout.setSizeFull(true);
+        responsiveLayout.setScrollable(true);
+        responsiveLayout.setSizeFull();
 
 
         ResponsiveRow rootResponsiveRow = responsiveLayout.addRow();
@@ -58,7 +58,7 @@ public class BasicFullPageUI extends AbstractTest {
 
         ResponsiveColumn profileCol = sideMenu.addColumn()
                 .withDisplayRules(12, 12, 12, 12)
-                .withCenteredComponent(image).withVisibilityRules(true,true,true,true);
+                .withRightAlignedComponent(image).withVisibilityRules(true,true,true,true);
 
 
         Button logoButton = getButtonofSize("LOGO", "100%", "100%", FontAwesome.APPLE);
@@ -117,13 +117,56 @@ public class BasicFullPageUI extends AbstractTest {
             TextField tf = new TextField("caption");
 
 
-            teamResponsiveRow.addColumn().withDisplayRules(12, 6, 4, 3).withComponent(tf);
+            teamResponsiveRow.addColumn().withDisplayRules(12, 6, 4, 3).withComponent(teamMemberView);
         }
 
 
         setContent(responsiveLayout);
+
+
+        ResponsiveLayout responsiveLayout1 = new ResponsiveLayout();
+        ResponsiveRow row = responsiveLayout1.addRow();
+
+
+        row.addColumn().withDisplayRules(12, 12, 12, 12).withComponent(createNestedLayout());
+
+
+        //setContent(responsiveLayout1);
+
+
     }
 
+    public ResponsiveLayout createNestedLayout() {
+        ResponsiveLayout nestedLayout = new ResponsiveLayout();
+        ResponsiveRow nestedLayoutRow = nestedLayout.addRow().withSpacing(true);
+        nestedLayoutRow.setSpacing(ResponsiveRow.SpacingSize.SMALL,true);
+        nestedLayoutRow.setMargin(ResponsiveRow.MarginSize.SMALL,true);
+        Label label = new Label("Title!");
+        label.setSizeUndefined();
+
+        Button button = new Button("", FontAwesome.ANCHOR);
+        button.addStyleName(ValoTheme.BUTTON_PRIMARY);
+
+        TextField field = new TextField();
+        field.setInputPrompt("Description");
+
+        Button button1 = new Button("", FontAwesome.ANCHOR);
+        button1.addStyleName(ValoTheme.BUTTON_FRIENDLY);
+
+
+        nestedLayoutRow.addComponents(button,label,field,button1);
+
+
+        return nestedLayout;
+    }
+
+    public ResponsiveColumn wrapInColumn(Component component) {
+
+        ResponsiveColumn col = new ResponsiveColumn().withComponent(component);
+        col.setSizeUndefined();
+        return col;
+
+    }
 
     public Button getButtonofSize(String title, String h, String w, FontIcon icon) {
         Button button = new Button(title);
@@ -173,14 +216,16 @@ public class BasicFullPageUI extends AbstractTest {
             // not part of responsiveLayout lib
 
             setWidth("100%");
-
+setHeightUndefined();
 
             ResponsiveLayout responsiveLayout = new ResponsiveLayout();
 
 
             ResponsiveRow responsiveRow = new ResponsiveRow();
-            responsiveRow.setMargin(true);
-            responsiveRow.setMarginSmall(true);
+
+            responsiveRow.setMargin(ResponsiveRow.MarginSize.SMALL,true);
+            responsiveRow.setSpacing(ResponsiveRow.SpacingSize.SMALL,true);
+
             ResponsiveColumn imageCol = new ResponsiveColumn(4, 4, 4, 4);
             imageCol.setComponent(getRandomTeamMember());
             ResponsiveColumn titleCol = new ResponsiveColumn(4, 4, 4, 4);
@@ -189,7 +234,6 @@ public class BasicFullPageUI extends AbstractTest {
 
             responsiveRow.addColumn(imageCol);
             responsiveRow.addColumn(titleCol);
-            responsiveRow.setHorizontalSpacing(true);
             responsiveRow.setDefaultComponentAlignment(Alignment.MIDDLE_LEFT);
 
             responsiveLayout.addRow(responsiveRow);
@@ -210,7 +254,7 @@ public class BasicFullPageUI extends AbstractTest {
             // Display the image without caption
             Image image = new Image(null, res);
             image.setStyleName("img-rounded");
-            image.setSizeFull();
+            image.setWidth("100%");
 
             return image;
 

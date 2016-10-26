@@ -2,6 +2,7 @@ package com.jarektoro.responsivelayout;
 
 
 import com.vaadin.ui.Alignment;
+import com.vaadin.ui.Component;
 import com.vaadin.ui.CssLayout;
 import com.vaadin.ui.VerticalLayout;
 
@@ -11,6 +12,14 @@ import com.vaadin.ui.VerticalLayout;
  */
 public class ResponsiveRow extends CssLayout {
 
+
+    public enum MarginSize {
+        NORMAL, SMALL
+    }
+
+    public enum SpacingSize {
+        NORMAL, SMALL
+    }
 
     public ResponsiveRow() {
 
@@ -33,7 +42,7 @@ public class ResponsiveRow extends CssLayout {
 
         //add ResponsiveColumn to Component List then recalulates the margin and spacing to match
 
-        addComponent(col);
+        super.addComponent(col);
 
     }
 
@@ -50,21 +59,36 @@ public class ResponsiveRow extends CssLayout {
 
     }
 
-    public void setMarginSmall(boolean small) {
 
+    public void setMargin(MarginSize marginSize, boolean margin) {
 
-        if (small) {
-            addStyleName("margin-small");
-        } else {
+        if (margin){
+            removeStyleName("margin");
+            removeStyleName("margin-small");
+            if (marginSize == MarginSize.NORMAL) {
+                addStyleName("margin");
+
+            } else if (marginSize == MarginSize.SMALL) {
+                addStyleName("margin");
+                addStyleName("margin-small");
+            }
+        }else{
+            removeStyleName("margin");
             removeStyleName("margin-small");
         }
 
 
     }
 
+
     public void setSpacing(boolean spacing) {
         setVerticalSpacing(spacing);
         setHorizontalSpacing(spacing);
+    }
+
+    public void setSpacing(SpacingSize spacingSize, boolean spacing) {
+        setVerticalSpacing(spacingSize,spacing);
+        setHorizontalSpacing(spacingSize, spacing);
     }
 
     public void setVerticalSpacing(boolean verticalSpacing) {
@@ -85,6 +109,62 @@ public class ResponsiveRow extends CssLayout {
             addStyleName("h-col-spacing");
         } else {
             removeStyleName("h-col-spacing");
+        }
+
+
+    }
+
+    public void setVerticalSpacing(SpacingSize spacingSize, boolean verticalSpacing) {
+
+
+
+
+        if (verticalSpacing) {
+            removeStyleName("v-col-spacing");
+            removeStyleName("v-col-spacing-small");
+
+            if (spacingSize == SpacingSize.NORMAL) {
+                addStyleName("v-col-spacing");
+
+
+            } else if (spacingSize == SpacingSize.SMALL) {
+                addStyleName("v-col-spacing");
+                addStyleName("v-col-spacing-small");
+            }
+
+
+        } else {
+
+            removeStyleName("v-col-spacing");
+            removeStyleName("v-col-spacing-small");
+
+        }
+
+    }
+
+    public void setHorizontalSpacing(SpacingSize spacingSize, boolean horizontalSpacing) {
+
+
+
+        if (horizontalSpacing) {
+            removeStyleName("h-col-spacing");
+            removeStyleName("h-col-spacing-small");
+
+            if (spacingSize == SpacingSize.NORMAL) {
+                addStyleName("h-col-spacing");
+
+
+            } else if (spacingSize == SpacingSize.SMALL) {
+                addStyleName("h-col-spacing");
+                addStyleName("h-col-spacing-small");
+            }
+
+
+        } else {
+
+            removeStyleName("h-col-spacing");
+            removeStyleName("h-col-spacing-small");
+
         }
 
 
@@ -139,12 +219,33 @@ public class ResponsiveRow extends CssLayout {
     }
 
 
+    @Override public void addComponents(Component... components){
+
+        for (Component component:components) {
+            ResponsiveColumn col = new ResponsiveColumn().withComponent(component);
+            col.setSizeUndefined();
+            addColumn(col);
+        }
+
+    }
+    @Override public void addComponent(Component component){
+
+            ResponsiveColumn col = new ResponsiveColumn().withComponent(component);
+            col.setSizeUndefined();
+            addColumn(col);
+
+    }
     // Convenience API
 
     public ResponsiveColumn addColumn() {
         ResponsiveColumn column = new ResponsiveColumn();
         addColumn(column);
         return column;
+    }
+
+    public ResponsiveRow withComponents(Component... components) {
+        addComponents(components);
+        return this;
     }
 
     public ResponsiveRow withAlignment(Alignment alignment) {
@@ -158,8 +259,7 @@ public class ResponsiveRow extends CssLayout {
     }
 
     public ResponsiveRow withSmallMargin(boolean margin) {
-        setMargin(margin);
-        setMarginSmall(margin);
+        setMargin(MarginSize.SMALL,margin);;
         return this;
     }
 
@@ -178,5 +278,7 @@ public class ResponsiveRow extends CssLayout {
         setHorizontalSpacing(spacing);
         return this;
     }
+
+
 
 }
