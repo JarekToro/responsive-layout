@@ -3,5 +3,5 @@ Vaadin-Package-Version: 1
 Vaadin-Addon: ${Vaadin-Addon}
 Vaadin-License-Title: ${Vaadin-License-Title}
 Implementation-Vendor: ${Implementation-Vendor}
-Implementation-Title: ResponsiveLayout
+Implementation-Title: ${Implementation-Title}
 Implementation-Version: ${Implementation-Version}
