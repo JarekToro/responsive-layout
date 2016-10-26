@@ -34,16 +34,21 @@ Todo
 
 Wanna do this? Yeah you do!
 
-<img src="https://raw.githubusercontent.com/Jayrok94/ResponsiveLayout/master/readme-resources/demo.gif" width="500px" alt="Image of radness"/>
+<img src="https://raw.githubusercontent.com/Jayrok94/ResponsiveLayout/master/readme-resources/demo.gif" width="300px" alt="Image of radness"/>
 <br>
-How do I build this? That complex dynamic menu.. I need.. Well its all super simple. :+1:
 
+## Documentation
+- [`ResponsiveLayout`](https://github.com/JarekToro/responsive-layout/wiki/API-%7C-ResponsiveLayout)
+- [`ResponsiveRow`](https://github.com/JarekToro/responsive-layout/wiki/API-%7C-ResponsiveRow)
+- [`ResponsiveColumn`](https://github.com/JarekToro/responsive-layout/wiki/API-%7C-ResponsiveColumn)
 
-- [What is the grid system? Click here for a more in depth look](https://github.com/Jayrok94/ResponsiveLayout/wiki/The-Grid-System)
+## Examples
+- [Basic](https://github.com/JarekToro/responsive-layout/wiki/Basic)
+- [Nesting](https://github.com/JarekToro/responsive-layout/wiki/Nesting)
+- [Sample Menu](https://github.com/JarekToro/responsive-layout/wiki/Sample-Menu)
 
-- [Check these examples out in the wiki!](https://github.com/Jayrok94/ResponsiveLayout/wiki/Examples)
-
-- [How to make that sweet menu click here! psst.. its super easy](https://github.com/Jayrok94/ResponsiveLayout/wiki/Sample-Menu)
+## Grid Concept
+- [The Grid System](https://github.com/JarekToro/responsive-layout/wiki/The-Grid-System)
 
 ## Credits
 
