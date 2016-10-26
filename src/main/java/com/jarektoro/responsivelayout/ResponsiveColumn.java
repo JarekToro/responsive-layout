@@ -14,8 +14,8 @@ public class ResponsiveColumn extends CustomComponent {
 
 
     //TODO: these should be one class not two
-    private Set<ResponsiveColumn.Rule> rules;
-    private Set<ResponsiveColumn.Visibility> visibilityRules;
+    private Set<Rule> rules;
+    private Set<Visibility> visibilityRules;
     private CssLayout root;
 
     public class Rule {
@@ -60,7 +60,7 @@ public class ResponsiveColumn extends CustomComponent {
         convenienceInIt();
     }
 
-    public ResponsiveColumn(ResponsiveColumn.Rule rule) {
+    public ResponsiveColumn(Rule rule) {
         convenienceInIt();
         addRule(rule);
     }
@@ -103,12 +103,12 @@ public class ResponsiveColumn extends CustomComponent {
     }
 
 
-    public void addRule(ResponsiveColumn.Rule rule) {
+    public void addRule(Rule rule) {
 
 
         //removes a rule is you are adding a rule that would override it.
         //then saves the new rule
-        ResponsiveColumn.Rule oldRule = getRuleForDisplaySize(rule.displaySize, rule.isOffset);
+        Rule oldRule = getRuleForDisplaySize(rule.displaySize, rule.isOffset);
         if (oldRule != null) {
             rules.remove(oldRule);
 
@@ -125,7 +125,7 @@ public class ResponsiveColumn extends CustomComponent {
 
     public void addRule(DisplaySize displaySize, int width) {
 
-        ResponsiveColumn.Rule rule = new ResponsiveColumn.Rule();
+        Rule rule = new Rule();
         rule.displaySize = displaySize;
         rule.width = width;
 
@@ -135,7 +135,7 @@ public class ResponsiveColumn extends CustomComponent {
 
 
     // converts the rule object to a string for css
-    private String ruleToStyleName(ResponsiveColumn.Rule rule) {
+    private String ruleToStyleName(Rule rule) {
 
 
         if (rule.isOffset) {
@@ -172,7 +172,7 @@ public class ResponsiveColumn extends CustomComponent {
     // returns if element will be visible on a given display size;
 
     public boolean isVisibleForDisplaySize(DisplaySize displaySize) {
-        ResponsiveColumn.Visibility oldRule = getVisibilityRuleForDisplaySize(displaySize);
+        Visibility oldRule = getVisibilityRuleForDisplaySize(displaySize);
 
         if (oldRule != null) {
             return oldRule.isVisible;
@@ -193,7 +193,7 @@ public class ResponsiveColumn extends CustomComponent {
     // sets visibility for a given display size
     public void setVisibility(DisplaySize displaySize, boolean isVisible) {
 
-        ResponsiveColumn.Visibility rule = new ResponsiveColumn.Visibility();
+        Visibility rule = new Visibility();
         rule.isVisible = isVisible;
         rule.displaySize = displaySize;
 
@@ -201,7 +201,7 @@ public class ResponsiveColumn extends CustomComponent {
         // removes old rule if the new rule would be overwriting it
         // then adds new rule
 
-        ResponsiveColumn.Visibility oldRule = getVisibilityRuleForDisplaySize(rule.displaySize);
+        Visibility oldRule = getVisibilityRuleForDisplaySize(rule.displaySize);
 
         if (oldRule != null) {
             visibilityRules.remove(oldRule);
@@ -218,7 +218,7 @@ public class ResponsiveColumn extends CustomComponent {
 
 
     // same as rule turns the object into a string
-    private String visibilityStyleNameForVsibilityRule(ResponsiveColumn.Visibility visibility) {
+    private String visibilityStyleNameForVsibilityRule(Visibility visibility) {
         if (visibility.isVisible) {
             switch (visibility.displaySize) {
                 case XS:
@@ -249,29 +249,29 @@ public class ResponsiveColumn extends CustomComponent {
     }
 
 
-    private ResponsiveColumn.Visibility getVisibilityRuleForDisplaySize(DisplaySize displaySize) {
+    private Visibility getVisibilityRuleForDisplaySize(DisplaySize displaySize) {
 
-        final ResponsiveColumn.Visibility[] foundRule = {null};
+        final Visibility[] foundRule = {null};
 
-        visibilityRules.forEach(rule -> {
+        for (Visibility rule : visibilityRules) {
             if (rule.displaySize.equals(displaySize)) {
 
                 foundRule[0] = rule;
 
 
             }
-        });
+        }
 
 
         return foundRule[0];
 
     }
 
-    private ResponsiveColumn.Rule getRuleForDisplaySize(DisplaySize displaySize, boolean isOffset) {
+    private Rule getRuleForDisplaySize(DisplaySize displaySize, boolean isOffset) {
 
         final Rule[] foundRule = {null};
 
-        rules.forEach(rule -> {
+        for (Rule rule : rules) {
             if (rule.displaySize.equals(displaySize)) {
 
                 if (rule.isOffset == isOffset) {
@@ -281,7 +281,7 @@ public class ResponsiveColumn extends CustomComponent {
                 }
 
             }
-        });
+        }
 
 
         return foundRule[0];
@@ -290,7 +290,7 @@ public class ResponsiveColumn extends CustomComponent {
 
 
     public void setOffset(DisplaySize displaySize, int width) {
-        ResponsiveColumn.Rule rule = new Rule();
+        Rule rule = new Rule();
         rule.isOffset = true;
         rule.displaySize = displaySize;
         rule.width = width;
