@@ -258,8 +258,8 @@ public class ResponsiveRow extends CssLayout {
         return this;
     }
 
-    public ResponsiveRow withSmallMargin(boolean margin) {
-        setMargin(MarginSize.SMALL,margin);;
+    public ResponsiveRow withMargin(MarginSize size, boolean margin) {
+        setMargin(size,margin);
         return this;
     }
 
@@ -268,9 +268,17 @@ public class ResponsiveRow extends CssLayout {
         setHorizontalSpacing(spacing);
         return this;
     }
+    public ResponsiveRow withSpacing(SpacingSize size, boolean spacing) {
+        setSpacing(size,spacing);
+        return this;
+    }
 
     public ResponsiveRow withVerticalSpacing(boolean spacing) {
         setVerticalSpacing(spacing);
+        return this;
+    }
+    public ResponsiveRow withVerticalSpacing(SpacingSize size, boolean spacing) {
+        setVerticalSpacing(size,spacing);
         return this;
     }
 
@@ -278,7 +286,10 @@ public class ResponsiveRow extends CssLayout {
         setHorizontalSpacing(spacing);
         return this;
     }
-
+    public ResponsiveRow withHorizontalSpacing(SpacingSize size, boolean spacing) {
+        setHorizontalSpacing(size,spacing);
+        return this;
+    }
 
 
 }
