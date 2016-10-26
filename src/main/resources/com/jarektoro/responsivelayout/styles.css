@@ -36,6 +36,9 @@
     margin: 1rem !important;
 }
 
+
+/*Reg Spacing*/
+
 .row-margin.margin-small.v-col-spacing {
     margin-top: 0rem !important;
     margin-bottom: 0rem !important;
@@ -76,25 +79,26 @@
     padding-bottom: 1rem;
 }
 
+/*Small Spacing*/
 
 .row-margin.margin-small.v-col-spacing.v-col-spacing-small {
-    margin-top: 0rem !important;
-    margin-bottom: 0rem !important;
+    margin-top: .7rem !important;
+    margin-bottom: .7rem !important;
 }
 
 .row-margin.margin-small.h-col-spacing.h-col-spacing-small {
-    margin-right: 0rem !important;
-    margin-left: 0rem !important;
+    margin-right: .7rem !important;
+    margin-left: .7rem !important;
 }
 
 .row-margin.v-col-spacing.v-col-spacing-small {
-    margin-top: .3rem !important;
-    margin-bottom: .3rem !important;
+    margin-top: 1.4rem !important;
+    margin-bottom: 1.4rem !important;
 }
 
 .row-margin.h-col-spacing.h-col-spacing-small {
-    margin-right: .3rem !important;
-    margin-left: .3rem !important;
+    margin-right: 1.4rem !important;
+    margin-left: 1.4rem !important;
 }
 
 .row.v-col-spacing.v-col-spacing-small {

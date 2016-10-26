@@ -23,10 +23,9 @@ public class BasicFullPageUI extends AbstractTest {
         Page.getCurrent().getStyles().add(".img-rounded { border-radius: 50%; width:100% } .bg-dark-grey { background-color: #F0F0F0;}");
 
 
-        ResponsiveLayout responsiveLayout = new ResponsiveLayout(ResponsiveLayout.ContainerType.FLUID);
+        ResponsiveLayout responsiveLayout = new ResponsiveLayout(ResponsiveLayout.ContainerType.FIXED);
 
         responsiveLayout.setScrollable(true);
-        responsiveLayout.setSizeFull();
 
 
         ResponsiveRow rootResponsiveRow = responsiveLayout.addRow();
@@ -131,16 +130,19 @@ public class BasicFullPageUI extends AbstractTest {
         row.addColumn().withDisplayRules(12, 12, 12, 12).withComponent(createNestedLayout());
 
 
-        //setContent(responsiveLayout1);
+        setContent(responsiveLayout1);
 
 
     }
 
     public ResponsiveLayout createNestedLayout() {
         ResponsiveLayout nestedLayout = new ResponsiveLayout();
-        ResponsiveRow nestedLayoutRow = nestedLayout.addRow().withSpacing(true);
+        ResponsiveRow nestedLayoutRow = nestedLayout.addRow();
+
         nestedLayoutRow.setSpacing(ResponsiveRow.SpacingSize.SMALL,true);
         nestedLayoutRow.setMargin(ResponsiveRow.MarginSize.SMALL,true);
+
+
         Label label = new Label("Title!");
         label.setSizeUndefined();
 
