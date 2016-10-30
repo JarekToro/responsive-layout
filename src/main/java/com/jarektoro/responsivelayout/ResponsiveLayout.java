@@ -24,9 +24,13 @@ public class ResponsiveLayout extends CssLayout {
     public ResponsiveLayout() {
         super();
         setHeightUndefined();
+        setContainerType(ContainerType.FLUID);
     }
 
     public void setContainerType(ContainerType containerType) {
+        removeStyleName("container-fluid");
+        removeStyleName("container");
+
         if (containerType == ContainerType.FLUID) {
             setStyleName("container-fluid");
         } else if (containerType == ContainerType.FIXED) {
