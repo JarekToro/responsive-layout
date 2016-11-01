@@ -1,0 +1,104 @@
+@mixin row {
+
+  &-row {
+    box-sizing: border-box;
+    display: -ms-flexbox;
+    display: -webkit-box;
+    display: flex;
+    -ms-flex: 0 1 auto;
+    -webkit-box-flex: 0;
+    flex: 0 1 auto;
+    -ms-flex-direction: row;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    flex-direction: row;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+
+    &-reverse {
+      -ms-flex-direction: row-reverse;
+      -webkit-box-orient: horizontal;
+      -webkit-box-direction: reverse;
+      flex-direction: row-reverse;
+    }
+
+    //TODO: create way to autogenerate the rl- prefix for rl-col dynamiclly
+
+    &.v-col-spacing {
+      margin-top: -1rem;
+      margin-bottom: -1rem;
+    }
+    &.h-col-spacing {
+      margin-right: -1rem;
+      margin-left: -1rem;
+      > .rl-col {
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+    }
+
+    &.v-col-spacing > .rl-col {
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+    }
+
+    &.v-col-spacing.v-col-spacing-small {
+      margin-top: -.3rem;
+      margin-bottom: -.3rem;
+    }
+    &.h-col-spacing.h-col-spacing-small {
+      margin-right: -.3rem;
+      margin-left: -.3rem;
+      > .rl-col {
+        padding-left: .3rem;
+        padding-right: .3rem;
+      }
+    }
+    &.v-col-spacing.v-col-spacing-small > .rl-col {
+      padding-top: .3rem;
+      padding-bottom: .3rem;
+    }
+
+    &-margin {
+      margin: 2rem !important;
+
+      &.v-col-spacing {
+        margin-top: 1rem !important;
+        margin-bottom: 1rem !important;
+      }
+      &.h-col-spacing {
+        margin-right: 1rem !important;
+        margin-left: 1rem !important;
+      }
+      &.v-col-spacing.v-col-spacing-small {
+        margin-top: 1.4rem !important;
+        margin-bottom: 1.4rem !important;
+      }
+      &.h-col-spacing.h-col-spacing-small {
+        margin-right: 1.4rem !important;
+        margin-left: 1.4rem !important;
+      }
+      &-small {
+        margin: 1rem !important;
+        &.v-col-spacing {
+          margin-top: 0rem !important;
+          margin-bottom: 0rem !important;
+        }
+        &.h-col-spacing {
+          margin-right: 0rem !important;
+          margin-left: 0rem !important;
+        }
+        &.v-col-spacing.v-col-spacing-small {
+          margin-top: .7rem !important;
+          margin-bottom: .7rem !important;
+        }
+        &.h-col-spacing.h-col-spacing-small {
+          margin-right: .7rem !important;
+          margin-left: .7rem !important;
+        }
+      }
+    }
+  }
+
+}
+

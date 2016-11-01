@@ -13,6 +13,33 @@ import java.util.Set;
 public class ResponsiveColumn extends CustomComponent {
 
 
+    private static final String CSS_COL = "rl-col";
+    private static final String CSS_COL_CONTENT_CONTAINER = "col-container";
+    private static final String CSS_COL_XS_OFFSET = "xs-offset-";
+    private static final String CSS_COL_SM_OFFSET = "sm-offset-";
+    private static final String CSS_COL_MD_OFFSET = "md-offset-";
+    private static final String CSS_COL_LG_OFFSET = "lg-offset-";
+
+    private static final String CSS_COL_XS = "xs-";
+    private static final String CSS_COL_SM = "sm-";
+    private static final String CSS_COL_MD = "md-";
+    private static final String CSS_COL_LG = "lg-";
+
+    private static final String CSS_VISIBLE_XS = "rl-visible-xs";
+    private static final String CSS_VISIBLE_SM = "rl-visible-sm";
+    private static final String CSS_VISIBLE_MD = "rl-visible-md";
+    private static final String CSS_VISIBLE_LG = "rl-visible-lg";
+
+    private static final String CSS_HIDDEN_XS = "rl-hidden-xs";
+    private static final String CSS_HIDDEN_SM = "rl-hidden-sm";
+    private static final String CSS_HIDDEN_MD = "rl-hidden-md";
+    private static final String CSS_HIDDEN_LG = "rl-hidden-lg";
+
+
+    private static final String CSS_COL_CONTENT_ALGINMENT_RIGHT = "content-right";
+    private static final String CSS_COL_CONTENT_ALGINMENT_CENTER = "content-center";
+
+
     //TODO: these should be one class not two
     private Set<Rule> rules;
     private Set<Visibility> visibilityRules;
@@ -47,12 +74,12 @@ public class ResponsiveColumn extends CustomComponent {
         // important in the addRule method
 
 
-        setPrimaryStyleName("col");
+        setPrimaryStyleName(CSS_COL);
         setSizeUndefined();
         rules = new HashSet<>(4);
         visibilityRules = new HashSet<>(4);
         root = new CssLayout();
-        root.setStyleName("col-container");
+        root.setStyleName(CSS_COL_CONTENT_CONTAINER);
         setCompositionRoot(root);
     }
 
@@ -145,26 +172,26 @@ public class ResponsiveColumn extends CustomComponent {
         if (rule.isOffset) {
             switch (rule.displaySize) {
                 case XS:
-                    return "xs-offset-" + rule.width;
+                    return CSS_COL_XS_OFFSET + rule.width;
                 case SM:
-                    return "sm-offset-" + rule.width;
+                    return CSS_COL_SM_OFFSET + rule.width;
                 case MD:
-                    return "md-offset-" + rule.width;
+                    return CSS_COL_MD_OFFSET + rule.width;
                 case LG:
-                    return "lg-offset-" + rule.width;
+                    return CSS_COL_LG_OFFSET + rule.width;
                 default:
                     return null;
             }
         } else {
             switch (rule.displaySize) {
                 case XS:
-                    return "xs-" + rule.width;
+                    return CSS_COL_XS + rule.width;
                 case SM:
-                    return "sm-" + rule.width;
+                    return CSS_COL_SM + rule.width;
                 case MD:
-                    return "md-" + rule.width;
+                    return CSS_COL_MD + rule.width;
                 case LG:
-                    return "lg-" + rule.width;
+                    return CSS_COL_LG + rule.width;
                 default:
                     return null;
             }
@@ -226,26 +253,26 @@ public class ResponsiveColumn extends CustomComponent {
         if (visibility.isVisible) {
             switch (visibility.displaySize) {
                 case XS:
-                    return "visible-xs";
+                    return CSS_VISIBLE_XS;
                 case SM:
-                    return "visible-sm";
+                    return CSS_VISIBLE_SM;
                 case MD:
-                    return "visible-md";
+                    return CSS_VISIBLE_MD;
                 case LG:
-                    return "visible-lg";
+                    return CSS_VISIBLE_LG;
                 default:
                     return null;
             }
         } else {
             switch (visibility.displaySize) {
                 case XS:
-                    return "hidden-xs";
+                    return CSS_HIDDEN_XS;
                 case SM:
-                    return "hidden-sm";
+                    return CSS_HIDDEN_SM;
                 case MD:
-                    return "hidden-md";
+                    return CSS_HIDDEN_MD;
                 case LG:
-                    return "hidden-lg";
+                    return CSS_HIDDEN_LG;
                 default:
                     return null;
             }
@@ -304,28 +331,26 @@ public class ResponsiveColumn extends CustomComponent {
 
 
     public void setAlignment(ColumnComponentAlignment componentAlignment) {
-        removeStyleName("content-center");
-        removeStyleName("content-right");
+        removeStyleName(CSS_COL_CONTENT_ALGINMENT_RIGHT);
+        removeStyleName(CSS_COL_CONTENT_ALGINMENT_CENTER);
 
 
         switch (componentAlignment) {
 
 
             case CENTER:
-                addStyleName("content-center");
+                addStyleName(CSS_COL_CONTENT_ALGINMENT_CENTER);
                 break;
             case LEFT:
+                //The default it left automatically
                 break;
             case RIGHT:
-                addStyleName("content-right");
+                addStyleName(CSS_COL_CONTENT_ALGINMENT_RIGHT);
                 break;
             default:
                 break;
         }
     }
-
-
-
 
 
     public void setComponent(Component component) {

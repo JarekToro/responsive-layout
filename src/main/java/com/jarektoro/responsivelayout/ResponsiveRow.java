@@ -13,6 +13,42 @@ import com.vaadin.ui.VerticalLayout;
 public class ResponsiveRow extends CssLayout {
 
 
+    private static final String CSS_ROW = "rl-row";
+
+
+    private static final String CSS_MARGIN = "margin";
+    private static final String CSS_MARGIN_SMALL = "margin-small";
+
+    private static final String CSS_MARGIN_XS = "margin-xs";
+    private static final String CSS_MARGIN_SMALL_XS = "margin-small-xs";
+
+    private static final String CSS_MARGIN_SM = "margin-sm";
+    private static final String CSS_MARGIN_SMALL_SM = "margin-small-sm";
+
+    private static final String CSS_MARGIN_MD = "margin-md";
+    private static final String CSS_MARGIN_SMALL_MD = "margin-small-md";
+
+    private static final String CSS_MARGIN_LG = "margin-lg";
+    private static final String CSS_MARGIN_SMALL_LG = "margin-small-lg";
+
+    private static final String CSS_V_COL_SPACING = "v-col-spacing";
+    private static final String CSS_V_COL_SPACING_SMALL = "v-col-spacing-small";
+
+    private static final String CSS_H_COL_SPACING = "h-col-spacing";
+    private static final String CSS_H_COL_SPACING_SMALL = "h-col-spacing-small";
+
+    private static final String CSS_ALIGNMENT_BOTTOM_LEFT = "rl-bottom-xs rl-start-xs";
+    private static final String CSS_ALIGNMENT_BOTTOM_CENTER = "rl-bottom-xs rl-center-xs";
+    private static final String CSS_ALIGNMENT_BOTTOM_RIGHT = "rl-bottom-xs rl-end-xs";
+
+    private static final String CSS_ALIGNMENT_TOP_LEFT = "rl-top-xs rl-start-xs";
+    private static final String CSS_ALIGNMENT_TOP_CENTER = "rl-top-xs rl-center-xs";
+    private static final String CSS_ALIGNMENT_TOP_RIGHT = "rl-top-xs rl-end-xs";
+
+    private static final String CSS_ALIGNMENT_MIDDLE_LEFT = "rl-middle-xs rl-start-xs";
+    private static final String CSS_ALIGNMENT_MIDDLE_CENTER = "rl-middle-xs rl-center-xs";
+    private static final String CSS_ALIGNMENT_MIDDLE_RIGHT = "rl-middle-xs rl-end-xs";
+
     public enum MarginSize {
         NORMAL, SMALL
     }
@@ -23,7 +59,7 @@ public class ResponsiveRow extends CssLayout {
 
     public ResponsiveRow() {
 
-        setPrimaryStyleName("row");
+        setPrimaryStyleName(CSS_ROW);
         setWidthUndefined();
 
 
@@ -51,9 +87,9 @@ public class ResponsiveRow extends CssLayout {
 
 
         if (margin) {
-            addStyleName("margin");
+            addStyleName(CSS_MARGIN);
         } else {
-            removeStyleName("margin");
+            removeStyleName(CSS_MARGIN);
         }
 
 
@@ -62,19 +98,19 @@ public class ResponsiveRow extends CssLayout {
 
     public void setMargin(MarginSize marginSize, boolean margin) {
 
-        if (margin){
-            removeStyleName("margin");
-            removeStyleName("margin-small");
+        if (margin) {
+            removeStyleName(CSS_MARGIN);
+            removeStyleName(CSS_MARGIN_SMALL);
             if (marginSize == MarginSize.NORMAL) {
-                addStyleName("margin");
+                addStyleName(CSS_MARGIN);
 
             } else if (marginSize == MarginSize.SMALL) {
-                addStyleName("margin");
-                addStyleName("margin-small");
+                addStyleName(CSS_MARGIN);
+                addStyleName(CSS_MARGIN_SMALL);
             }
-        }else{
-            removeStyleName("margin");
-            removeStyleName("margin-small");
+        } else {
+            removeStyleName(CSS_MARGIN);
+            removeStyleName(CSS_MARGIN_SMALL);
         }
 
 
@@ -87,7 +123,7 @@ public class ResponsiveRow extends CssLayout {
     }
 
     public void setSpacing(SpacingSize spacingSize, boolean spacing) {
-        setVerticalSpacing(spacingSize,spacing);
+        setVerticalSpacing(spacingSize, spacing);
         setHorizontalSpacing(spacingSize, spacing);
     }
 
@@ -95,9 +131,9 @@ public class ResponsiveRow extends CssLayout {
 
 
         if (verticalSpacing) {
-            addStyleName("v-col-spacing");
+            addStyleName(CSS_V_COL_SPACING);
         } else {
-            removeStyleName("v-col-spacing");
+            removeStyleName(CSS_V_COL_SPACING);
         }
 
     }
@@ -106,9 +142,9 @@ public class ResponsiveRow extends CssLayout {
 
 
         if (horizontalSpacing) {
-            addStyleName("h-col-spacing");
+            addStyleName(CSS_H_COL_SPACING);
         } else {
-            removeStyleName("h-col-spacing");
+            removeStyleName(CSS_H_COL_SPACING);
         }
 
 
@@ -117,26 +153,24 @@ public class ResponsiveRow extends CssLayout {
     public void setVerticalSpacing(SpacingSize spacingSize, boolean verticalSpacing) {
 
 
-
-
         if (verticalSpacing) {
-            removeStyleName("v-col-spacing");
-            removeStyleName("v-col-spacing-small");
+            removeStyleName(CSS_V_COL_SPACING);
+            removeStyleName(CSS_V_COL_SPACING_SMALL);
 
             if (spacingSize == SpacingSize.NORMAL) {
-                addStyleName("v-col-spacing");
+                addStyleName(CSS_V_COL_SPACING);
 
 
             } else if (spacingSize == SpacingSize.SMALL) {
-                addStyleName("v-col-spacing");
-                addStyleName("v-col-spacing-small");
+                addStyleName(CSS_V_COL_SPACING);
+                addStyleName(CSS_V_COL_SPACING_SMALL);
             }
 
 
         } else {
 
-            removeStyleName("v-col-spacing");
-            removeStyleName("v-col-spacing-small");
+            removeStyleName(CSS_V_COL_SPACING);
+            removeStyleName(CSS_V_COL_SPACING_SMALL);
 
         }
 
@@ -145,73 +179,82 @@ public class ResponsiveRow extends CssLayout {
     public void setHorizontalSpacing(SpacingSize spacingSize, boolean horizontalSpacing) {
 
 
-
         if (horizontalSpacing) {
-            removeStyleName("h-col-spacing");
-            removeStyleName("h-col-spacing-small");
+            removeStyleName(CSS_H_COL_SPACING);
+            removeStyleName(CSS_H_COL_SPACING_SMALL);
 
             if (spacingSize == SpacingSize.NORMAL) {
-                addStyleName("h-col-spacing");
+                addStyleName(CSS_H_COL_SPACING);
 
 
             } else if (spacingSize == SpacingSize.SMALL) {
-                addStyleName("h-col-spacing");
-                addStyleName("h-col-spacing-small");
+                addStyleName(CSS_H_COL_SPACING);
+                addStyleName(CSS_H_COL_SPACING_SMALL);
             }
 
 
         } else {
 
-            removeStyleName("h-col-spacing");
-            removeStyleName("h-col-spacing-small");
+            removeStyleName(CSS_H_COL_SPACING);
+            removeStyleName(CSS_H_COL_SPACING_SMALL);
 
         }
 
 
     }
+
 
     public void setDefaultComponentAlignment(Alignment defaultAlignment) {
 
-
         //Makes use of the Alignment Property Vaadin already made and converts it to the Css Style Name
 
-        removeStyleName("top-xs middle-xs bottom-xs start-xs center-xs end-xs");
+        removeStyleName(CSS_ALIGNMENT_BOTTOM_LEFT);
+        removeStyleName(CSS_ALIGNMENT_BOTTOM_CENTER);
+        removeStyleName(CSS_ALIGNMENT_BOTTOM_RIGHT);
+
+        removeStyleName(CSS_ALIGNMENT_TOP_LEFT);
+        removeStyleName(CSS_ALIGNMENT_TOP_CENTER);
+        removeStyleName(CSS_ALIGNMENT_TOP_RIGHT);
+
+        removeStyleName(CSS_ALIGNMENT_MIDDLE_LEFT);
+        removeStyleName(CSS_ALIGNMENT_MIDDLE_CENTER);
+        removeStyleName(CSS_ALIGNMENT_MIDDLE_RIGHT);
 
         if (defaultAlignment.equals(Alignment.BOTTOM_LEFT)) {
 
-            addStyleName("bottom-xs start-xs");
+            addStyleName(CSS_ALIGNMENT_BOTTOM_LEFT);
 
         } else if (defaultAlignment.equals(Alignment.BOTTOM_CENTER)) {
 
-            addStyleName("bottom-xs center-xs");
+            addStyleName(CSS_ALIGNMENT_BOTTOM_CENTER);
 
         } else if (defaultAlignment.equals(Alignment.BOTTOM_RIGHT)) {
 
-            addStyleName("bottom-xs end-xs");
+            addStyleName(CSS_ALIGNMENT_BOTTOM_RIGHT);
 
         } else if (defaultAlignment.equals(Alignment.TOP_LEFT)) {
 
-            addStyleName("top-xs start-xs");
+            addStyleName(CSS_ALIGNMENT_TOP_LEFT);
 
         } else if (defaultAlignment.equals(Alignment.TOP_CENTER)) {
 
-            addStyleName("top-xs center-xs");
+            addStyleName(CSS_ALIGNMENT_TOP_CENTER);
 
         } else if (defaultAlignment.equals(Alignment.TOP_RIGHT)) {
 
-            addStyleName("top-xs end-xs");
+            addStyleName(CSS_ALIGNMENT_TOP_RIGHT);
 
         } else if (defaultAlignment.equals(Alignment.MIDDLE_LEFT)) {
 
-            addStyleName("middle-xs start-xs");
+            addStyleName(CSS_ALIGNMENT_MIDDLE_LEFT);
 
         } else if (defaultAlignment.equals(Alignment.MIDDLE_CENTER)) {
 
-            addStyleName("middle-xs center-xs");
+            addStyleName(CSS_ALIGNMENT_MIDDLE_CENTER);
 
         } else if (defaultAlignment.equals(Alignment.MIDDLE_RIGHT)) {
 
-            addStyleName("middle-xs end-xs");
+            addStyleName(CSS_ALIGNMENT_MIDDLE_RIGHT);
 
         }
 
@@ -219,20 +262,23 @@ public class ResponsiveRow extends CssLayout {
     }
 
 
-    @Override public void addComponents(Component... components){
+    @Override
+    public void addComponents(Component... components) {
 
-        for (Component component:components) {
+        for (Component component : components) {
             ResponsiveColumn col = new ResponsiveColumn().withComponent(component);
             col.setSizeUndefined();
             addColumn(col);
         }
 
     }
-    @Override public void addComponent(Component component){
 
-            ResponsiveColumn col = new ResponsiveColumn().withComponent(component);
-            col.setSizeUndefined();
-            addColumn(col);
+    @Override
+    public void addComponent(Component component) {
+
+        ResponsiveColumn col = new ResponsiveColumn().withComponent(component);
+        col.setSizeUndefined();
+        addColumn(col);
 
     }
     // Convenience API
@@ -259,7 +305,7 @@ public class ResponsiveRow extends CssLayout {
     }
 
     public ResponsiveRow withMargin(MarginSize size, boolean margin) {
-        setMargin(size,margin);
+        setMargin(size, margin);
         return this;
     }
 
@@ -268,8 +314,9 @@ public class ResponsiveRow extends CssLayout {
         setHorizontalSpacing(spacing);
         return this;
     }
+
     public ResponsiveRow withSpacing(SpacingSize size, boolean spacing) {
-        setSpacing(size,spacing);
+        setSpacing(size, spacing);
         return this;
     }
 
@@ -277,8 +324,9 @@ public class ResponsiveRow extends CssLayout {
         setVerticalSpacing(spacing);
         return this;
     }
+
     public ResponsiveRow withVerticalSpacing(SpacingSize size, boolean spacing) {
-        setVerticalSpacing(size,spacing);
+        setVerticalSpacing(size, spacing);
         return this;
     }
 
@@ -286,8 +334,9 @@ public class ResponsiveRow extends CssLayout {
         setHorizontalSpacing(spacing);
         return this;
     }
+
     public ResponsiveRow withHorizontalSpacing(SpacingSize size, boolean spacing) {
-        setHorizontalSpacing(size,spacing);
+        setHorizontalSpacing(size, spacing);
         return this;
     }
 

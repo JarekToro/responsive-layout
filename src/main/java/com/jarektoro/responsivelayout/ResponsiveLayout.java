@@ -10,6 +10,13 @@ import com.vaadin.ui.CssLayout;
 @StyleSheet("styles.css")
 public class ResponsiveLayout extends CssLayout {
 
+
+    private static final String CSS_CONTAINER = "rl-container";
+    private static final String CSS_CONTAINER_FLUID = "fluid";
+    private static final String CSS_CONTAINER_FIXED = "fixed";
+    private static final String CSS_CONTAINER_SCROLLABLE = "scrollable";
+
+
     public enum ContainerType {
         FIXED, FLUID
     }
@@ -18,23 +25,26 @@ public class ResponsiveLayout extends CssLayout {
     public ResponsiveLayout(ContainerType containerType) {
         super();
         setHeightUndefined();
+        setPrimaryStyleName(CSS_CONTAINER);
         setContainerType(containerType);
+
     }
 
     public ResponsiveLayout() {
         super();
         setHeightUndefined();
+        setPrimaryStyleName(CSS_CONTAINER);
         setContainerType(ContainerType.FLUID);
     }
 
     public void setContainerType(ContainerType containerType) {
-        removeStyleName("container-fluid");
-        removeStyleName("container");
+        removeStyleName(CSS_CONTAINER_FIXED);
+        removeStyleName(CSS_CONTAINER_FLUID);
 
         if (containerType == ContainerType.FLUID) {
-            setStyleName("container-fluid");
+            addStyleName(CSS_CONTAINER_FLUID);
         } else if (containerType == ContainerType.FIXED) {
-            setStyleName("container");
+            addStyleName(CSS_CONTAINER_FIXED);
 
         }
     }
@@ -42,9 +52,9 @@ public class ResponsiveLayout extends CssLayout {
 
     public void setScrollable(boolean scrollable) {
         if (scrollable) {
-            addStyleName("scrollable-anyway");
+            addStyleName(CSS_CONTAINER_SCROLLABLE);
         } else {
-            removeStyleName("scrollable-anyway");
+            removeStyleName(CSS_CONTAINER_SCROLLABLE);
         }
     }
 

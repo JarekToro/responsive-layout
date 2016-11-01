@@ -130,7 +130,13 @@ public class BasicFullPageUI extends AbstractTest {
         row.addColumn().withDisplayRules(12, 12, 12, 12).withComponent(createNestedLayout());
 
 
-        setContent(responsiveLayout1);
+        Panel panel = new Panel("series");
+        ResponsiveLayout layout = new ResponsiveLayout(ResponsiveLayout.ContainerType.FLUID);
+        panel.setContent(layout); // 'this', is a Vaadin Panel
+        layout.addRow().withMargin(ResponsiveRow.MarginSize.SMALL, true).withVerticalSpacing(ResponsiveRow.SpacingSize.SMALL, true).withHorizontalSpacing(true).addColumn().withDisplayRules(12, 12,12,12).setComponent(new Label("Test"));
+
+
+        setContent(panel);
 
 
     }
