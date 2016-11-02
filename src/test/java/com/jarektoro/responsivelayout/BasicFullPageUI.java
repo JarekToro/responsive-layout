@@ -133,7 +133,7 @@ public class BasicFullPageUI extends AbstractTest {
         Panel panel = new Panel("series");
         ResponsiveLayout layout = new ResponsiveLayout(ResponsiveLayout.ContainerType.FLUID);
         panel.setContent(layout); // 'this', is a Vaadin Panel
-        layout.addRow().withMargin(ResponsiveRow.MarginSize.SMALL, true).withVerticalSpacing(ResponsiveRow.SpacingSize.SMALL, true).withHorizontalSpacing(true).addColumn().withDisplayRules(12, 12,12,12).setComponent(new Label("Test"));
+        layout.addRow().withMargin(ResponsiveRow.MarginSize.SMALL,ResponsiveColumn.DisplaySize.XS, true).withVerticalSpacing(ResponsiveRow.SpacingSize.SMALL, true).withHorizontalSpacing(true).addColumn().withDisplayRules(12, 12,12,12).setComponent(new Label("Test"));
 
 
         setContent(panel);
@@ -146,7 +146,7 @@ public class BasicFullPageUI extends AbstractTest {
         ResponsiveRow nestedLayoutRow = nestedLayout.addRow();
 
         nestedLayoutRow.setSpacing(ResponsiveRow.SpacingSize.SMALL,true);
-        nestedLayoutRow.setMargin(ResponsiveRow.MarginSize.SMALL,true);
+        nestedLayoutRow.setMargin(ResponsiveRow.MarginSize.SMALL,ResponsiveColumn.DisplaySize.XS,true);
 
 
         Label label = new Label("Title!");
@@ -231,7 +231,7 @@ setHeightUndefined();
 
             ResponsiveRow responsiveRow = new ResponsiveRow();
 
-            responsiveRow.setMargin(ResponsiveRow.MarginSize.SMALL,true);
+            responsiveRow.setMargin(ResponsiveRow.MarginSize.SMALL,ResponsiveColumn.DisplaySize.XS,true);
             responsiveRow.setSpacing(ResponsiveRow.SpacingSize.SMALL,true);
 
             ResponsiveColumn imageCol = new ResponsiveColumn(4, 4, 4, 4);

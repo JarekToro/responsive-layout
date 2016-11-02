@@ -19,18 +19,6 @@ public class ResponsiveRow extends CssLayout {
     private static final String CSS_MARGIN = "margin";
     private static final String CSS_MARGIN_SMALL = "margin-small";
 
-    private static final String CSS_MARGIN_XS = "margin-xs";
-    private static final String CSS_MARGIN_SMALL_XS = "margin-small-xs";
-
-    private static final String CSS_MARGIN_SM = "margin-sm";
-    private static final String CSS_MARGIN_SMALL_SM = "margin-small-sm";
-
-    private static final String CSS_MARGIN_MD = "margin-md";
-    private static final String CSS_MARGIN_SMALL_MD = "margin-small-md";
-
-    private static final String CSS_MARGIN_LG = "margin-lg";
-    private static final String CSS_MARGIN_SMALL_LG = "margin-small-lg";
-
     private static final String CSS_V_COL_SPACING = "v-col-spacing";
     private static final String CSS_V_COL_SPACING_SMALL = "v-col-spacing-small";
 
@@ -61,6 +49,7 @@ public class ResponsiveRow extends CssLayout {
 
         setPrimaryStyleName(CSS_ROW);
         setWidthUndefined();
+        addStyleName(CSS_MARGIN);
 
 
         VerticalLayout verticalLayout = new VerticalLayout();
@@ -87,30 +76,48 @@ public class ResponsiveRow extends CssLayout {
 
 
         if (margin) {
-            addStyleName(CSS_MARGIN);
+            setMargin(MarginSize.NORMAL, ResponsiveColumn.DisplaySize.XS, margin);
         } else {
-            removeStyleName(CSS_MARGIN);
+            removeStyleName(CSS_MARGIN + "-xs");
         }
 
 
     }
 
 
-    public void setMargin(MarginSize marginSize, boolean margin) {
+    public void setMargin(MarginSize marginSize, ResponsiveColumn.DisplaySize displaySize, boolean margin) {
+
+        String suffix = "";
+
+        switch (displaySize) {
+            case XS:
+                suffix = "-xs";
+                break;
+            case SM:
+                suffix = "-sm";
+                break;
+            case MD:
+                suffix = "-md";
+                break;
+            case LG:
+                suffix = "-lg";
+                break;
+        }
 
         if (margin) {
-            removeStyleName(CSS_MARGIN);
-            removeStyleName(CSS_MARGIN_SMALL);
+            removeStyleName(CSS_MARGIN + suffix);
+            removeStyleName(CSS_MARGIN + suffix +"-"+ CSS_MARGIN_SMALL + suffix);
             if (marginSize == MarginSize.NORMAL) {
-                addStyleName(CSS_MARGIN);
+                addStyleName(CSS_MARGIN + suffix);
+
 
             } else if (marginSize == MarginSize.SMALL) {
-                addStyleName(CSS_MARGIN);
-                addStyleName(CSS_MARGIN_SMALL);
+                addStyleName(CSS_MARGIN + suffix);
+                addStyleName(CSS_MARGIN + suffix +"-"+ CSS_MARGIN_SMALL + suffix);
             }
         } else {
-            removeStyleName(CSS_MARGIN);
-            removeStyleName(CSS_MARGIN_SMALL);
+            removeStyleName(CSS_MARGIN + suffix);
+            removeStyleName(CSS_MARGIN + suffix +"-"+ CSS_MARGIN_SMALL + suffix);
         }
 
 
@@ -304,8 +311,8 @@ public class ResponsiveRow extends CssLayout {
         return this;
     }
 
-    public ResponsiveRow withMargin(MarginSize size, boolean margin) {
-        setMargin(size, margin);
+    public ResponsiveRow withMargin(MarginSize size, ResponsiveColumn.DisplaySize displaySize, boolean margin) {
+        setMargin(size,displaySize, margin);
         return this;
     }
 
