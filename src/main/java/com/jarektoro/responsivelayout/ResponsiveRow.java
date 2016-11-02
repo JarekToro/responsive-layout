@@ -76,9 +76,15 @@ public class ResponsiveRow extends CssLayout {
 
 
         if (margin) {
-            setMargin(MarginSize.NORMAL, ResponsiveColumn.DisplaySize.XS, margin);
+            setMargin(ResponsiveRow.MarginSize.NORMAL, ResponsiveColumn.DisplaySize.XS, true);
+            setMargin(ResponsiveRow.MarginSize.NORMAL, ResponsiveColumn.DisplaySize.SM, true);
+            setMargin(ResponsiveRow.MarginSize.NORMAL, ResponsiveColumn.DisplaySize.MD, true);
+            setMargin(ResponsiveRow.MarginSize.NORMAL, ResponsiveColumn.DisplaySize.LG, true);
         } else {
-            removeStyleName(CSS_MARGIN + "-xs");
+            setMargin(ResponsiveRow.MarginSize.NORMAL, ResponsiveColumn.DisplaySize.XS, false);
+            setMargin(ResponsiveRow.MarginSize.NORMAL, ResponsiveColumn.DisplaySize.SM, false);
+            setMargin(ResponsiveRow.MarginSize.NORMAL, ResponsiveColumn.DisplaySize.MD, false);
+            setMargin(ResponsiveRow.MarginSize.NORMAL, ResponsiveColumn.DisplaySize.LG, false);
         }
 
 
@@ -106,18 +112,18 @@ public class ResponsiveRow extends CssLayout {
 
         if (margin) {
             removeStyleName(CSS_MARGIN + suffix);
-            removeStyleName(CSS_MARGIN + suffix +"-"+ CSS_MARGIN_SMALL + suffix);
+            removeStyleName(CSS_MARGIN + suffix + "-" + CSS_MARGIN_SMALL + suffix);
             if (marginSize == MarginSize.NORMAL) {
                 addStyleName(CSS_MARGIN + suffix);
 
 
             } else if (marginSize == MarginSize.SMALL) {
                 addStyleName(CSS_MARGIN + suffix);
-                addStyleName(CSS_MARGIN + suffix +"-"+ CSS_MARGIN_SMALL + suffix);
+                addStyleName(CSS_MARGIN + suffix + "-" + CSS_MARGIN_SMALL + suffix);
             }
         } else {
             removeStyleName(CSS_MARGIN + suffix);
-            removeStyleName(CSS_MARGIN + suffix +"-"+ CSS_MARGIN_SMALL + suffix);
+            removeStyleName(CSS_MARGIN + suffix + "-" + CSS_MARGIN_SMALL + suffix);
         }
 
 
@@ -312,7 +318,7 @@ public class ResponsiveRow extends CssLayout {
     }
 
     public ResponsiveRow withMargin(MarginSize size, ResponsiveColumn.DisplaySize displaySize, boolean margin) {
-        setMargin(size,displaySize, margin);
+        setMargin(size, displaySize, margin);
         return this;
     }
 
