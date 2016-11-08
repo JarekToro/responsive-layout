@@ -123,20 +123,6 @@ public class BasicFullPageUI extends AbstractTest {
         setContent(responsiveLayout);
 
 
-        ResponsiveLayout responsiveLayout1 = new ResponsiveLayout();
-        ResponsiveRow row = responsiveLayout1.addRow();
-
-
-        row.addColumn().withDisplayRules(12, 12, 12, 12).withComponent(createNestedLayout());
-
-
-        Panel panel = new Panel("series");
-        ResponsiveLayout layout = new ResponsiveLayout(ResponsiveLayout.ContainerType.FLUID);
-        panel.setContent(layout); // 'this', is a Vaadin Panel
-        layout.addRow().withMargin(ResponsiveRow.MarginSize.SMALL,ResponsiveColumn.DisplaySize.XS, true).withVerticalSpacing(ResponsiveRow.SpacingSize.SMALL, true).withHorizontalSpacing(true).addColumn().withDisplayRules(12, 12,12,12).setComponent(new Label("Test"));
-
-
-        setContent(panel);
 
 
     }
