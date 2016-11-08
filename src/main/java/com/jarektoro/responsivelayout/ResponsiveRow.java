@@ -13,6 +13,14 @@ import com.vaadin.ui.VerticalLayout;
 public class ResponsiveRow extends CssLayout {
 
 
+    public class NotResponsiveColumnException extends Exception{
+       public NotResponsiveColumnException(String message){
+
+            super(message);
+
+        }
+    }
+
     private static final String CSS_ROW = "rl-row";
 
 
@@ -69,6 +77,21 @@ public class ResponsiveRow extends CssLayout {
 
         super.addComponent(col);
 
+    }
+
+    public ResponsiveColumn getColumn(int index) throws NotResponsiveColumnException {
+
+        Component component = super.getComponent(index);
+
+        if (component instanceof ResponsiveColumn){
+            return (ResponsiveColumn) component;
+        }else{
+            throw new NotResponsiveColumnException("Found Componant Not Responsive Column");
+        }
+    }
+
+    public Component getComponent(int index) {
+        return super.getComponent(index);
     }
 
 
@@ -273,6 +296,7 @@ public class ResponsiveRow extends CssLayout {
 
 
     }
+
 
 
     @Override
