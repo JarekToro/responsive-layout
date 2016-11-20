@@ -349,6 +349,10 @@ public class ResponsiveRow extends CssLayout {
     }
     public ResponsiveRow withMargin(MarginSize xs,MarginSize sm,MarginSize md,MarginSize lg) {
         setMargin(xs, ResponsiveColumn.DisplaySize.XS);
+        setMargin(sm, ResponsiveColumn.DisplaySize.SM);
+        setMargin(md, ResponsiveColumn.DisplaySize.MD);
+        setMargin(lg, ResponsiveColumn.DisplaySize.LG);
+
         return this;
     }
 
