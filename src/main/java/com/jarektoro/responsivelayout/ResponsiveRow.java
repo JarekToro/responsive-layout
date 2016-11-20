@@ -6,6 +6,8 @@ import com.vaadin.ui.Component;
 import com.vaadin.ui.CssLayout;
 import com.vaadin.ui.VerticalLayout;
 
+import static com.jarektoro.responsivelayout.ResponsiveRow.MarginSize.NONE;
+
 
 /**
  * Created by JarekToro on 9/23/16.
@@ -46,7 +48,7 @@ public class ResponsiveRow extends CssLayout {
     private static final String CSS_ALIGNMENT_MIDDLE_RIGHT = "rl-middle-xs rl-end-xs";
 
     public enum MarginSize {
-        NORMAL, SMALL
+        NORMAL, SMALL, NONE
     }
 
     public enum SpacingSize {
@@ -99,22 +101,22 @@ public class ResponsiveRow extends CssLayout {
 
 
         if (margin) {
-            setMargin(ResponsiveRow.MarginSize.NORMAL, ResponsiveColumn.DisplaySize.XS, true);
-            setMargin(ResponsiveRow.MarginSize.NORMAL, ResponsiveColumn.DisplaySize.SM, true);
-            setMargin(ResponsiveRow.MarginSize.NORMAL, ResponsiveColumn.DisplaySize.MD, true);
-            setMargin(ResponsiveRow.MarginSize.NORMAL, ResponsiveColumn.DisplaySize.LG, true);
+            setMargin(ResponsiveRow.MarginSize.NORMAL, ResponsiveColumn.DisplaySize.XS);
+            setMargin(ResponsiveRow.MarginSize.NORMAL, ResponsiveColumn.DisplaySize.SM);
+            setMargin(ResponsiveRow.MarginSize.NORMAL, ResponsiveColumn.DisplaySize.MD);
+            setMargin(ResponsiveRow.MarginSize.NORMAL, ResponsiveColumn.DisplaySize.LG);
         } else {
-            setMargin(ResponsiveRow.MarginSize.NORMAL, ResponsiveColumn.DisplaySize.XS, false);
-            setMargin(ResponsiveRow.MarginSize.NORMAL, ResponsiveColumn.DisplaySize.SM, false);
-            setMargin(ResponsiveRow.MarginSize.NORMAL, ResponsiveColumn.DisplaySize.MD, false);
-            setMargin(ResponsiveRow.MarginSize.NORMAL, ResponsiveColumn.DisplaySize.LG, false);
+            setMargin(ResponsiveRow.MarginSize.NONE, ResponsiveColumn.DisplaySize.XS);
+            setMargin(ResponsiveRow.MarginSize.NONE, ResponsiveColumn.DisplaySize.SM);
+            setMargin(ResponsiveRow.MarginSize.NONE, ResponsiveColumn.DisplaySize.MD);
+            setMargin(ResponsiveRow.MarginSize.NONE, ResponsiveColumn.DisplaySize.LG);
         }
 
 
     }
 
 
-    public void setMargin(MarginSize marginSize, ResponsiveColumn.DisplaySize displaySize, boolean margin) {
+    public void setMargin(MarginSize marginSize, ResponsiveColumn.DisplaySize displaySize) {
 
         String suffix = "";
 
@@ -133,7 +135,7 @@ public class ResponsiveRow extends CssLayout {
                 break;
         }
 
-        if (margin) {
+        if (marginSize != NONE) {
             removeStyleName(CSS_MARGIN + suffix);
             removeStyleName(CSS_MARGIN + suffix + "-" + CSS_MARGIN_SMALL + suffix);
             if (marginSize == MarginSize.NORMAL) {
@@ -341,8 +343,12 @@ public class ResponsiveRow extends CssLayout {
         return this;
     }
 
-    public ResponsiveRow withMargin(MarginSize size, ResponsiveColumn.DisplaySize displaySize, boolean margin) {
-        setMargin(size, displaySize, margin);
+    public ResponsiveRow withMargin(MarginSize size, ResponsiveColumn.DisplaySize displaySize) {
+        setMargin(size, displaySize);
+        return this;
+    }
+    public ResponsiveRow withMargin(MarginSize xs,MarginSize sm,MarginSize md,MarginSize lg) {
+        setMargin(xs, ResponsiveColumn.DisplaySize.XS);
         return this;
     }
 

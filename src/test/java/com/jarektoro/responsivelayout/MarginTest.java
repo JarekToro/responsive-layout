@@ -21,15 +21,15 @@ public class MarginTest extends AbstractTest {
 
         ResponsiveLayout responsiveLayout = new ResponsiveLayout();
         responsiveLayout.addStyleName("red");
-        ResponsiveRow firstRow = responsiveLayout.addRow().withMargin(ResponsiveRow.MarginSize.NORMAL, ResponsiveColumn.DisplaySize.XS, true).withComponents(new Button("Button"), new Button("Button"), new Button("Button"));
+        ResponsiveRow firstRow = responsiveLayout.addRow().withMargin(ResponsiveRow.MarginSize.NORMAL, ResponsiveColumn.DisplaySize.XS).withComponents(new Button("Button"), new Button("Button"), new Button("Button"));
         firstRow.setCaption("Row with normal margin & fluid Components");
         firstRow.addStyleName("blue");
 
-        ResponsiveRow secondRow = responsiveLayout.addRow().withMargin(ResponsiveRow.MarginSize.SMALL,ResponsiveColumn.DisplaySize.XS, true).withComponents(new Button("Button"), new Button("Button"), new Button("Button"));
+        ResponsiveRow secondRow = responsiveLayout.addRow().withMargin(ResponsiveRow.MarginSize.SMALL,ResponsiveColumn.DisplaySize.XS).withComponents(new Button("Button"), new Button("Button"), new Button("Button"));
         secondRow.setCaption("Row with small margin & fluid Components");
         secondRow.addStyleName("blue");
 
-        ResponsiveRow thirdRow = responsiveLayout.addRow().withMargin(ResponsiveRow.MarginSize.NORMAL,ResponsiveColumn.DisplaySize.XS, true);
+        ResponsiveRow thirdRow = responsiveLayout.addRow().withMargin(ResponsiveRow.MarginSize.NORMAL,ResponsiveColumn.DisplaySize.XS);
         thirdRow.addColumn().withDisplayRules(4, 4, 4, 4).withComponent(fullWidth(new Label("col-1"))).addStyleName("green");
         thirdRow.addColumn().withDisplayRules(4, 4, 4, 4).withComponent(fullWidth(new Label("col-2"))).addStyleName("green");
         thirdRow.addColumn().withDisplayRules(4, 4, 4, 4).withComponent(fullWidth(new Label("col-3"))).addStyleName("green");
@@ -37,7 +37,7 @@ public class MarginTest extends AbstractTest {
         thirdRow.setCaption("Row with normal margin & 3 Columns");
         thirdRow.addStyleName("blue");
 
-        ResponsiveRow fourthRow = responsiveLayout.addRow().withMargin(ResponsiveRow.MarginSize.SMALL,ResponsiveColumn.DisplaySize.XS, true);
+        ResponsiveRow fourthRow = responsiveLayout.addRow().withMargin(ResponsiveRow.MarginSize.SMALL,ResponsiveColumn.DisplaySize.XS);
         fourthRow.addColumn().withDisplayRules(4, 4, 4, 4).withComponent(fullWidth(new Label("col-1"))).addStyleName("green");
         fourthRow.addColumn().withDisplayRules(4, 4, 4, 4).withComponent(fullWidth(new Label("col-2"))).addStyleName("green");
         fourthRow.addColumn().withDisplayRules(4, 4, 4, 4).withComponent(fullWidth(new Label("col-3"))).addStyleName("green");

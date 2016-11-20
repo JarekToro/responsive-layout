@@ -24,10 +24,10 @@ public class MarginResponsiveTest extends AbstractTest {
 
 
                 ResponsiveRow firstRow = responsiveLayout.addRow()
-                .withMargin(ResponsiveRow.MarginSize.NORMAL, ResponsiveColumn.DisplaySize.XS, true)
-                .withMargin(ResponsiveRow.MarginSize.SMALL, ResponsiveColumn.DisplaySize.SM, false)
-                .withMargin(ResponsiveRow.MarginSize.NORMAL, ResponsiveColumn.DisplaySize.MD, true)
-                .withMargin(ResponsiveRow.MarginSize.SMALL, ResponsiveColumn.DisplaySize.LG, true)
+                .withMargin(ResponsiveRow.MarginSize.NORMAL, ResponsiveColumn.DisplaySize.XS)
+                .withMargin(ResponsiveRow.MarginSize.NONE, ResponsiveColumn.DisplaySize.SM)
+                .withMargin(ResponsiveRow.MarginSize.NORMAL, ResponsiveColumn.DisplaySize.MD)
+                .withMargin(ResponsiveRow.MarginSize.SMALL, ResponsiveColumn.DisplaySize.LG)
 
                 .withComponents(new Button("Button"), new Button("Button"), new Button("Button"));
 

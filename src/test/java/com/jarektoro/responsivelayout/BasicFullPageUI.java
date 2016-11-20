@@ -132,7 +132,7 @@ public class BasicFullPageUI extends AbstractTest {
         ResponsiveRow nestedLayoutRow = nestedLayout.addRow();
 
         nestedLayoutRow.setSpacing(ResponsiveRow.SpacingSize.SMALL,true);
-        nestedLayoutRow.setMargin(ResponsiveRow.MarginSize.SMALL,ResponsiveColumn.DisplaySize.XS,true);
+        nestedLayoutRow.setMargin(ResponsiveRow.MarginSize.SMALL,ResponsiveColumn.DisplaySize.XS);
 
 
         Label label = new Label("Title!");
@@ -217,7 +217,7 @@ setHeightUndefined();
 
             ResponsiveRow responsiveRow = new ResponsiveRow();
 
-            responsiveRow.setMargin(ResponsiveRow.MarginSize.SMALL,ResponsiveColumn.DisplaySize.XS,true);
+            responsiveRow.setMargin(ResponsiveRow.MarginSize.SMALL,ResponsiveColumn.DisplaySize.XS);
             responsiveRow.setSpacing(ResponsiveRow.SpacingSize.SMALL,true);
 
             ResponsiveColumn imageCol = new ResponsiveColumn(4, 4, 4, 4);
