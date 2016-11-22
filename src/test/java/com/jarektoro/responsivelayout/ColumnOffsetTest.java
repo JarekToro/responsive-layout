@@ -27,7 +27,7 @@ public class ColumnOffsetTest extends AbstractTest {
 
         for (int x = 0; x < 12; x++) {
             if (x == 0) {
-                firstRow.addColumn().withDisplayRules(1, 1, 1, 1).withOffset(ResponsiveColumn.DisplaySize.SM, 0).withComponent(fullWidth(new Label("col-" + (x + 1)))).addStyleName("green");
+                firstRow.addColumn().withDisplayRules(1, 1, 1, 1).withOffset(ResponsiveLayout.DisplaySize.SM, 0).withComponent(fullWidth(new Label("col-" + (x + 1)))).addStyleName("green");
 
             } else {
                 firstRow.addColumn().withDisplayRules(1, 1, 1, 1).withComponent(fullWidth(new Label("col-" + (x + 1)))).addStyleName("green");
@@ -43,7 +43,7 @@ public class ColumnOffsetTest extends AbstractTest {
 
         for (int x = 0; x < 11; x++) {
             if (x == 0) {
-                secondRow.addColumn().withDisplayRules(1, 1, 1, 1).withOffset(ResponsiveColumn.DisplaySize.SM, 1).withComponent(fullWidth(new Label("col-" + (x + 1)))).addStyleName("green");
+                secondRow.addColumn().withDisplayRules(1, 1, 1, 1).withOffset(ResponsiveLayout.DisplaySize.SM, 1).withComponent(fullWidth(new Label("col-" + (x + 1)))).addStyleName("green");
 
             } else {
                 secondRow.addColumn().withDisplayRules(1, 1, 1, 1).withComponent(fullWidth(new Label("col-" + (x + 1)))).addStyleName("green");
@@ -59,7 +59,7 @@ public class ColumnOffsetTest extends AbstractTest {
 
         for (int x = 0; x < 10; x++) {
             if (x == 0) {
-                thirdRow.addColumn().withDisplayRules(1, 1, 1, 1).withOffset(ResponsiveColumn.DisplaySize.SM, 2).withComponent(fullWidth(new Label("col-" + (x + 1)))).addStyleName("green");
+                thirdRow.addColumn().withDisplayRules(1, 1, 1, 1).withOffset(ResponsiveLayout.DisplaySize.SM, 2).withComponent(fullWidth(new Label("col-" + (x + 1)))).addStyleName("green");
             } else {
                 thirdRow.addColumn().withDisplayRules(1, 1, 1, 1).withComponent(fullWidth(new Label("col-" + (x + 1)))).addStyleName("green");
             }
@@ -73,7 +73,7 @@ public class ColumnOffsetTest extends AbstractTest {
 
         for (int x = 0; x < 9; x++) {
             if (x == 0) {
-                fourthRow.addColumn().withDisplayRules(1, 1, 1, 1).withOffset(ResponsiveColumn.DisplaySize.SM, 3).withComponent(fullWidth(new Label("col-" + (x + 1)))).addStyleName("green");
+                fourthRow.addColumn().withDisplayRules(1, 1, 1, 1).withOffset(ResponsiveLayout.DisplaySize.SM, 3).withComponent(fullWidth(new Label("col-" + (x + 1)))).addStyleName("green");
             } else {
                 fourthRow.addColumn().withDisplayRules(1, 1, 1, 1).withComponent(fullWidth(new Label("col-" + (x + 1)))).addStyleName("green");
             }
@@ -86,7 +86,7 @@ public class ColumnOffsetTest extends AbstractTest {
 
         for (int x = 0; x < 8; x++) {
             if (x == 0) {
-                fifthRow.addColumn().withDisplayRules(1, 1, 1, 1).withOffset(ResponsiveColumn.DisplaySize.SM, 4).withComponent(fullWidth(new Label("col-" + (x + 1)))).addStyleName("green");
+                fifthRow.addColumn().withDisplayRules(1, 1, 1, 1).withOffset(ResponsiveLayout.DisplaySize.SM, 4).withComponent(fullWidth(new Label("col-" + (x + 1)))).addStyleName("green");
 
             } else {
                 fifthRow.addColumn().withDisplayRules(1, 1, 1, 1).withComponent(fullWidth(new Label("col-" + (x + 1)))).addStyleName("green");
@@ -101,7 +101,7 @@ public class ColumnOffsetTest extends AbstractTest {
 
         for (int x = 0; x < 7; x++) {
             if (x == 0) {
-                sixthRow.addColumn().withDisplayRules(1, 1, 1, 1).withOffset(ResponsiveColumn.DisplaySize.SM, 5).withComponent(fullWidth(new Label("col-" + (x + 1)))).addStyleName("green");
+                sixthRow.addColumn().withDisplayRules(1, 1, 1, 1).withOffset(ResponsiveLayout.DisplaySize.SM, 5).withComponent(fullWidth(new Label("col-" + (x + 1)))).addStyleName("green");
 
             } else {
                 sixthRow.addColumn().withDisplayRules(1, 1, 1, 1).withComponent(fullWidth(new Label("col-" + (x + 1)))).addStyleName("green");
@@ -116,7 +116,7 @@ public class ColumnOffsetTest extends AbstractTest {
 
         for (int x = 0; x < 6; x++) {
             if (x == 0) {
-                seventhRow.addColumn().withDisplayRules(1, 1, 1, 1).withOffset(ResponsiveColumn.DisplaySize.SM, 6).withComponent(fullWidth(new Label("col-" + (x + 1)))).addStyleName("green");
+                seventhRow.addColumn().withDisplayRules(1, 1, 1, 1).withOffset(ResponsiveLayout.DisplaySize.SM, 6).withComponent(fullWidth(new Label("col-" + (x + 1)))).addStyleName("green");
 
             } else {
                 seventhRow.addColumn().withDisplayRules(1, 1, 1, 1).withComponent(fullWidth(new Label("col-" + (x + 1)))).addStyleName("green");
@@ -131,7 +131,7 @@ public class ColumnOffsetTest extends AbstractTest {
 
         for (int x = 0; x < 5; x++) {
             if (x == 0) {
-                eighthRow.addColumn().withDisplayRules(1, 1, 1, 1).withOffset(ResponsiveColumn.DisplaySize.SM, 7).withComponent(fullWidth(new Label("col-" + (x + 1)))).addStyleName("green");
+                eighthRow.addColumn().withDisplayRules(1, 1, 1, 1).withOffset(ResponsiveLayout.DisplaySize.SM, 7).withComponent(fullWidth(new Label("col-" + (x + 1)))).addStyleName("green");
 
             } else {
                 eighthRow.addColumn().withDisplayRules(1, 1, 1, 1).withComponent(fullWidth(new Label("col-" + (x + 1)))).addStyleName("green");
@@ -146,7 +146,7 @@ public class ColumnOffsetTest extends AbstractTest {
 
         for (int x = 0; x < 4; x++) {
             if (x == 0) {
-                ninthRow.addColumn().withDisplayRules(1, 1, 1, 1).withOffset(ResponsiveColumn.DisplaySize.SM, 8).withComponent(fullWidth(new Label("col-" + (x + 1)))).addStyleName("green");
+                ninthRow.addColumn().withDisplayRules(1, 1, 1, 1).withOffset(ResponsiveLayout.DisplaySize.SM, 8).withComponent(fullWidth(new Label("col-" + (x + 1)))).addStyleName("green");
 
             } else {
                 ninthRow.addColumn().withDisplayRules(1, 1, 1, 1).withComponent(fullWidth(new Label("col-" + (x + 1)))).addStyleName("green");
@@ -161,7 +161,7 @@ public class ColumnOffsetTest extends AbstractTest {
 
         for (int x = 0; x < 3; x++) {
             if (x == 0) {
-                tenthRow.addColumn().withDisplayRules(1, 1, 1, 1).withOffset(ResponsiveColumn.DisplaySize.SM, 9).withComponent(fullWidth(new Label("col-" + (x + 1)))).addStyleName("green");
+                tenthRow.addColumn().withDisplayRules(1, 1, 1, 1).withOffset(ResponsiveLayout.DisplaySize.SM, 9).withComponent(fullWidth(new Label("col-" + (x + 1)))).addStyleName("green");
 
             } else {
                 tenthRow.addColumn().withDisplayRules(1, 1, 1, 1).withComponent(fullWidth(new Label("col-" + (x + 1)))).addStyleName("green");
@@ -176,7 +176,7 @@ public class ColumnOffsetTest extends AbstractTest {
 
         for (int x = 0; x < 2; x++) {
             if (x == 0) {
-                eleventhRow.addColumn().withDisplayRules(1, 1, 1, 1).withOffset(ResponsiveColumn.DisplaySize.SM, 10).withComponent(fullWidth(new Label("col-" + (x + 1)))).addStyleName("green");
+                eleventhRow.addColumn().withDisplayRules(1, 1, 1, 1).withOffset(ResponsiveLayout.DisplaySize.SM, 10).withComponent(fullWidth(new Label("col-" + (x + 1)))).addStyleName("green");
 
             } else {
                 eleventhRow.addColumn().withDisplayRules(1, 1, 1, 1).withComponent(fullWidth(new Label("col-" + (x + 1)))).addStyleName("green");
@@ -191,7 +191,7 @@ public class ColumnOffsetTest extends AbstractTest {
 
         for (int x = 0; x < 1; x++) {
             if (x == 0) {
-                TwelfthRow.addColumn().withDisplayRules(1, 1, 1, 1).withOffset(ResponsiveColumn.DisplaySize.SM, 11).withComponent(fullWidth(new Label("col-" + (x + 1)))).addStyleName("green");
+                TwelfthRow.addColumn().withDisplayRules(1, 1, 1, 1).withOffset(ResponsiveLayout.DisplaySize.SM, 11).withComponent(fullWidth(new Label("col-" + (x + 1)))).addStyleName("green");
 
             } else {
                 TwelfthRow.addColumn().withDisplayRules(1, 1, 1, 1).withComponent(fullWidth(new Label("col-" + (x + 1)))).addStyleName("green");

@@ -16,6 +16,10 @@ public class ResponsiveLayout extends CssLayout {
     private static final String CSS_CONTAINER_FIXED = "fixed";
     private static final String CSS_CONTAINER_SCROLLABLE = "scrollable";
 
+    public enum DisplaySize {
+        XS, SM, MD, LG
+    }
+
 
     public enum ContainerType {
         FIXED, FLUID

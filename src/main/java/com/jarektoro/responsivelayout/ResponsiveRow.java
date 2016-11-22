@@ -1,9 +1,9 @@
 package com.jarektoro.responsivelayout;
 
 
+import com.jarektoro.responsivelayout.Styleable.StyleableLayout;
 import com.vaadin.ui.Alignment;
 import com.vaadin.ui.Component;
-import com.vaadin.ui.CssLayout;
 import com.vaadin.ui.VerticalLayout;
 
 import static com.jarektoro.responsivelayout.ResponsiveRow.MarginSize.NONE;
@@ -12,11 +12,11 @@ import static com.jarektoro.responsivelayout.ResponsiveRow.MarginSize.NONE;
 /**
  * Created by JarekToro on 9/23/16.
  */
-public class ResponsiveRow extends CssLayout {
+public class ResponsiveRow extends StyleableLayout {
 
 
-    public class NotResponsiveColumnException extends Exception{
-       public NotResponsiveColumnException(String message){
+    public class NotResponsiveColumnException extends Exception {
+        public NotResponsiveColumnException(String message) {
 
             super(message);
 
@@ -66,7 +66,7 @@ public class ResponsiveRow extends CssLayout {
     }
 
 
-    public void setExpandRatio(ResponsiveColumn responsiveColumn, ResponsiveColumn.DisplaySize displaySize, int width) {
+    public void setExpandRatio(ResponsiveColumn responsiveColumn, ResponsiveLayout.DisplaySize displaySize, int width) {
         if (components.contains(responsiveColumn)) {
             responsiveColumn.addRule(displaySize, width);
         }
@@ -74,8 +74,6 @@ public class ResponsiveRow extends CssLayout {
 
 
     public void addColumn(ResponsiveColumn col) {
-
-        //add ResponsiveColumn to Component List then recalulates the margin and spacing to match
 
         super.addComponent(col);
 
@@ -85,9 +83,9 @@ public class ResponsiveRow extends CssLayout {
 
         Component component = super.getComponent(index);
 
-        if (component instanceof ResponsiveColumn){
+        if (component instanceof ResponsiveColumn) {
             return (ResponsiveColumn) component;
-        }else{
+        } else {
             throw new NotResponsiveColumnException("Found Componant Not Responsive Column");
         }
     }
@@ -101,22 +99,22 @@ public class ResponsiveRow extends CssLayout {
 
 
         if (margin) {
-            setMargin(ResponsiveRow.MarginSize.NORMAL, ResponsiveColumn.DisplaySize.XS);
-            setMargin(ResponsiveRow.MarginSize.NORMAL, ResponsiveColumn.DisplaySize.SM);
-            setMargin(ResponsiveRow.MarginSize.NORMAL, ResponsiveColumn.DisplaySize.MD);
-            setMargin(ResponsiveRow.MarginSize.NORMAL, ResponsiveColumn.DisplaySize.LG);
+            setMargin(ResponsiveRow.MarginSize.NORMAL, ResponsiveLayout.DisplaySize.XS);
+            setMargin(ResponsiveRow.MarginSize.NORMAL, ResponsiveLayout.DisplaySize.SM);
+            setMargin(ResponsiveRow.MarginSize.NORMAL, ResponsiveLayout.DisplaySize.MD);
+            setMargin(ResponsiveRow.MarginSize.NORMAL, ResponsiveLayout.DisplaySize.LG);
         } else {
-            setMargin(ResponsiveRow.MarginSize.NONE, ResponsiveColumn.DisplaySize.XS);
-            setMargin(ResponsiveRow.MarginSize.NONE, ResponsiveColumn.DisplaySize.SM);
-            setMargin(ResponsiveRow.MarginSize.NONE, ResponsiveColumn.DisplaySize.MD);
-            setMargin(ResponsiveRow.MarginSize.NONE, ResponsiveColumn.DisplaySize.LG);
+            setMargin(ResponsiveRow.MarginSize.NONE, ResponsiveLayout.DisplaySize.XS);
+            setMargin(ResponsiveRow.MarginSize.NONE, ResponsiveLayout.DisplaySize.SM);
+            setMargin(ResponsiveRow.MarginSize.NONE, ResponsiveLayout.DisplaySize.MD);
+            setMargin(ResponsiveRow.MarginSize.NONE, ResponsiveLayout.DisplaySize.LG);
         }
 
 
     }
 
 
-    public void setMargin(MarginSize marginSize, ResponsiveColumn.DisplaySize displaySize) {
+    public void setMargin(MarginSize marginSize, ResponsiveLayout.DisplaySize displaySize) {
 
         String suffix = "";
 
@@ -300,7 +298,6 @@ public class ResponsiveRow extends CssLayout {
     }
 
 
-
     @Override
     public void addComponents(Component... components) {
 
@@ -343,18 +340,23 @@ public class ResponsiveRow extends CssLayout {
         return this;
     }
 
-    public ResponsiveRow withMargin(MarginSize size, ResponsiveColumn.DisplaySize displaySize) {
-        setMargin(size, displaySize);
+    public ResponsiveRow withMargin(MarginSize marginsize) {
+        setMargin(marginsize, ResponsiveLayout.DisplaySize.XS);
+        setMargin(marginsize, ResponsiveLayout.DisplaySize.SM);
+        setMargin(marginsize, ResponsiveLayout.DisplaySize.MD);
+        setMargin(marginsize, ResponsiveLayout.DisplaySize.LG);
         return this;
     }
-    public ResponsiveRow withMargin(MarginSize xs,MarginSize sm,MarginSize md,MarginSize lg) {
-        setMargin(xs, ResponsiveColumn.DisplaySize.XS);
-        setMargin(sm, ResponsiveColumn.DisplaySize.SM);
-        setMargin(md, ResponsiveColumn.DisplaySize.MD);
-        setMargin(lg, ResponsiveColumn.DisplaySize.LG);
+
+    public ResponsiveRow withMargin(MarginSize xs, MarginSize sm, MarginSize md, MarginSize lg) {
+        setMargin(xs, ResponsiveLayout.DisplaySize.XS);
+        setMargin(sm, ResponsiveLayout.DisplaySize.SM);
+        setMargin(md, ResponsiveLayout.DisplaySize.MD);
+        setMargin(lg, ResponsiveLayout.DisplaySize.LG);
 
         return this;
     }
+
 
     public ResponsiveRow withSpacing(boolean spacing) {
         setVerticalSpacing(spacing);

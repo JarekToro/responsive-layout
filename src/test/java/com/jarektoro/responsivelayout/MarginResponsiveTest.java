@@ -23,11 +23,12 @@ public class MarginResponsiveTest extends AbstractTest {
         responsiveLayout.addStyleName("red");
 
 
-                ResponsiveRow firstRow = responsiveLayout.addRow()
-                .withMargin(ResponsiveRow.MarginSize.NORMAL, ResponsiveColumn.DisplaySize.XS)
-                .withMargin(ResponsiveRow.MarginSize.NONE, ResponsiveColumn.DisplaySize.SM)
-                .withMargin(ResponsiveRow.MarginSize.NORMAL, ResponsiveColumn.DisplaySize.MD)
-                .withMargin(ResponsiveRow.MarginSize.SMALL, ResponsiveColumn.DisplaySize.LG)
+        ResponsiveRow firstRow = responsiveLayout.addRow()
+                .withMargin(ResponsiveRow.MarginSize.NORMAL,
+                        ResponsiveRow.MarginSize.NONE,
+                        ResponsiveRow.MarginSize.NORMAL,
+                        ResponsiveRow.MarginSize.SMALL)
+
 
                 .withComponents(new Button("Button"), new Button("Button"), new Button("Button"));
 

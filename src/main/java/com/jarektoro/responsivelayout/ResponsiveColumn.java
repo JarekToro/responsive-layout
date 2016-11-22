@@ -1,5 +1,6 @@
 package com.jarektoro.responsivelayout;
 
+import com.jarektoro.responsivelayout.Styleable.StyleableComponent;
 import com.vaadin.ui.Component;
 import com.vaadin.ui.CssLayout;
 import com.vaadin.ui.CustomComponent;
@@ -10,7 +11,7 @@ import java.util.Set;
 /**
  * Created by JarekToro on 9/23/16.
  */
-public class ResponsiveColumn extends CustomComponent {
+public class ResponsiveColumn extends StyleableComponent {
 
 
     private static final String CSS_COL = "rl-col";
@@ -25,15 +26,7 @@ public class ResponsiveColumn extends CustomComponent {
     private static final String CSS_COL_MD = "md-";
     private static final String CSS_COL_LG = "lg-";
 
-    private static final String CSS_VISIBLE_XS = "rl-visible-xs";
-    private static final String CSS_VISIBLE_SM = "rl-visible-sm";
-    private static final String CSS_VISIBLE_MD = "rl-visible-md";
-    private static final String CSS_VISIBLE_LG = "rl-visible-lg";
 
-    private static final String CSS_HIDDEN_XS = "rl-hidden-xs";
-    private static final String CSS_HIDDEN_SM = "rl-hidden-sm";
-    private static final String CSS_HIDDEN_MD = "rl-hidden-md";
-    private static final String CSS_HIDDEN_LG = "rl-hidden-lg";
 
 
     private static final String CSS_COL_CONTENT_ALGINMENT_RIGHT = "content-right";
@@ -42,25 +35,18 @@ public class ResponsiveColumn extends CustomComponent {
 
     //TODO: these should be one class not two
     private Set<Rule> rules;
-    private Set<Visibility> visibilityRules;
     private CssLayout root;
 
     public class Rule {
-        public DisplaySize displaySize;
+        public ResponsiveLayout.DisplaySize displaySize;
         public int width;
         public boolean isOffset = false;
     }
 
 
-    public class Visibility {
-        public DisplaySize displaySize;
-        public boolean isVisible = false;
+   
 
-    }
 
-    public enum DisplaySize {
-        XS, SM, MD, LG
-    }
 
     public enum ColumnComponentAlignment {
         LEFT, CENTER, RIGHT
@@ -77,7 +63,6 @@ public class ResponsiveColumn extends CustomComponent {
         setPrimaryStyleName(CSS_COL);
         setSizeUndefined();
         rules = new HashSet<>(4);
-        visibilityRules = new HashSet<>(4);
         root = new CssLayout();
         root.setStyleName(CSS_COL_CONTENT_CONTAINER);
         setCompositionRoot(root);
@@ -97,7 +82,7 @@ public class ResponsiveColumn extends CustomComponent {
     }
 
 
-    public ResponsiveColumn(DisplaySize displaySize, int width) {
+    public ResponsiveColumn(ResponsiveLayout.DisplaySize displaySize, int width) {
         convenienceInIt();
         addRule(displaySize, width);
     }
@@ -127,10 +112,10 @@ public class ResponsiveColumn extends CustomComponent {
 
 
     private void setAllSizes(int xs, int sm, int md, int lg) {
-        addRule(DisplaySize.XS, xs);
-        addRule(DisplaySize.SM, sm);
-        addRule(DisplaySize.MD, md);
-        addRule(DisplaySize.LG, lg);
+        addRule(ResponsiveLayout.DisplaySize.XS, xs);
+        addRule(ResponsiveLayout.DisplaySize.SM, sm);
+        addRule(ResponsiveLayout.DisplaySize.MD, md);
+        addRule(ResponsiveLayout.DisplaySize.LG, lg);
     }
 
 
@@ -154,7 +139,7 @@ public class ResponsiveColumn extends CustomComponent {
 
     }
 
-    public void addRule(DisplaySize displaySize, int width) {
+    public void addRule(ResponsiveLayout.DisplaySize displaySize, int width) {
 
         Rule rule = new Rule();
         rule.displaySize = displaySize;
@@ -200,105 +185,25 @@ public class ResponsiveColumn extends CustomComponent {
     }
 
 
-    // returns if element will be visible on a given display size;
 
-    public boolean isVisibleForDisplaySize(DisplaySize displaySize) {
-        Visibility oldRule = getVisibilityRuleForDisplaySize(displaySize);
-
-        if (oldRule != null) {
-            return oldRule.isVisible;
-        } else {
-            return true;
-        }
-    }
 
     public void setVisibilityRules(boolean xs, boolean sm, boolean md, boolean lg) {
-        setVisibility(DisplaySize.XS, xs);
-        setVisibility(DisplaySize.SM, sm);
-        setVisibility(DisplaySize.MD, md);
-        setVisibility(DisplaySize.LG, lg);
+        setVisibility(ResponsiveLayout.DisplaySize.XS, xs);
+        setVisibility(ResponsiveLayout.DisplaySize.SM, sm);
+        setVisibility(ResponsiveLayout.DisplaySize.MD, md);
+        setVisibility(ResponsiveLayout.DisplaySize.LG, lg);
 
         return;
     }
 
-    // sets visibility for a given display size
-    public void setVisibility(DisplaySize displaySize, boolean isVisible) {
-
-        Visibility rule = new Visibility();
-        rule.isVisible = isVisible;
-        rule.displaySize = displaySize;
 
 
-        // removes old rule if the new rule would be overwriting it
-        // then adds new rule
-
-        Visibility oldRule = getVisibilityRuleForDisplaySize(rule.displaySize);
-
-        if (oldRule != null) {
-            visibilityRules.remove(oldRule);
-            visibilityRules.add(rule);
-            removeStyleName(visibilityStyleNameForVsibilityRule(oldRule));
-            addStyleName(visibilityStyleNameForVsibilityRule(rule));
-        } else {
-            addStyleName(visibilityStyleNameForVsibilityRule(rule));
-            visibilityRules.add(rule);
-
-        }
-
-    }
 
 
-    // same as rule turns the object into a string
-    private String visibilityStyleNameForVsibilityRule(Visibility visibility) {
-        if (visibility.isVisible) {
-            switch (visibility.displaySize) {
-                case XS:
-                    return CSS_VISIBLE_XS;
-                case SM:
-                    return CSS_VISIBLE_SM;
-                case MD:
-                    return CSS_VISIBLE_MD;
-                case LG:
-                    return CSS_VISIBLE_LG;
-                default:
-                    return null;
-            }
-        } else {
-            switch (visibility.displaySize) {
-                case XS:
-                    return CSS_HIDDEN_XS;
-                case SM:
-                    return CSS_HIDDEN_SM;
-                case MD:
-                    return CSS_HIDDEN_MD;
-                case LG:
-                    return CSS_HIDDEN_LG;
-                default:
-                    return null;
-            }
-        }
-    }
 
 
-    private Visibility getVisibilityRuleForDisplaySize(DisplaySize displaySize) {
 
-        final Visibility[] foundRule = {null};
-
-        for (Visibility rule : visibilityRules) {
-            if (rule.displaySize.equals(displaySize)) {
-
-                foundRule[0] = rule;
-
-
-            }
-        }
-
-
-        return foundRule[0];
-
-    }
-
-    private Rule getRuleForDisplaySize(DisplaySize displaySize, boolean isOffset) {
+    private Rule getRuleForDisplaySize(ResponsiveLayout.DisplaySize displaySize, boolean isOffset) {
 
         final Rule[] foundRule = {null};
 
@@ -320,7 +225,7 @@ public class ResponsiveColumn extends CustomComponent {
     }
 
 
-    public void setOffset(DisplaySize displaySize, int width) {
+    public void setOffset(ResponsiveLayout.DisplaySize displaySize, int width) {
         Rule rule = new Rule();
         rule.isOffset = true;
         rule.displaySize = displaySize;
@@ -374,15 +279,15 @@ public class ResponsiveColumn extends CustomComponent {
     }
 
     public ResponsiveColumn withVisibilityRules(boolean xs, boolean sm, boolean md, boolean lg) {
-        setVisibility(DisplaySize.XS, xs);
-        setVisibility(DisplaySize.SM, sm);
-        setVisibility(DisplaySize.MD, md);
-        setVisibility(DisplaySize.LG, lg);
+        setVisibility(ResponsiveLayout.DisplaySize.XS, xs);
+        setVisibility(ResponsiveLayout.DisplaySize.SM, sm);
+        setVisibility(ResponsiveLayout.DisplaySize.MD, md);
+        setVisibility(ResponsiveLayout.DisplaySize.LG, lg);
 
         return this;
     }
 
-    public ResponsiveColumn withOffset(DisplaySize displaySize, int width) {
+    public ResponsiveColumn withOffset(ResponsiveLayout.DisplaySize displaySize, int width) {
         setOffset(displaySize, width);
         return this;
     }

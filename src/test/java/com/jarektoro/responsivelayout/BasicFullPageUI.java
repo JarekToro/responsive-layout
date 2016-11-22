@@ -57,7 +57,7 @@ public class BasicFullPageUI extends AbstractTest {
 
         ResponsiveColumn profileCol = sideMenu.addColumn()
                 .withDisplayRules(12, 12, 12, 12)
-                .withRightAlignedComponent(image).withVisibilityRules(true,true,true,true);
+                .withCenteredComponent(image).withVisibilityRules(true, true, true, true);
 
 
         Button logoButton = getButtonofSize("LOGO", "100%", "100%", FontAwesome.APPLE);
@@ -83,9 +83,9 @@ public class BasicFullPageUI extends AbstractTest {
                 .withComponent(getButtonofSize("Report", "100%", "100%", FontAwesome.INBOX));
 
         logoButton.addClickListener(clickEvent -> {
-            homeCol.setVisibility(ResponsiveColumn.DisplaySize.XS, !homeCol.isVisibleForDisplaySize(ResponsiveColumn.DisplaySize.XS));
-            aboutCol.setVisibility(ResponsiveColumn.DisplaySize.XS, !aboutCol.isVisibleForDisplaySize(ResponsiveColumn.DisplaySize.XS));
-            contactCol.setVisibility(ResponsiveColumn.DisplaySize.XS, !contactCol.isVisibleForDisplaySize(ResponsiveColumn.DisplaySize.XS));
+            homeCol.setVisibility(ResponsiveLayout.DisplaySize.XS, !homeCol.isVisibleForDisplaySize(ResponsiveLayout.DisplaySize.XS));
+            aboutCol.setVisibility(ResponsiveLayout.DisplaySize.XS, !aboutCol.isVisibleForDisplaySize(ResponsiveLayout.DisplaySize.XS));
+            contactCol.setVisibility(ResponsiveLayout.DisplaySize.XS, !contactCol.isVisibleForDisplaySize(ResponsiveLayout.DisplaySize.XS));
         });
 
 
@@ -123,16 +123,14 @@ public class BasicFullPageUI extends AbstractTest {
         setContent(responsiveLayout);
 
 
-
-
     }
 
     public ResponsiveLayout createNestedLayout() {
         ResponsiveLayout nestedLayout = new ResponsiveLayout();
         ResponsiveRow nestedLayoutRow = nestedLayout.addRow();
 
-        nestedLayoutRow.setSpacing(ResponsiveRow.SpacingSize.SMALL,true);
-        nestedLayoutRow.setMargin(ResponsiveRow.MarginSize.SMALL,ResponsiveColumn.DisplaySize.XS);
+        nestedLayoutRow.setSpacing(ResponsiveRow.SpacingSize.SMALL, true);
+        nestedLayoutRow.setMargin(ResponsiveRow.MarginSize.SMALL, ResponsiveLayout.DisplaySize.XS);
 
 
         Label label = new Label("Title!");
@@ -148,7 +146,7 @@ public class BasicFullPageUI extends AbstractTest {
         button1.addStyleName(ValoTheme.BUTTON_FRIENDLY);
 
 
-        nestedLayoutRow.addComponents(button,label,field,button1);
+        nestedLayoutRow.addComponents(button, label, field, button1);
 
 
         return nestedLayout;
@@ -210,15 +208,15 @@ public class BasicFullPageUI extends AbstractTest {
             // not part of responsiveLayout lib
 
             setWidth("100%");
-setHeightUndefined();
+            setHeightUndefined();
 
             ResponsiveLayout responsiveLayout = new ResponsiveLayout();
 
 
             ResponsiveRow responsiveRow = new ResponsiveRow();
 
-            responsiveRow.setMargin(ResponsiveRow.MarginSize.SMALL,ResponsiveColumn.DisplaySize.XS);
-            responsiveRow.setSpacing(ResponsiveRow.SpacingSize.SMALL,true);
+            responsiveRow.setMargin(ResponsiveRow.MarginSize.SMALL, ResponsiveLayout.DisplaySize.XS);
+            responsiveRow.setSpacing(ResponsiveRow.SpacingSize.SMALL, true);
 
             ResponsiveColumn imageCol = new ResponsiveColumn(4, 4, 4, 4);
             imageCol.setComponent(getRandomTeamMember());

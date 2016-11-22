@@ -2,17 +2,16 @@ package com.jarektoro.responsivelayout;
 
 import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.Viewport;
-import com.vaadin.server.*;
-import com.vaadin.ui.*;
+import com.vaadin.server.Page;
+import com.vaadin.server.VaadinRequest;
+import com.vaadin.ui.Button;
+import com.vaadin.ui.Component;
+import com.vaadin.ui.Label;
 import org.vaadin.addonhelpers.AbstractTest;
 
-
-/**
- * Created by JarekToro on 11/1/16.
- */
 @Theme("valo")
 @Viewport("width=device-width, initial-scale=1")
-public class MarginTest extends AbstractTest {
+public class MarginVisibilityTest extends AbstractTest {
     @Override
     protected void init(VaadinRequest request) {
         // We need to override this method to set the content to our layout instead of the default vertial layout on used on the constructor of the superclass
@@ -22,7 +21,8 @@ public class MarginTest extends AbstractTest {
         ResponsiveLayout responsiveLayout = new ResponsiveLayout();
         responsiveLayout.addStyleName("red");
         ResponsiveRow firstRow = responsiveLayout.addRow().withMargin(ResponsiveRow.MarginSize.NORMAL).withComponents(new Button("Button"), new Button("Button"), new Button("Button"));
-        firstRow.setCaption("Row with normal margin & fluid Components");
+        firstRow.setVisibility(ResponsiveLayout.DisplaySize.XS, false);
+        firstRow.setCaption("Row with normal margin & fluid Components: Hide on XS");
         firstRow.addStyleName("blue");
 
         ResponsiveRow secondRow = responsiveLayout.addRow().withMargin(ResponsiveRow.MarginSize.SMALL).withComponents(new Button("Button"), new Button("Button"), new Button("Button"));
@@ -33,8 +33,9 @@ public class MarginTest extends AbstractTest {
         thirdRow.addColumn().withDisplayRules(4, 4, 4, 4).withComponent(fullWidth(new Label("col-1"))).addStyleName("green");
         thirdRow.addColumn().withDisplayRules(4, 4, 4, 4).withComponent(fullWidth(new Label("col-2"))).addStyleName("green");
         thirdRow.addColumn().withDisplayRules(4, 4, 4, 4).withComponent(fullWidth(new Label("col-3"))).addStyleName("green");
+        thirdRow.setVisibility(ResponsiveLayout.DisplaySize.SM, false);
 
-        thirdRow.setCaption("Row with normal margin & 3 Columns");
+        thirdRow.setCaption("Row with normal margin & 3 Columns: Hide on SM");
         thirdRow.addStyleName("blue");
 
         ResponsiveRow fourthRow = responsiveLayout.addRow().withMargin(ResponsiveRow.MarginSize.SMALL);
@@ -68,4 +69,3 @@ public class MarginTest extends AbstractTest {
 
 
 }
-
