@@ -27,8 +27,6 @@ public class ResponsiveColumn extends StyleableComponent {
     private static final String CSS_COL_LG = "lg-";
 
 
-
-
     private static final String CSS_COL_CONTENT_ALGINMENT_RIGHT = "content-right";
     private static final String CSS_COL_CONTENT_ALGINMENT_CENTER = "content-center";
 
@@ -42,10 +40,6 @@ public class ResponsiveColumn extends StyleableComponent {
         public int width;
         public boolean isOffset = false;
     }
-
-
-   
-
 
 
     public enum ColumnComponentAlignment {
@@ -185,8 +179,6 @@ public class ResponsiveColumn extends StyleableComponent {
     }
 
 
-
-
     public void setVisibilityRules(boolean xs, boolean sm, boolean md, boolean lg) {
         setVisibility(ResponsiveLayout.DisplaySize.XS, xs);
         setVisibility(ResponsiveLayout.DisplaySize.SM, sm);
@@ -195,12 +187,6 @@ public class ResponsiveColumn extends StyleableComponent {
 
         return;
     }
-
-
-
-
-
-
 
 
     private Rule getRuleForDisplaySize(ResponsiveLayout.DisplaySize displaySize, boolean isOffset) {
@@ -297,12 +283,20 @@ public class ResponsiveColumn extends StyleableComponent {
         return this;
     }
 
+    @Deprecated
     public ResponsiveColumn withCenteredComponent(Component component) {
         setAlignment(ColumnComponentAlignment.CENTER);
         setComponent(component);
         return this;
     }
 
+    public ResponsiveColumn withComponent(Component component, ColumnComponentAlignment alignment) {
+        setAlignment(alignment);
+        setComponent(component);
+        return this;
+    }
+
+    @Deprecated
     public ResponsiveColumn withRightAlignedComponent(Component component) {
         setAlignment(ColumnComponentAlignment.RIGHT);
         setComponent(component);
