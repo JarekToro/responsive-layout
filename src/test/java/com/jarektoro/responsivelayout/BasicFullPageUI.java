@@ -123,6 +123,17 @@ public class BasicFullPageUI extends AbstractTest {
         setContent(responsiveLayout);
 
 
+        Panel panel = new Panel("Panel");
+        setContent(panel);
+        ResponsiveLayout layout = new ResponsiveLayout(ResponsiveLayout.ContainerType.FLUID);
+        panel.setContent(layout);
+        layout.addRow()
+                .withMargin(ResponsiveRow.MarginSize.SMALL)
+                .withVerticalSpacing(ResponsiveRow.SpacingSize.SMALL, true)
+                .withHorizontalSpacing(true)
+                .addColumn().withDisplayRules(12, 12, 12, 12).setComponent(new Label("Test"));
+
+
     }
 
     public ResponsiveLayout createNestedLayout() {

@@ -57,6 +57,7 @@ public class ResponsiveRow extends StyleableLayout {
 
     public ResponsiveRow() {
 
+        super();
         setPrimaryStyleName(CSS_ROW);
         setWidthUndefined();
         addStyleName(CSS_MARGIN);

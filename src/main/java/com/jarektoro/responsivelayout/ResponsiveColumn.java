@@ -49,7 +49,6 @@ public class ResponsiveColumn extends StyleableComponent {
 
     private void convenienceInIt() {
 
-
         //set primary style name to 'col'
         // important in the addRule method
 
@@ -67,6 +66,7 @@ public class ResponsiveColumn extends StyleableComponent {
 
 
     public ResponsiveColumn() {
+        super();
         convenienceInIt();
     }
 

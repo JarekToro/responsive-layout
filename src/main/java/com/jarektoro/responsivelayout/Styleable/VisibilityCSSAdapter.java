@@ -1,7 +1,7 @@
 package com.jarektoro.responsivelayout.Styleable;
 
 import com.jarektoro.responsivelayout.ResponsiveLayout;
-import com.jarektoro.responsivelayout.Styleable.CSSClassGroup;
+import com.vaadin.ui.Component;
 
 /**
  * Created by jarektoro on 11/22/16.
@@ -26,10 +26,14 @@ public class VisibilityCSSAdapter {
     public static CSSClassGroup mdClassGroup = new CSSClassGroup(CSS_VISIBLE_MD, CSS_HIDDEN_MD);
     public static CSSClassGroup lgClassGroup = new CSSClassGroup(CSS_VISIBLE_LG, CSS_HIDDEN_LG);
 
-    public ResponsiveLayout.DisplaySize displaySize;
-    public boolean isVisible = false;
+    public final Component component;
 
-    public static String getCssForDisplaySize(ResponsiveLayout.DisplaySize displaySize, boolean isVisible) {
+    public VisibilityCSSAdapter(Component component) {
+        this.component = component;
+    }
+
+
+    public String getCssForDisplaySize(ResponsiveLayout.DisplaySize displaySize, boolean isVisible) {
         if (isVisible) {
             switch (displaySize) {
                 case XS:
@@ -59,4 +63,82 @@ public class VisibilityCSSAdapter {
             }
         }
     }
+
+
+//    Manipulate user of adapter
+
+    public boolean isVisibleForDisplaySize(ResponsiveLayout.DisplaySize displaySize) {
+        if (displaySize == ResponsiveLayout.DisplaySize.XS) {
+            for (String clazz : VisibilityCSSAdapter.xsClassGroup.classes) {
+                if (this.component.getStyleName().contains(clazz)) {
+                    if (clazz.contains("hidden")) {
+                        return false;
+                    } else {
+                        return true;
+                    }
+                }
+            }
+        } else if (displaySize == ResponsiveLayout.DisplaySize.SM) {
+            for (String clazz : VisibilityCSSAdapter.smClassGroup.classes) {
+                if (this.component.getStyleName().contains(clazz)) {
+                    if (clazz.contains("hidden")) {
+                        return false;
+                    } else {
+                        return true;
+                    }
+                }
+            }
+        } else if (displaySize == ResponsiveLayout.DisplaySize.MD) {
+            for (String clazz : VisibilityCSSAdapter.mdClassGroup.classes) {
+                if (this.component.getStyleName().contains(clazz)) {
+                    if (clazz.contains("hidden")) {
+                        return false;
+                    } else {
+                        return true;
+                    }
+                }
+            }
+        } else if (displaySize == ResponsiveLayout.DisplaySize.LG) {
+            for (String clazz : VisibilityCSSAdapter.lgClassGroup.classes) {
+                if (this.component.getStyleName().contains(clazz)) {
+                    if (clazz.contains("hidden")) {
+                        return false;
+                    } else {
+                        return true;
+                    }
+                }
+            }
+        }
+        return true;
+    }
+
+    public void setVisibility(ResponsiveLayout.DisplaySize displaySize, boolean isVisible) {
+
+        if (displaySize == ResponsiveLayout.DisplaySize.XS) {
+            for (String clazz : VisibilityCSSAdapter.xsClassGroup.classes) {
+                this.component.removeStyleName(clazz);
+            }
+        }
+        if (displaySize == ResponsiveLayout.DisplaySize.SM) {
+            for (String clazz : VisibilityCSSAdapter.smClassGroup.classes) {
+                this.component.removeStyleName(clazz);
+            }
+        }
+        if (displaySize == ResponsiveLayout.DisplaySize.MD) {
+            for (String clazz : VisibilityCSSAdapter.mdClassGroup.classes) {
+                this.component.removeStyleName(clazz);
+            }
+        }
+        if (displaySize == ResponsiveLayout.DisplaySize.LG) {
+            for (String clazz : VisibilityCSSAdapter.lgClassGroup.classes) {
+                this.component.removeStyleName(clazz);
+            }
+        }
+
+
+        this.component.addStyleName(getCssForDisplaySize(displaySize, isVisible));
+
+
+    }
+
 }
