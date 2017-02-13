@@ -61,6 +61,11 @@ public class ResponsiveLayout extends CssLayout {
             removeStyleName(CSS_CONTAINER_SCROLLABLE);
         }
     }
+    
+    public ResponsiveLayout withStyleName(String styleName) {
+        addStyleName(styleName); 
+        return this; 
+    }
 
     /**
      * Adds the {@code ResponsiveRow} provided as a component.

@@ -390,5 +390,9 @@ public class ResponsiveRow extends StyleableLayout {
         return this;
     }
 
+    public ResponsiveRow withStyleName(String styleName) {
+        addStyleName(styleName);
+        return this;
+    }
 
 }
