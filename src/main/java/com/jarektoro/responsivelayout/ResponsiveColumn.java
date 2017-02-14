@@ -296,6 +296,11 @@ public class ResponsiveColumn extends StyleableComponent {
         return this;
     }
 
+    public ResponsiveColumn withStyleName(String styleName) {
+        addStyleName(styleName);
+        return this;
+    }
+
     @Deprecated
     public ResponsiveColumn withRightAlignedComponent(Component component) {
         setAlignment(ColumnComponentAlignment.RIGHT);
