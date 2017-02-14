@@ -100,8 +100,8 @@ public class BasicFullPageUI extends AbstractTest {
 
         ResponsiveRow titleResponsiveRow = mainSectionLayout.addRow()
                 .withAlignment(Alignment.MIDDLE_CENTER).withMargin(true);
-        ResponsiveColumn titleCol = titleResponsiveRow.addColumn()
-                .withCenteredComponent(title)
+        titleResponsiveRow.addColumn()
+                .withComponent(title, ResponsiveColumn.ColumnComponentAlignment.CENTER)
                 .withDisplayRules(3, 3, 3, 3);
 
 
@@ -116,22 +116,11 @@ public class BasicFullPageUI extends AbstractTest {
             TextField tf = new TextField("caption");
 
 
-            teamResponsiveRow.addColumn().withDisplayRules(12, 6, 4, 3).withComponent(teamMemberView);
+            teamResponsiveRow.addColumn().withDisplayRules(12, 6, 4, 2).withComponent(teamMemberView);
         }
 
 
         setContent(responsiveLayout);
-
-
-        Panel panel = new Panel("Panel");
-        setContent(panel);
-        ResponsiveLayout layout = new ResponsiveLayout(ResponsiveLayout.ContainerType.FLUID);
-        panel.setContent(layout);
-        layout.addRow()
-                .withMargin(ResponsiveRow.MarginSize.SMALL)
-                .withVerticalSpacing(ResponsiveRow.SpacingSize.SMALL, true)
-                .withHorizontalSpacing(true)
-                .addColumn().withDisplayRules(12, 12, 12, 12).setComponent(new Label("Test"));
 
 
     }
