@@ -4,6 +4,7 @@ import com.jarektoro.responsivelayout.Styleable.StyleableComponent;
 import com.vaadin.ui.Component;
 import com.vaadin.ui.CssLayout;
 import com.vaadin.ui.CustomComponent;
+import com.vaadin.ui.SingleComponentContainer;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -11,7 +12,7 @@ import java.util.Set;
 /**
  * Created by JarekToro on 9/23/16.
  */
-public class ResponsiveColumn extends StyleableComponent {
+public class ResponsiveColumn extends StyleableComponent implements SingleComponentContainer {
 
 
     private static final String CSS_COL = "rl-col";
@@ -306,6 +307,42 @@ public class ResponsiveColumn extends StyleableComponent {
         setAlignment(ColumnComponentAlignment.RIGHT);
         setComponent(component);
         return this;
+    }
+
+
+    @Override
+    public void addComponentAttachListener(ComponentAttachListener listener) {
+        addListener(ComponentAttachEvent.class, listener, ComponentAttachListener.attachMethod);
+    }
+
+
+    @Override
+    public void removeComponentAttachListener(ComponentAttachListener listener) {
+        removeListener(ComponentAttachEvent.class, listener, ComponentAttachListener.attachMethod);
+    }
+
+
+    @Override
+    public void addComponentDetachListener(ComponentDetachListener listener) {
+        addListener(ComponentDetachEvent.class, listener, ComponentDetachListener.detachMethod);
+    }
+
+
+    @Override
+    public void removeComponentDetachListener(ComponentDetachListener listener) {
+        removeListener(ComponentDetachEvent.class, listener, ComponentDetachListener.detachMethod);
+    }
+
+
+    @Override
+    public Component getContent() {
+        return getComponent();
+    }
+
+
+    @Override
+    public void setContent(Component content) {
+        setComponent(content);
     }
 
 
