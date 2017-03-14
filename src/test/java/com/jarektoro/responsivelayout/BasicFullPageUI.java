@@ -23,10 +23,10 @@ public class BasicFullPageUI extends AbstractTest {
         Page.getCurrent().getStyles().add(".img-rounded { border-radius: 50%; width:100% } .bg-dark-grey { background-color: #F0F0F0;}");
 
 
-        ResponsiveLayout responsiveLayout = new ResponsiveLayout(ResponsiveLayout.ContainerType.FIXED);
+        ResponsiveLayout responsiveLayout = new ResponsiveLayout(ResponsiveLayout.ContainerType.FLUID);
 
         responsiveLayout.setScrollable(true);
-
+        responsiveLayout.setSizeFull();
 
         ResponsiveRow rootResponsiveRow = responsiveLayout.addRow();
         rootResponsiveRow.setHeight("100%");
