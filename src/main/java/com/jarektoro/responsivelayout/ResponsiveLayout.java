@@ -61,10 +61,10 @@ public class ResponsiveLayout extends CssLayout {
             removeStyleName(CSS_CONTAINER_SCROLLABLE);
         }
     }
-
+    
     public ResponsiveLayout withStyleName(String styleName) {
-        addStyleName(styleName);
-        return this;
+        addStyleName(styleName); 
+        return this; 
     }
 
     /**

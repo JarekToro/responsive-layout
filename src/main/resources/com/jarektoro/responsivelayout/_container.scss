@@ -1,5 +1,3 @@
-@import "vars";
-
 @mixin container {
 
   &-container {
@@ -15,19 +13,19 @@
       width: 100%;
     }
 
-    @media only screen and (min-width: $sm-breakpoint) {
+    @media only screen and (min-width: 48em) {
       &-fixed {
         width: 46rem;
       }
     }
 
-    @media only screen and (min-width: $md-breakpoint) {
+    @media only screen and (min-width: 62em) {
       &-fixed {
         width: 61rem;
       }
     }
 
-    @media only screen and (min-width: $lg-breakpoint) {
+    @media only screen and (min-width: 75em) {
       &-fixed {
         width: 71rem;
       }
