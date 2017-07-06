@@ -1,9 +1,9 @@
 package com.jarektoro.responsivelayout;
 
 import com.jarektoro.responsivelayout.Styleable.StyleableComponent;
+import com.vaadin.shared.Registration;
 import com.vaadin.ui.Component;
 import com.vaadin.ui.CssLayout;
-import com.vaadin.ui.CustomComponent;
 import com.vaadin.ui.SingleComponentContainer;
 
 import java.util.HashSet;
@@ -28,8 +28,8 @@ public class ResponsiveColumn extends StyleableComponent implements SingleCompon
     private static final String CSS_COL_LG = "lg-";
 
 
-    private static final String CSS_COL_CONTENT_ALGINMENT_RIGHT = "content-right";
-    private static final String CSS_COL_CONTENT_ALGINMENT_CENTER = "content-center";
+    private static final String CSS_COL_CONTENT_ALIGNMENT_RIGHT = "content-right";
+    private static final String CSS_COL_CONTENT_ALIGNMENT_CENTER = "content-center";
 
 
     //TODO: these should be one class not two
@@ -147,36 +147,18 @@ public class ResponsiveColumn extends StyleableComponent implements SingleCompon
 
     // converts the rule object to a string for css
     private String ruleToStyleName(Rule rule) {
-
-
-        if (rule.isOffset) {
-            switch (rule.displaySize) {
-                case XS:
-                    return CSS_COL_XS_OFFSET + rule.width;
-                case SM:
-                    return CSS_COL_SM_OFFSET + rule.width;
-                case MD:
-                    return CSS_COL_MD_OFFSET + rule.width;
-                case LG:
-                    return CSS_COL_LG_OFFSET + rule.width;
-                default:
-                    return null;
-            }
-        } else {
-            switch (rule.displaySize) {
-                case XS:
-                    return CSS_COL_XS + rule.width;
-                case SM:
-                    return CSS_COL_SM + rule.width;
-                case MD:
-                    return CSS_COL_MD + rule.width;
-                case LG:
-                    return CSS_COL_LG + rule.width;
-                default:
-                    return null;
-            }
+        switch (rule.displaySize) {
+            case XS:
+                return (rule.isOffset ? CSS_COL_XS_OFFSET : CSS_COL_XS) + rule.width;
+            case SM:
+                return (rule.isOffset ? CSS_COL_SM_OFFSET : CSS_COL_SM) + rule.width;
+            case MD:
+                return (rule.isOffset ? CSS_COL_MD_OFFSET : CSS_COL_MD) + rule.width;
+            case LG:
+                return (rule.isOffset ? CSS_COL_LG_OFFSET : CSS_COL_LG) + rule.width;
+            default:
+                return null;
         }
-
     }
 
 
@@ -185,8 +167,6 @@ public class ResponsiveColumn extends StyleableComponent implements SingleCompon
         setVisibility(ResponsiveLayout.DisplaySize.SM, sm);
         setVisibility(ResponsiveLayout.DisplaySize.MD, md);
         setVisibility(ResponsiveLayout.DisplaySize.LG, lg);
-
-        return;
     }
 
 
@@ -196,19 +176,13 @@ public class ResponsiveColumn extends StyleableComponent implements SingleCompon
 
         for (Rule rule : rules) {
             if (rule.displaySize.equals(displaySize)) {
-
                 if (rule.isOffset == isOffset) {
-
                     foundRule[0] = rule;
-
                 }
-
             }
         }
 
-
         return foundRule[0];
-
     }
 
 
@@ -223,21 +197,18 @@ public class ResponsiveColumn extends StyleableComponent implements SingleCompon
 
 
     public void setAlignment(ColumnComponentAlignment componentAlignment) {
-        removeStyleName(CSS_COL_CONTENT_ALGINMENT_RIGHT);
-        removeStyleName(CSS_COL_CONTENT_ALGINMENT_CENTER);
-
+        removeStyleName(CSS_COL_CONTENT_ALIGNMENT_RIGHT);
+        removeStyleName(CSS_COL_CONTENT_ALIGNMENT_CENTER);
 
         switch (componentAlignment) {
-
-
             case CENTER:
-                addStyleName(CSS_COL_CONTENT_ALGINMENT_CENTER);
+                addStyleName(CSS_COL_CONTENT_ALIGNMENT_CENTER);
                 break;
             case LEFT:
                 //The default it left automatically
                 break;
             case RIGHT:
-                addStyleName(CSS_COL_CONTENT_ALGINMENT_RIGHT);
+                addStyleName(CSS_COL_CONTENT_ALIGNMENT_RIGHT);
                 break;
             default:
                 break;
@@ -311,26 +282,26 @@ public class ResponsiveColumn extends StyleableComponent implements SingleCompon
 
 
     @Override
-    public void addComponentAttachListener(ComponentAttachListener listener) {
-        addListener(ComponentAttachEvent.class, listener, ComponentAttachListener.attachMethod);
+    public Registration addComponentAttachListener(ComponentAttachListener listener) {
+        return addListener(ComponentAttachEvent.class, listener, ComponentAttachListener.attachMethod);
     }
 
 
     @Override
     public void removeComponentAttachListener(ComponentAttachListener listener) {
-        removeListener(ComponentAttachEvent.class, listener, ComponentAttachListener.attachMethod);
+        throw new UnsupportedOperationException();
     }
 
 
     @Override
-    public void addComponentDetachListener(ComponentDetachListener listener) {
-        addListener(ComponentDetachEvent.class, listener, ComponentDetachListener.detachMethod);
+    public Registration addComponentDetachListener(ComponentDetachListener listener) {
+        return addListener(ComponentDetachEvent.class, listener, ComponentDetachListener.detachMethod);
     }
 
 
     @Override
     public void removeComponentDetachListener(ComponentDetachListener listener) {
-        removeListener(ComponentDetachEvent.class, listener, ComponentDetachListener.detachMethod);
+        throw new UnsupportedOperationException();
     }
 
 
