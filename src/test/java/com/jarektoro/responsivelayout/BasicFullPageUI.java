@@ -140,7 +140,7 @@ public class BasicFullPageUI extends AbstractTest {
         button.addStyleName(ValoTheme.BUTTON_PRIMARY);
 
         TextField field = new TextField();
-        field.setInputPrompt("Description");
+        field.setPlaceholder("Description");
 
         Button button1 = new Button("", FontAwesome.ANCHOR);
         button1.addStyleName(ValoTheme.BUTTON_FRIENDLY);
