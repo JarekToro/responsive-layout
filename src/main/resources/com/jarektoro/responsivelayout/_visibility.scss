@@ -1,3 +1,4 @@
+@import "vars";
 @mixin visibility {
 
   &-visible-xs, &-visible-sm, &-visible-md, &-visible-lg, &-visible-xs-block, &-visible-xs-inline, &-visible-xs-inline-block, &-visible-sm-block, &-visible-sm-inline, &-visible-sm-inline-block, &-visible-md-block, &-visible-md-inline, &-visible-md-inline-block, &-visible-lg-block, &-visible-lg-inline, &-visible-lg-inline-block {
@@ -5,6 +6,7 @@
   }
 
   @media (max-width: 767px) {
+    // one less then md-breakpoint
     &-visible-xs {
       display: block !important;
       &.col.col-content-center {
@@ -23,24 +25,31 @@
   }
 
   @media (max-width: 767px) {
+    // one less then md-breakpoint
+
     &-visible-xs-block {
       display: block !important;
     }
   }
 
   @media (max-width: 767px) {
+    // one less then md-breakpoint
+
     &-visible-xs-inline {
       display: inline !important;
     }
   }
 
   @media (max-width: 767px) {
+    // one less then md-breakpoint
+
     &-visible-xs-inline-block {
       display: inline-block !important;
     }
   }
 
-  @media (min-width: 768px) and (max-width: 991px) {
+  @media (min-width: $sm-breakpoint) and (max-width: 991px) {
+    // one less then md-breakpoint
     &-visible-sm {
       display: block !important;
       &.col.col-content-center {
@@ -58,25 +67,33 @@
     }
   }
 
-  @media (min-width: 768px) and (max-width: 991px) {
+  @media (min-width: $sm-breakpoint) and (max-width: 991px) {
+    // one less then md-breakpoint
+
     &-visible-sm-block {
       display: block !important;
     }
   }
 
-  @media (min-width: 768px) and (max-width: 991px) {
+  @media (min-width: $sm-breakpoint) and (max-width: 991px) {
+    // one less then md-breakpoint
+
     &-visible-sm-inline {
       display: inline !important;
     }
   }
 
-  @media (min-width: 768px) and (max-width: 991px) {
+  @media (min-width: $sm-breakpoint) and (max-width: 991px) {
+    // one less then md-breakpoint
+
     &-visible-sm-inline-block {
       display: inline-block !important;
     }
   }
 
-  @media (min-width: 992px) and (max-width: 1199px) {
+  @media (min-width: $md-breakpoint) and (max-width: 1199px) {
+    // one less then lg-breakpoint
+
     &-visible-md {
       display: block !important;
       &.col.col-content-center {
@@ -94,25 +111,31 @@
     }
   }
 
-  @media (min-width: 992px) and (max-width: 1199px) {
+  @media (min-width: $md-breakpoint) and (max-width: 1199px) {
+    // one less then lg-breakpoint
+
     &-visible-md-block {
       display: block !important;
     }
   }
 
-  @media (min-width: 992px) and (max-width: 1199px) {
+  @media (min-width: $md-breakpoint) and (max-width: 1199px) {
+    // one less then lg-breakpoint
+
     &-visible-md-inline {
       display: inline !important;
     }
   }
 
-  @media (min-width: 992px) and (max-width: 1199px) {
+  @media (min-width: $md-breakpoint) and (max-width: 1199px) {
+    // one less then lg-breakpoint
+
     &-visible-md-inline-block {
       display: inline-block !important;
     }
   }
 
-  @media (min-width: 1200px) {
+  @media (min-width: $lg-breakpoint) {
     &-visible-lg {
       display: block !important;
       &.col.col-content-center {
@@ -130,43 +153,48 @@
     }
   }
 
-  @media (min-width: 1200px) {
+  @media (min-width: $lg-breakpoint) {
     &-visible-lg-block {
       display: block !important;
     }
   }
 
-  @media (min-width: 1200px) {
+  @media (min-width: $lg-breakpoint) {
     &-visible-lg-inline {
       display: inline !important;
     }
   }
 
-  @media (min-width: 1200px) {
+  @media (min-width: $lg-breakpoint) {
     &-visible-lg-inline-block {
       display: inline-block !important;
     }
   }
 
   @media (max-width: 767px) {
+    // one less then sm-breakpoint
     &-hidden-xs {
       display: none !important;
     }
   }
 
-  @media (min-width: 768px) and (max-width: 991px) {
+  @media (min-width: $sm-breakpoint) and (max-width: 991px) {
+    // one less then md-breakpoint
+
     &-hidden-sm {
       display: none !important;
     }
   }
 
-  @media (min-width: 992px) and (max-width: 1199px) {
+  @media (min-width: $md-breakpoint) and (max-width: 1199px) {
+    // one less then lg-breakpoint
+
     &-hidden-md {
       display: none !important;
     }
   }
 
-  @media (min-width: 1200px) {
+  @media (min-width: $lg-breakpoint) {
     &-hidden-lg {
       display: none !important;
     }

@@ -1,3 +1,4 @@
+@import "vars";
 @mixin alignment {
 
   &-start-xs {
@@ -62,7 +63,7 @@
     order: 1;
   }
 
-  @media only screen and (min-width: 48em) {
+  @media only screen and (min-width: $sm-breakpoint) {
 
     &-start-sm {
       -ms-flex-pack: start;
@@ -118,7 +119,7 @@
     }
   }
 
-  @media only screen and (min-width: 62em) {
+  @media only screen and (min-width: $md-breakpoint) {
 
     &-start-md {
       -ms-flex-pack: start;
@@ -174,7 +175,7 @@
     }
   }
 
-  @media only screen and (min-width: 75em) {
+  @media only screen and (min-width: $lg-breakpoint) {
 
     &-start-lg {
       -ms-flex-pack: start;

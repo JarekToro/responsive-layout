@@ -1,3 +1,4 @@
+@import "vars";
 @mixin row {
 
   &-row {
@@ -98,7 +99,7 @@
         padding-bottom: .3rem;
       }
       @media only screen and (max-width: 47em) {
-
+//needs to be one less then md-breakpoint
         &.margin-xs {
           margin: 2rem !important;
 
@@ -140,7 +141,7 @@
         }
       }
 
-      @media only screen and (min-width: 48em) {
+      @media only screen and (min-width: $sm-breakpoint) {
         //SM
         &.margin-sm {
           margin: 2rem !important;
@@ -184,7 +185,7 @@
 
       }
 
-      @media only screen and (min-width: 62em) {
+      @media only screen and (min-width: $md-breakpoint) {
         //MD
         &.margin-md {
           margin: 2rem !important;
@@ -227,7 +228,7 @@
         }
       }
 
-      @media only screen and (min-width: 75em) {
+      @media only screen and (min-width: $lg-breakpoint) {
         //LG
         &.margin-lg {
           margin: 2rem !important;
