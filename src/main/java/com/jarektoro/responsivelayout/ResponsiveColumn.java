@@ -1,19 +1,21 @@
 package com.jarektoro.responsivelayout;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import com.jarektoro.responsivelayout.Styleable.StyleableComponent;
 import com.vaadin.shared.Registration;
 import com.vaadin.ui.Component;
 import com.vaadin.ui.CssLayout;
 import com.vaadin.ui.SingleComponentContainer;
 
-import java.util.HashSet;
-import java.util.Set;
-
 /**
  * Created by JarekToro on 9/23/16.
  */
 public class ResponsiveColumn extends StyleableComponent implements SingleComponentContainer {
 
+	private static final long serialVersionUID = 5472694845456319682L;
+	
 	private static final String CSS_COL = "rl-col";
 	private static final String CSS_COL_CONTENT_CONTAINER = "col-container";
 	private static final String CSS_COL_XS_OFFSET = "xs-offset-";
@@ -97,6 +99,10 @@ public class ResponsiveColumn extends StyleableComponent implements SingleCompon
 		addRule(ResponsiveLayout.DisplaySize.SM, sm);
 		addRule(ResponsiveLayout.DisplaySize.MD, md);
 		addRule(ResponsiveLayout.DisplaySize.LG, lg);
+	}
+
+	public boolean hasRules() {
+		return rules.isEmpty();
 	}
 
 	public void addRule(Rule rule) {
@@ -198,6 +204,10 @@ public class ResponsiveColumn extends StyleableComponent implements SingleCompon
 		return root.getComponent(0);
 	}
 
+	public CssLayout getRoot() {
+		return root;
+	}
+
 	// Convenience API
 
 	public ResponsiveColumn withDisplayRules(int xs, int sm, int md, int lg) {
@@ -277,5 +287,6 @@ public class ResponsiveColumn extends StyleableComponent implements SingleCompon
 	public void setContent(Component content) {
 		setComponent(content);
 	}
+	
 
 }

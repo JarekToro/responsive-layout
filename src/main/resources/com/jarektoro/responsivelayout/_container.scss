@@ -12,7 +12,16 @@
     &-fluid {
       width: 100%;
     }
-
+    
+    &-stretch { 
+	    .rl-row {
+	      align-items: stretch; 
+	    }
+	    .col-container {
+	      height: 100%;
+	    }
+    }
+    
     @media only screen and (min-width: 48em) {
       &-fixed {
         width: 46rem;

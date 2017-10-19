@@ -13,6 +13,7 @@ public class ResponsiveLayout extends CssLayout {
 
     private static final String CSS_CONTAINER = "rl-container";
     private static final String CSS_CONTAINER_FLUID = "fluid";
+    private static final String CSS_CONTAINER_STRETCH = "stretch";
     private static final String CSS_CONTAINER_FIXED = "fixed";
     private static final String CSS_CONTAINER_SCROLLABLE = "scrollable";
 
@@ -48,10 +49,12 @@ public class ResponsiveLayout extends CssLayout {
             addStyleName(CSS_CONTAINER_FLUID);
         } else if (containerType == ContainerType.FIXED) {
             addStyleName(CSS_CONTAINER_FIXED);
-
         }
     }
-
+    
+    public void setStretch(){
+    	  addStyleName(CSS_CONTAINER_STRETCH);
+    }
 
     public void setScrollable(boolean scrollable) {
         if (scrollable) {

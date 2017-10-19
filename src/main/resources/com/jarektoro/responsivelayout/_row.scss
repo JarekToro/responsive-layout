@@ -14,13 +14,15 @@
     flex-direction: row;
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
-
+	&-stretch {
+	}
     &-reverse {
       -ms-flex-direction: row-reverse;
       -webkit-box-orient: horizontal;
       -webkit-box-direction: reverse;
       flex-direction: row-reverse;
     }
+    
 
     //TODO: create way to autogenerate the rl- prefix for rl-col dynamiclly
 
