@@ -14,9 +14,13 @@ import static com.jarektoro.responsivelayout.ResponsiveRow.MarginSize.NONE;
  */
 public class ResponsiveRow extends StyleableLayout {
 
+	private static final long serialVersionUID = -6411662128424655L;
 
-    public class NotResponsiveColumnException extends Exception {
-        public NotResponsiveColumnException(String message) {
+	public class NotResponsiveColumnException extends Exception {
+
+		private static final long serialVersionUID = -461250842842947577L;
+
+		public NotResponsiveColumnException(String message) {
 
             super(message);
 
@@ -56,12 +60,10 @@ public class ResponsiveRow extends StyleableLayout {
     }
 
     public ResponsiveRow() {
-
         super();
         setPrimaryStyleName(CSS_ROW);
         setWidthUndefined();
         addStyleName(CSS_MARGIN);
-
 
         VerticalLayout verticalLayout = new VerticalLayout();
     }
@@ -75,13 +77,10 @@ public class ResponsiveRow extends StyleableLayout {
 
 
     public void addColumn(ResponsiveColumn col) {
-
         super.addComponent(col);
-
     }
 
     public ResponsiveColumn getColumn(int index) throws NotResponsiveColumnException {
-
         Component component = super.getComponent(index);
 
         if (component instanceof ResponsiveColumn) {
@@ -97,8 +96,6 @@ public class ResponsiveRow extends StyleableLayout {
 
 
     public void setMargin(boolean margin) {
-
-
         if (margin) {
             setMargin(ResponsiveRow.MarginSize.NORMAL, ResponsiveLayout.DisplaySize.XS);
             setMargin(ResponsiveRow.MarginSize.NORMAL, ResponsiveLayout.DisplaySize.SM);
@@ -110,13 +107,10 @@ public class ResponsiveRow extends StyleableLayout {
             setMargin(ResponsiveRow.MarginSize.NONE, ResponsiveLayout.DisplaySize.MD);
             setMargin(ResponsiveRow.MarginSize.NONE, ResponsiveLayout.DisplaySize.LG);
         }
-
-
     }
 
 
     public void setMargin(MarginSize marginSize, ResponsiveLayout.DisplaySize displaySize) {
-
         String suffix = "";
 
         switch (displaySize) {
@@ -149,8 +143,6 @@ public class ResponsiveRow extends StyleableLayout {
             removeStyleName(CSS_MARGIN + suffix);
             removeStyleName(CSS_MARGIN + suffix + "-" + CSS_MARGIN_SMALL + suffix);
         }
-
-
     }
 
 
@@ -165,31 +157,22 @@ public class ResponsiveRow extends StyleableLayout {
     }
 
     public void setVerticalSpacing(boolean verticalSpacing) {
-
-
         if (verticalSpacing) {
             addStyleName(CSS_V_COL_SPACING);
         } else {
             removeStyleName(CSS_V_COL_SPACING);
         }
-
     }
 
     public void setHorizontalSpacing(boolean horizontalSpacing) {
-
-
         if (horizontalSpacing) {
             addStyleName(CSS_H_COL_SPACING);
         } else {
             removeStyleName(CSS_H_COL_SPACING);
         }
-
-
     }
 
     public void setVerticalSpacing(SpacingSize spacingSize, boolean verticalSpacing) {
-
-
         if (verticalSpacing) {
             removeStyleName(CSS_V_COL_SPACING);
             removeStyleName(CSS_V_COL_SPACING_SMALL);
@@ -203,19 +186,13 @@ public class ResponsiveRow extends StyleableLayout {
                 addStyleName(CSS_V_COL_SPACING_SMALL);
             }
 
-
         } else {
-
             removeStyleName(CSS_V_COL_SPACING);
             removeStyleName(CSS_V_COL_SPACING_SMALL);
-
         }
-
     }
 
     public void setHorizontalSpacing(SpacingSize spacingSize, boolean horizontalSpacing) {
-
-
         if (horizontalSpacing) {
             removeStyleName(CSS_H_COL_SPACING);
             removeStyleName(CSS_H_COL_SPACING_SMALL);
@@ -229,20 +206,14 @@ public class ResponsiveRow extends StyleableLayout {
                 addStyleName(CSS_H_COL_SPACING_SMALL);
             }
 
-
         } else {
-
             removeStyleName(CSS_H_COL_SPACING);
             removeStyleName(CSS_H_COL_SPACING_SMALL);
-
         }
-
-
     }
 
 
     public void setDefaultComponentAlignment(Alignment defaultAlignment) {
-
         //Makes use of the Alignment Property Vaadin already made and converts it to the Css Style Name
 
         removeStyleName(CSS_ALIGNMENT_BOTTOM_LEFT);
@@ -258,50 +229,29 @@ public class ResponsiveRow extends StyleableLayout {
         removeStyleName(CSS_ALIGNMENT_MIDDLE_RIGHT);
 
         if (defaultAlignment.equals(Alignment.BOTTOM_LEFT)) {
-
             addStyleName(CSS_ALIGNMENT_BOTTOM_LEFT);
-
         } else if (defaultAlignment.equals(Alignment.BOTTOM_CENTER)) {
-
             addStyleName(CSS_ALIGNMENT_BOTTOM_CENTER);
-
         } else if (defaultAlignment.equals(Alignment.BOTTOM_RIGHT)) {
-
             addStyleName(CSS_ALIGNMENT_BOTTOM_RIGHT);
-
         } else if (defaultAlignment.equals(Alignment.TOP_LEFT)) {
-
             addStyleName(CSS_ALIGNMENT_TOP_LEFT);
-
         } else if (defaultAlignment.equals(Alignment.TOP_CENTER)) {
-
             addStyleName(CSS_ALIGNMENT_TOP_CENTER);
-
         } else if (defaultAlignment.equals(Alignment.TOP_RIGHT)) {
-
             addStyleName(CSS_ALIGNMENT_TOP_RIGHT);
-
         } else if (defaultAlignment.equals(Alignment.MIDDLE_LEFT)) {
-
             addStyleName(CSS_ALIGNMENT_MIDDLE_LEFT);
-
         } else if (defaultAlignment.equals(Alignment.MIDDLE_CENTER)) {
-
             addStyleName(CSS_ALIGNMENT_MIDDLE_CENTER);
-
         } else if (defaultAlignment.equals(Alignment.MIDDLE_RIGHT)) {
-
             addStyleName(CSS_ALIGNMENT_MIDDLE_RIGHT);
-
         }
-
-
     }
 
 
     @Override
     public void addComponents(Component... components) {
-
         for (Component component : components) {
             ResponsiveColumn col = new ResponsiveColumn().withComponent(component);
             col.setSizeUndefined();
@@ -312,11 +262,9 @@ public class ResponsiveRow extends StyleableLayout {
 
     @Override
     public void addComponent(Component component) {
-
         ResponsiveColumn col = new ResponsiveColumn().withComponent(component);
         col.setSizeUndefined();
         addColumn(col);
-
     }
     // Convenience API
 

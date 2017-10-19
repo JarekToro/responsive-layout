@@ -31,7 +31,6 @@ public class ResponsiveLayout extends CssLayout {
         setHeightUndefined();
         setPrimaryStyleName(CSS_CONTAINER);
         setContainerType(containerType);
-
     }
 
     public ResponsiveLayout() {
@@ -77,11 +76,8 @@ public class ResponsiveLayout extends CssLayout {
     }
 
     public ResponsiveRow addRow() {
-
         ResponsiveRow row = new ResponsiveRow();
-
         addComponent(row);
-
         return row;
     }
 

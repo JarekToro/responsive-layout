@@ -9,7 +9,9 @@ import com.vaadin.ui.CustomComponent;
  */
 public class StyleableComponent extends CustomComponent {
 
-    private final VisibilityCSSAdapter visibilityCSSAdapter;
+	private static final long serialVersionUID = -5820909402047704207L;
+	
+	private final VisibilityCSSAdapter visibilityCSSAdapter;
 
     public StyleableComponent() {
 
