@@ -1,10 +1,9 @@
 @mixin container {
-
   &-container {
     margin-right: auto;
     margin-left: auto;
     display: block;
-
+    
     &-scrollable {
       overflow: visible !important;
     }
@@ -17,8 +16,8 @@
 	    .rl-row {
 	      align-items: stretch; 
 	    }
-	    .col-container {
-	      height: 100%;
+	    .rl-row .rl-col .col-container {
+	      height: 100% !important;
 	    }
     }
     
