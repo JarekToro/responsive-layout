@@ -3,12 +3,13 @@
 @import "_col";
 @import "_alignment";
 @import "_visibility";
-
+@import "_flex-css-layout";
 
 .rl {
   @include container;
   @include col;
   @include row;
   @include visibility;
-  @include alignment
+  @include alignment;
 }
+  @include flex-css-layout;

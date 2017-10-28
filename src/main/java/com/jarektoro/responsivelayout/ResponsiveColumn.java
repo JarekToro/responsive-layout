@@ -15,7 +15,7 @@ import com.vaadin.ui.SingleComponentContainer;
 public class ResponsiveColumn extends StyleableComponent implements SingleComponentContainer {
 
 	private static final long serialVersionUID = 5472694845456319682L;
-	
+
 	private static final String CSS_COL = "rl-col";
 	private static final String CSS_COL_CONTENT_CONTAINER = "col-container";
 	private static final String CSS_COL_XS_OFFSET = "xs-offset-";
@@ -102,7 +102,7 @@ public class ResponsiveColumn extends StyleableComponent implements SingleCompon
 	}
 
 	public boolean hasRules() {
-		return rules.isEmpty();
+		return !rules.isEmpty();
 	}
 
 	public void addRule(Rule rule) {
@@ -287,6 +287,29 @@ public class ResponsiveColumn extends StyleableComponent implements SingleCompon
 	public void setContent(Component content) {
 		setComponent(content);
 	}
-	
+
+	public void setGrow(boolean grow) {
+		if (grow)
+			addStyleName("grow");
+		else
+			removeStyleName("grow");
+	}
+
+	public void setShrink(boolean shrink) {
+		if (shrink)
+			addStyleName("shrink");
+		else
+			removeStyleName("shrink");
+	}
+
+	public ResponsiveColumn withGrow(boolean grow) {
+		setGrow(grow);
+		return this;
+	}
+
+	public ResponsiveColumn withShrink(boolean shrink) {
+		setShrink(shrink);
+		return this;
+	}
 
 }

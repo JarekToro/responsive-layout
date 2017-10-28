@@ -19,9 +19,7 @@ public class ResponsiveRow extends StyleableLayout {
 		private static final long serialVersionUID = -461250842842947577L;
 
 		public NotResponsiveColumnException(String message) {
-
 			super(message);
-
 		}
 	}
 
@@ -358,5 +356,29 @@ public class ResponsiveRow extends StyleableLayout {
 		addStyleName(styleName);
 		return this;
 	}
-	
+
+	public void setGrow(boolean grow) {
+		if (grow)
+			addStyleName("grow");
+		else
+			removeStyleName("grow");
+	}
+
+	public void setShrink(boolean shrink) {
+		if (shrink)
+			addStyleName("shrink");
+		else
+			removeStyleName("shrink");
+	}
+
+	public ResponsiveRow withGrow(boolean grow) {
+		setGrow(grow);
+		return this;
+	}
+
+	public ResponsiveRow withShrink(boolean shrink) {
+		setShrink(shrink);
+		return this;
+	}
+
 }
