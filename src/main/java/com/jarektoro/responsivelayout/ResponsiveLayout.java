@@ -67,6 +67,11 @@ public class ResponsiveLayout extends CssLayout {
 	public void setSpacing() {
 		addStyleName(CSS_CONTAINER_SPACING);
 	}
+	
+	public ResponsiveLayout withSpacing() {
+		addStyleName(CSS_CONTAINER_SPACING);
+		return this;
+	}
 
 	public void setScrollable(boolean scrollable) {
 		if (scrollable) {
