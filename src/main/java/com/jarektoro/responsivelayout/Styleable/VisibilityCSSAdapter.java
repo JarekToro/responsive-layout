@@ -109,36 +109,36 @@ public class VisibilityCSSAdapter {
                 }
             }
         }
+        
         return true;
     }
 
     public void setVisibility(ResponsiveLayout.DisplaySize displaySize, boolean isVisible) {
-
         if (displaySize == ResponsiveLayout.DisplaySize.XS) {
             for (String clazz : VisibilityCSSAdapter.xsClassGroup.classes) {
                 this.component.removeStyleName(clazz);
             }
         }
+        
         if (displaySize == ResponsiveLayout.DisplaySize.SM) {
             for (String clazz : VisibilityCSSAdapter.smClassGroup.classes) {
                 this.component.removeStyleName(clazz);
             }
         }
+        
         if (displaySize == ResponsiveLayout.DisplaySize.MD) {
             for (String clazz : VisibilityCSSAdapter.mdClassGroup.classes) {
                 this.component.removeStyleName(clazz);
             }
         }
+        
         if (displaySize == ResponsiveLayout.DisplaySize.LG) {
             for (String clazz : VisibilityCSSAdapter.lgClassGroup.classes) {
                 this.component.removeStyleName(clazz);
             }
         }
 
-
         this.component.addStyleName(getCssForDisplaySize(displaySize, isVisible));
-
-
     }
 
 }

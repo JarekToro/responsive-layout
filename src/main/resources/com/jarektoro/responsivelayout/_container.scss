@@ -1,10 +1,44 @@
-@mixin container {
+@mixin flexible {
+	&.grow:not(.shrink) {
+		-webkit-flex-grow: 1;
+		-moz-flex-grow: 1;
+		flex-grow: 1;
+		-ms-flex-positive: 1;
+		-webkit-flex-shrink: 0;
+		-moz-flex-shrink: 0;
+		flex-shrink: 0;
+		-ms-flex-negative: 0;
+	}
+	&.shrink:not(.grow) {
+		-webkit-flex-grow: 0;
+		-moz-flex-grow: 0;
+		flex-grow: 0;
+		-ms-flex-positive: 0;
+		-webkit-flex-shrink: 1;
+		-moz-flex-shrink: 1;
+		flex-shrink: 1;
+		-ms-flex-negative: 1;
+		overflow: auto;
+	}
+	&.grow.shrink {
+		-webkit-flex-grow: 1;
+		-moz-flex-grow: 1;
+		flex-grow: 1;
+		-ms-flex-positive: 1;
+		-webkit-flex-shrink: 1;
+		-moz-flex-shrink: 1;
+		flex-shrink: 1;
+		-ms-flex-negative: 1;
+		overflow: auto;
+	}
+}
 
+@mixin container {
   &-container {
     margin-right: auto;
     margin-left: auto;
     display: block;
-
+    
     &-scrollable {
       overflow: visible !important;
     }
@@ -12,7 +46,42 @@
     &-fluid {
       width: 100%;
     }
-
+    
+    &-flexible {
+        &.rl-container-scrollable {
+		    overflow-y: auto !important;
+		    overflow-x: hidden !important;
+		}
+    	display: flex;
+	    flex-direction: column;
+	    &.spacing { 
+	    	position: relative;
+		    top: -5px;
+		    left: -5px;
+		    right: -5px;
+		    bottom: -5px;
+	        width: calc(100% + 10px) !important;
+		     > .rl-row > .rl-col {
+			    padding: 5px !important;
+			}
+		}
+		&:not(.spacing) { 
+		     > .rl-row > .rl-col {
+			    padding: 0px !important;
+			}
+		}	  
+	    .rl-row {
+	     	@include flexible;
+	        align-items: stretch; 
+	    	margin: 0px !important;
+	     	.rl-col {
+		    	@include flexible;
+		    	.col-container {
+			      height: 100% !important;
+			    }
+	  		}
+	    }
+	}
     @media only screen and (min-width: 48em) {
       &-fixed {
         width: 46rem;
