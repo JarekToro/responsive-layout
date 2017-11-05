@@ -259,13 +259,11 @@ public class ResponsiveRow extends StyleableLayout {
 		for (Component component : components) {
 			addComponent(component);
 		}
-
 	}
 
 	@Override
 	public void addComponent(Component component) {
-		ResponsiveColumn column = addColumn().withComponent(component);
-		addColumn(column);
+		addColumn().withComponent(component);
 	}
 
 	public boolean hasDefaultRules() {
