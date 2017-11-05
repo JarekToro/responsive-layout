@@ -2,10 +2,10 @@ Responsive Layout
 ===================
 
 > Vaadin is great! Responsive webpages are great! ... 
-> 
-> ![alt text](http://emojipedia-us.s3.amazonaws.com/cache/e4/9e/e49e33767a64cf63310af3764fc60126.png "hey")
-> 
 >  *Wait a minute!! lets put them together!*
+> 
+> ![alt text](https://m.popkey.co/5079bd/WgQ97.gif "hey")
+> 
 
 
 
