@@ -251,6 +251,21 @@ public class ResponsiveColumn extends StyleableComponent implements SingleCompon
 		return this;
 	}
 
+	/**
+	 * fluent api for setStyleName
+	 * 
+	 * @param styleName
+	 * @param replaceAndSet
+	 * @return
+	 */
+	public ResponsiveColumn withStyleName(String styleName, boolean replaceAndSet) {
+		if (replaceAndSet)
+			setStyleName(styleName);
+		else
+			withStyleName(styleName);
+		return this;
+	}
+
 	@Deprecated
 	public ResponsiveColumn withRightAlignedComponent(Component component) {
 		setAlignment(ColumnComponentAlignment.RIGHT);
@@ -309,6 +324,21 @@ public class ResponsiveColumn extends StyleableComponent implements SingleCompon
 
 	public ResponsiveColumn withShrink(boolean shrink) {
 		setShrink(shrink);
+		return this;
+	}
+
+	public ResponsiveColumn withSizeUndefined() {
+		setSizeUndefined();
+		return this;
+	}
+
+	public ResponsiveColumn withWidthUndefined() {
+		setWidthUndefined();
+		return this;
+	}
+
+	public ResponsiveColumn withHeightUndefined() {
+		setHeightUndefined();
 		return this;
 	}
 
