@@ -67,7 +67,7 @@ public class ResponsiveLayout extends CssLayout {
 	public void setSpacing() {
 		addStyleName(CSS_CONTAINER_SPACING);
 	}
-	
+
 	public ResponsiveLayout withSpacing() {
 		addStyleName(CSS_CONTAINER_SPACING);
 		return this;
@@ -81,8 +81,32 @@ public class ResponsiveLayout extends CssLayout {
 		}
 	}
 
+	public ResponsiveLayout withScrollable(boolean scrollable) {
+		if (scrollable) {
+			addStyleName(CSS_CONTAINER_SCROLLABLE);
+		} else {
+			removeStyleName(CSS_CONTAINER_SCROLLABLE);
+		}
+		return this;
+	}
+
 	public ResponsiveLayout withStyleName(String styleName) {
 		addStyleName(styleName);
+		return this;
+	}
+
+	/**
+	 * fluent api for setStyleName
+	 * 
+	 * @param styleName
+	 * @param replaceAndSet
+	 * @return
+	 */
+	public ResponsiveLayout withStyleName(String styleName, boolean replaceAndSet) {
+		if (replaceAndSet)
+			setStyleName(styleName);
+		else
+			withStyleName(styleName);
 		return this;
 	}
 
@@ -121,6 +145,22 @@ public class ResponsiveLayout extends CssLayout {
 		this.sm = sm;
 		this.md = md;
 		this.lg = lg;
+		return this;
+	}
+
+	public ResponsiveLayout withCaption(String caption) {
+		setCaption(caption);
+		return this;
+	}
+
+	public ResponsiveLayout withCaption(String caption, boolean captionAsHtml) {
+		setCaption(caption);
+		setCaptionAsHtml(captionAsHtml);
+		return this;
+	}
+
+	public ResponsiveLayout withFullSize() {
+		setSizeFull();
 		return this;
 	}
 

@@ -64,8 +64,6 @@ public class ResponsiveRow extends StyleableLayout {
 		setPrimaryStyleName(CSS_ROW);
 		setWidthUndefined();
 		addStyleName(CSS_MARGIN);
-
-		VerticalLayout verticalLayout = new VerticalLayout();
 	}
 
 	public void setExpandRatio(ResponsiveColumn responsiveColumn, ResponsiveLayout.DisplaySize displaySize, int width) {
@@ -259,20 +257,14 @@ public class ResponsiveRow extends StyleableLayout {
 	@Override
 	public void addComponents(Component... components) {
 		for (Component component : components) {
-			ResponsiveColumn col = new ResponsiveColumn().withComponent(component);
-			col.setSizeUndefined();
-			addColumn(col);
+			addComponent(component);
 		}
-
 	}
 
 	@Override
 	public void addComponent(Component component) {
-		ResponsiveColumn col = new ResponsiveColumn().withComponent(component);
-		col.setSizeUndefined();
-		addColumn(col);
+		addColumn().withComponent(component);
 	}
-	// Convenience API
 
 	public boolean hasDefaultRules() {
 		return xs != null ? true : false;
@@ -354,6 +346,32 @@ public class ResponsiveRow extends StyleableLayout {
 
 	public ResponsiveRow withStyleName(String styleName) {
 		addStyleName(styleName);
+		return this;
+	}
+
+	/**
+	 * fluent api for setStyleName
+	 * 
+	 * @param styleName
+	 * @param replaceAndSet
+	 * @return
+	 */
+	public ResponsiveRow withStyleName(String styleName, boolean replaceAndSet) {
+		if (replaceAndSet)
+			setStyleName(styleName);
+		else
+			withStyleName(styleName);
+		return this;
+	}
+
+	public ResponsiveRow withCaption(String caption) {
+		setCaption(caption);
+		return this;
+	}
+
+	public ResponsiveRow withCaption(String caption, boolean captionAsHtml) {
+		setCaption(caption);
+		setCaptionAsHtml(captionAsHtml);
 		return this;
 	}
 
