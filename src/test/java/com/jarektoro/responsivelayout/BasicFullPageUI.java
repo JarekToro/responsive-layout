@@ -2,6 +2,7 @@ package com.jarektoro.responsivelayout;
 
 import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.Viewport;
+import com.vaadin.icons.VaadinIcons;
 import com.vaadin.server.*;
 import com.vaadin.ui.*;
 import com.vaadin.ui.themes.ValoTheme;
@@ -57,35 +58,38 @@ public class BasicFullPageUI extends AbstractTest {
 
         ResponsiveColumn profileCol = sideMenu.addColumn()
                 .withDisplayRules(12, 12, 12, 12)
-                .withCenteredComponent(image).withVisibilityRules(true, true, true, true);
+                .withComponent(image, ResponsiveColumn.ColumnComponentAlignment.CENTER).withVisibilityRules(true, true, true, true);
 
 
-        Button logoButton = getButtonofSize("LOGO", "100%", "100%", FontAwesome.APPLE);
+        Button logoButton = getButtonofSize("LOGO", "100%", "100%", VaadinIcons.VAADIN_H);
 
         ResponsiveColumn logoCol = sideMenu.addColumn()
                 .withDisplayRules(12, 3, 12, 12)
                 .withComponent(logoButton);
 
 
-        ResponsiveColumn homeCol = sideMenu.addColumn()
+        final ResponsiveColumn homeCol = sideMenu.addColumn()
                 .withDisplayRules(12, 3, 12, 12)
                 .withVisibilityRules(false, true, true, true)
-                .withComponent(getButtonofSize("Testers", "100%", "100%", FontAwesome.USERS));
+                .withComponent(getButtonofSize("Testers", "100%", "100%", VaadinIcons.USERS));
 
-        ResponsiveColumn aboutCol = sideMenu.addColumn()
+        final ResponsiveColumn aboutCol = sideMenu.addColumn()
                 .withDisplayRules(12, 3, 12, 12)
                 .withVisibilityRules(false, true, true, true)
-                .withComponent(getButtonofSize("Analyze", "100%", "100%", FontAwesome.AREA_CHART));
+                .withComponent(getButtonofSize("Analyze", "100%", "100%", VaadinIcons.CHART_3D));
 
-        ResponsiveColumn contactCol = sideMenu.addColumn()
+        final ResponsiveColumn contactCol = sideMenu.addColumn()
                 .withDisplayRules(12, 3, 12, 12)
                 .withVisibilityRules(false, true, true, true)
-                .withComponent(getButtonofSize("Report", "100%", "100%", FontAwesome.INBOX));
+                .withComponent(getButtonofSize("Report", "100%", "100%", VaadinIcons.INBOX));
 
-        logoButton.addClickListener(clickEvent -> {
-            homeCol.setVisibility(ResponsiveLayout.DisplaySize.XS, !homeCol.isVisibleForDisplaySize(ResponsiveLayout.DisplaySize.XS));
-            aboutCol.setVisibility(ResponsiveLayout.DisplaySize.XS, !aboutCol.isVisibleForDisplaySize(ResponsiveLayout.DisplaySize.XS));
-            contactCol.setVisibility(ResponsiveLayout.DisplaySize.XS, !contactCol.isVisibleForDisplaySize(ResponsiveLayout.DisplaySize.XS));
+        logoButton.addClickListener(new Button.ClickListener() {
+            @Override
+            public void buttonClick(Button.ClickEvent clickEvent) {
+                homeCol.setVisibility(ResponsiveLayout.DisplaySize.XS, !homeCol.isVisibleForDisplaySize(ResponsiveLayout.DisplaySize.XS));
+                aboutCol.setVisibility(ResponsiveLayout.DisplaySize.XS, !aboutCol.isVisibleForDisplaySize(ResponsiveLayout.DisplaySize.XS));
+                contactCol.setVisibility(ResponsiveLayout.DisplaySize.XS, !contactCol.isVisibleForDisplaySize(ResponsiveLayout.DisplaySize.XS));
+            }
         });
 
 
@@ -136,13 +140,13 @@ public class BasicFullPageUI extends AbstractTest {
         Label label = new Label("Title!");
         label.setSizeUndefined();
 
-        Button button = new Button("", FontAwesome.ANCHOR);
+        Button button = new Button("", VaadinIcons.ANCHOR);
         button.addStyleName(ValoTheme.BUTTON_PRIMARY);
 
         TextField field = new TextField();
         field.setPlaceholder("Description");
 
-        Button button1 = new Button("", FontAwesome.ANCHOR);
+        Button button1 = new Button("", VaadinIcons.ANCHOR);
         button1.addStyleName(ValoTheme.BUTTON_FRIENDLY);
 
 
