@@ -95,6 +95,13 @@ public class ResponsiveLayout extends CssLayout {
 		return this;
 	}
 
+	public ResponsiveLayout withStyleNames(String... styleNames) {
+		for (String styleName : styleNames) {
+			addStyleName(styleName);
+		}
+		return this;
+	}
+
 	/**
 	 * fluent api for setStyleName
 	 * 
