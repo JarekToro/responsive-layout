@@ -252,9 +252,7 @@ public class ResponsiveColumn extends StyleableComponent implements SingleCompon
 	}
 
 	public ResponsiveColumn withStyleNames(String... styleNames) {
-		for (String styleName : styleNames) {
-			addStyleName(styleName);
-		}
+		addStyleNames(styleNames);
 		return this;
 	}
 
