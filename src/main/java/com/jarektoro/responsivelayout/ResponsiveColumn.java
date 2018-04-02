@@ -251,6 +251,11 @@ public class ResponsiveColumn extends StyleableComponent implements SingleCompon
 		return this;
 	}
 
+	public ResponsiveColumn withStyleNames(String... styleNames) {
+		addStyleNames(styleNames);
+		return this;
+	}
+
 	/**
 	 * fluent api for setStyleName
 	 * 
@@ -342,4 +347,8 @@ public class ResponsiveColumn extends StyleableComponent implements SingleCompon
 		return this;
 	}
 
+	public ResponsiveColumn withRule(ResponsiveLayout.DisplaySize displaySize, int width) {
+		addRule(displaySize, width);
+		return this;
+	}
 }

@@ -349,9 +349,14 @@ public class ResponsiveRow extends StyleableLayout {
 		return this;
 	}
 
+	public ResponsiveRow withStyleNames(String... styleNames) {
+		addStyleNames(styleNames);
+		return this;
+	}
+
 	/**
 	 * fluent api for setStyleName
-	 * 
+	 *
 	 * @param styleName
 	 * @param replaceAndSet
 	 * @return
@@ -399,4 +404,13 @@ public class ResponsiveRow extends StyleableLayout {
 		return this;
 	}
 
+	public ResponsiveRow withHeight(float height, Unit unit) {
+		setHeight(height, unit);
+		return this;
+	}
+
+	public ResponsiveRow withHeight(String height) {
+		setHeight(height);
+		return this;
+	}
 }
