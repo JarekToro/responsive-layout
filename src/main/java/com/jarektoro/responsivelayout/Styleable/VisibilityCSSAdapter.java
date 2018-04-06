@@ -34,20 +34,7 @@ public class VisibilityCSSAdapter {
 
 
     public String getCssForDisplaySize(ResponsiveLayout.DisplaySize displaySize, boolean isVisible) {
-        if (isVisible) {
-            switch (displaySize) {
-                case XS:
-                    return CSS_VISIBLE_XS;
-                case SM:
-                    return CSS_VISIBLE_SM;
-                case MD:
-                    return CSS_VISIBLE_MD;
-                case LG:
-                    return CSS_VISIBLE_LG;
-                default:
-                    return "";
-            }
-        } else {
+        if (!isVisible) {
             switch (displaySize) {
                 case XS:
                     return CSS_HIDDEN_XS;
@@ -57,11 +44,9 @@ public class VisibilityCSSAdapter {
                     return CSS_HIDDEN_MD;
                 case LG:
                     return CSS_HIDDEN_LG;
-                default:
-                    return " ";
-
             }
         }
+        return "";
     }
 
 
@@ -109,7 +94,7 @@ public class VisibilityCSSAdapter {
                 }
             }
         }
-        
+
         return true;
     }
 
@@ -119,19 +104,19 @@ public class VisibilityCSSAdapter {
                 this.component.removeStyleName(clazz);
             }
         }
-        
+
         if (displaySize == ResponsiveLayout.DisplaySize.SM) {
             for (String clazz : VisibilityCSSAdapter.smClassGroup.classes) {
                 this.component.removeStyleName(clazz);
             }
         }
-        
+
         if (displaySize == ResponsiveLayout.DisplaySize.MD) {
             for (String clazz : VisibilityCSSAdapter.mdClassGroup.classes) {
                 this.component.removeStyleName(clazz);
             }
         }
-        
+
         if (displaySize == ResponsiveLayout.DisplaySize.LG) {
             for (String clazz : VisibilityCSSAdapter.lgClassGroup.classes) {
                 this.component.removeStyleName(clazz);
